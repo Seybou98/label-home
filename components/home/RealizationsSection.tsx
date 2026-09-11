@@ -97,7 +97,7 @@ export function RealizationsSection() {
               <strong>Sophie D.</strong>
               <small>Melun (77)</small>
               <Link href="/temoignages">
-                Voir tous les avis Google <ArrowRight size={14} />
+                Voir tous les avis Google <ArrowRight size={24} />
               </Link>
 
               <div className="carousel-dots">
@@ -117,7 +117,7 @@ export function RealizationsSection() {
 
         <Link className="more-link" href="/realisations">
           Voir toutes nos réalisations <ArrowRight />
-        </Link>
+        </Link >
       </div>
     </section>
   );

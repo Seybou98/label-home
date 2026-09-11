@@ -40,13 +40,13 @@ export function ProjectChoiceGrid() {
           const Icon = icons[choice.icon];
           return (
             <Link className="choice-card" key={choice.href + choice.title[0]} href={choice.href}>
-              <Icon className={`choice-icon ${choice.color}`} size={40} />
+              <Icon className={`choice-icon ${choice.color}`} size={50} />
               <strong>
                 {choice.title[0]}
                 <br />
                 {choice.title[1]}
               </strong>
-              <ArrowRight className="card-arrow" size={16} />
+              <ArrowRight className="card-arrow" size={30} />
             </Link>
           );
         })}

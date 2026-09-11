@@ -35,7 +35,7 @@ export default function SimulerMonProjetPage() {
             {needs.map((n) => (
               <label
                 key={n.slug}
-                className={`flex cursor-pointer items-center gap-4 rounded-lg border p-5 text-sm font-semibold ${
+                className={`flex min-h-[140px] cursor-pointer items-center gap-4 rounded-lg border p-5 text-sm font-semibold ${
                   need === n.slug ? "border-teal2 bg-soft text-navy" : "border-line text-muted"
                 }`}
               >

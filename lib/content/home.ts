@@ -1,8 +1,7 @@
 export const heroImage = "/images/engage.png";
 export const teamImage =
   "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80";
-export const phoneImage =
-  "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=700&q=85";
+export const phoneImage = "/images/app-label.png";
 
 export const projectChoices = [
   {

@@ -1,7 +1,7 @@
 import {
   ChevronRight,
-  FileSearch,
-  LifeBuoy,
+  ClipboardCheck,
+  HeartHandshake,
   Settings,
   Target,
   Wrench,
@@ -12,11 +12,11 @@ import { processSteps } from "@/lib/content/home";
 import { Reveal } from "@/components/animation/Reveal";
 
 const icons: Record<string, LucideIcon> = {
-  FileSearch,
+  FileSearch: ClipboardCheck,
   Target,
   Wrench,
   Settings,
-  LifeBuoy,
+  LifeBuoy: HeartHandshake,
 };
 
 export function ProcessSteps() {

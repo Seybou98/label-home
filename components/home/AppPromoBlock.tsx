@@ -6,25 +6,22 @@ import { Reveal } from "@/components/animation/Reveal";
 export function AppPromoBlock() {
   return (
     <Reveal as="section" className="app-section container">
-      <div className="app-phone" style={{ position: "relative" }}>
+      <div className="app-phone">
         <Image
           src={phoneImage}
           alt="Application mobile Label Énergie"
-          fill
-          sizes="150px"
-          style={{ objectFit: "cover" }}
+          width={481}
+          height={519}
+          className="app-phone-img"
           loading="lazy"
         />
       </div>
       <div className="app-copy">
-        <div className="eyebrow">VOTRE PROJET DANS VOTRE POCHE</div>
-        <h2>
-          Suivez votre installation,
-          <br />
-          accédez à vos documents,
-          <br />
-          contactez le SAV et bien plus encore depuis notre application.
-        </h2>
+        <h2>Votre projet dans votre poche</h2>
+        <p>
+          Suivez votre installation, accédez à vos documents, contactez le SAV et bien plus
+          encore depuis notre application.
+        </p>
         <div className="store-buttons">
           <button type="button">
             {" "}

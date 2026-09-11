@@ -21,10 +21,21 @@ export function ProjectCtaBanner() {
         </ul>
       </div>
       <div className="cta-center">
-        <span className="scribble" aria-hidden>
-          ↘
-        </span>
-        <Link href="/simuler-mon-projet" className="btn btn-primary">
+        <Image
+          src="/images/petit-removebg-preview.png"
+          alt=""
+          width={71}
+          height={45}
+          className="scribble scribble-petit"
+        />
+        <Image
+          src="/images/grand-removebg-preview.png"
+          alt=""
+          width={120}
+          height={120}
+          className="scribble scribble-grand"
+        />
+        <Link href="/simuler-mon-projet" className="btn btn-primary cta-banner-btn">
           SIMULER MON PROJET <ArrowRight />
         </Link>
         <small>Gratuit • Sans engagement • Résultat immédiat</small>
