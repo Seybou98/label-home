@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { PageHeader } from "@/components/layout/PageHeader";
 import { solutionSlugs, solutions } from "@/lib/content/solutions";
 
 const sections: { title: string; links: { label: string; href: string }[] }[] = [
@@ -70,7 +71,7 @@ export default function PlanDuSitePage() {
       <Breadcrumb items={[{ name: "Plan du site", path: "/plan-du-site" }]} />
       <section className="section">
         <div className="container">
-          <h1 className="font-display text-2xl text-navy">Plan du site</h1>
+          <PageHeader eyebrow="NAVIGATION" title="Plan du site" />
           <div className="mt-8 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
             {sections.map((section) => (
               <div key={section.title}>

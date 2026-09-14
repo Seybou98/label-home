@@ -14,13 +14,18 @@ export interface SolutionContent {
   intro: string;
   heroImage: string;
   heroAlt: string;
+  heroImageAspect?: string;
+  heroBadge?: { icon: string; text: string };
   quickBenefits: { icon: string; title: string; text: string }[];
+  benefitCards?: { icon: string; title: string; text: string }[];
+  highlights: { icon: string; title: string; text: string }[];
   howItWorks: {
     title: string;
     intro: string;
     steps: { n: number; title: string; text: string }[];
     image: string;
     imageAlt: string;
+    imageAspect?: string;
   };
   variants?: {
     title: string;
@@ -29,9 +34,19 @@ export interface SolutionContent {
   aides: {
     amount: string;
     text: string;
+    items: string[];
   };
+  ctaTicks: string[];
   faq: { question: string; answer: string }[];
 }
+
+export const defaultCtaTicks = [
+  "Étude gratuite et personnalisée",
+  "Installation par nos équipes RGE",
+  "Matériel de qualité",
+  "Garantie et SAV assurés",
+  "Accompagnement de A à Z",
+];
 
 export const solutions: Record<string, SolutionContent> = {
   "pompe-a-chaleur": {
@@ -47,11 +62,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Unité extérieure de pompe à chaleur installée par Label Énergie",
+    heroBadge: { icon: "Leaf", text: "Une énergie renouvelable, gratuite et disponible toute l'année." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture de chauffage." },
       { icon: "ThermometerSun", title: "Confort toute l'année", text: "chauffage en hiver, rafraîchissement possible en été." },
       { icon: "Leaf", title: "Énergie renouvelable", text: "réduit votre impact carbone." },
       { icon: "BadgePercent", title: "Aides & subventions", text: "MaPrimeRénov', CEE, éco-prêt à taux 0." },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies sur votre facture de chauffage." },
+      { icon: "Leaf", title: "Écologique", text: "Une énergie renouvelable qui réduit votre impact carbone." },
+      { icon: "ThermometerSun", title: "Confort", text: "Une chaleur douce et homogène toute l'année." },
+      { icon: "Clock", title: "Autonomie", text: "Un fonctionnement automatique, sans intervention au quotidien." },
+      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov', CEE, éco-prêt à taux 0." },
     ],
     howItWorks: {
       title: "Comment fonctionne une pompe à chaleur ?",
@@ -89,7 +112,12 @@ export const solutions: Record<string, SolutionContent> = {
         },
       ],
     },
-    aides: { amount: "10 000 €", text: "d'aides pour l'installation d'une pompe à chaleur*" },
+    aides: {
+      amount: "10 000 €",
+      text: "d'aides pour l'installation d'une pompe à chaleur*",
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Quelle est la durée de vie d'une pompe à chaleur ?",
@@ -117,11 +145,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Pompe à chaleur Air/Eau installée à l'extérieur d'une maison",
+    heroBadge: { icon: "Leaf", text: "Compatible avec vos radiateurs et votre plancher chauffant existants." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "par rapport à une chaudière au fioul ou au gaz." },
       { icon: "ThermometerSun", title: "Compatible radiateurs", text: "et plancher chauffant existants." },
       { icon: "Leaf", title: "Énergie renouvelable", text: "et respectueuse de l'environnement." },
       { icon: "BadgePercent", title: "Éligible aux aides", text: "MaPrimeRénov', CEE, TVA à 5,5 %." },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies par rapport au fioul ou au gaz." },
+      { icon: "ThermometerSun", title: "Confort", text: "Chauffe votre logement et votre eau chaude sanitaire." },
+      { icon: "Leaf", title: "Écologique", text: "Une énergie renouvelable et respectueuse de l'environnement." },
+      { icon: "Wrench", title: "Installation rapide", text: "Remplacement de chaudière en 1 à 2 jours." },
+      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov', CEE, TVA à 5,5 %." },
     ],
     howItWorks: {
       title: "Comment fonctionne une PAC Air/Eau ?",
@@ -135,7 +171,12 @@ export const solutions: Record<string, SolutionContent> = {
         "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Schéma de fonctionnement d'une pompe à chaleur Air/Eau",
     },
-    aides: { amount: "10 000 €", text: "d'aides pour l'installation d'une PAC Air/Eau*" },
+    aides: {
+      amount: "10 000 €",
+      text: "d'aides pour l'installation d'une PAC Air/Eau*",
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Puis-je garder mes radiateurs actuels ?",
@@ -158,11 +199,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Unité intérieure de climatisation réversible dans un salon",
+    heroBadge: { icon: "Waves", text: "Chauffage l'hiver, climatisation l'été : un confort toute l'année." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "d'énergie par rapport au chauffage électrique." },
       { icon: "ThermometerSun", title: "Confort en toutes saisons", text: "chauffage l'hiver, climatisation l'été." },
       { icon: "Waves", title: "Technologie Inverter", text: "haute performance et fonctionnement silencieux." },
       { icon: "BadgePercent", title: "Éligible MaPrimeRénov'", text: "et aux certificats d'économies d'énergie (CEE)." },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies vs. chauffage électrique." },
+      { icon: "ThermometerSun", title: "Confort toute saison", text: "Chauffage l'hiver, rafraîchissement l'été." },
+      { icon: "Waves", title: "Technologie Inverter", text: "Un fonctionnement silencieux dès 19 dB(A)." },
+      { icon: "Sparkles", title: "Design discret", text: "Des unités qui s'intègrent à votre décoration." },
+      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov' et certificats d'économies d'énergie." },
     ],
     howItWorks: {
       title: "Comment fonctionne une PAC Air/Air ?",
@@ -202,7 +251,12 @@ export const solutions: Record<string, SolutionContent> = {
         },
       ],
     },
-    aides: { amount: "5 000 €", text: "d'aides disponibles (MaPrimeRénov', CEE, aides locales)*" },
+    aides: {
+      amount: "5 000 €",
+      text: "d'aides disponibles (MaPrimeRénov', CEE, aides locales)*",
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "Aides locales selon votre région"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Quelle est la différence entre climatisation et PAC Air/Air ?",
@@ -230,11 +284,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Chantier de forage pour pompe à chaleur géothermique",
+    heroBadge: { icon: "Leaf", text: "La chaleur stable du sol, pour un rendement optimal toute l'année." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Rendement optimal", text: "une température de sol stable toute l'année." },
       { icon: "ThermometerSun", title: "Économies maximales", text: "sur le long terme." },
       { icon: "Leaf", title: "Très faible impact carbone", text: "énergie puisée localement." },
       { icon: "BadgePercent", title: "Éligible aux aides", text: "MaPrimeRénov' et CEE." },
+    ],
+    highlights: [
+      { icon: "ThermometerSun", title: "Rendement optimal", text: "Une température de sol stable en toutes saisons." },
+      { icon: "PiggyBank", title: "Économies maximales", text: "Les factures de chauffage les plus basses sur la durée." },
+      { icon: "Leaf", title: "Très faible impact", text: "Une énergie puisée localement, quasiment inépuisable." },
+      { icon: "Clock", title: "Longévité", text: "Une durée de vie supérieure à 20 ans." },
+      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov' et certificats d'économies d'énergie." },
     ],
     howItWorks: {
       title: "Comment fonctionne une PAC géothermique ?",
@@ -248,7 +310,12 @@ export const solutions: Record<string, SolutionContent> = {
         "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Schéma de fonctionnement d'une pompe à chaleur géothermique",
     },
-    aides: { amount: "10 000 €", text: "d'aides pour l'installation d'une PAC géothermique*" },
+    aides: {
+      amount: "10 000 €",
+      text: "d'aides pour l'installation d'une PAC géothermique*",
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Quelle surface de terrain est nécessaire ?",
@@ -271,11 +338,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Climatisation murale installée dans un salon lumineux",
+    heroBadge: { icon: "Waves", text: "Un air frais et sain, été comme hiver." },
     quickBenefits: [
       { icon: "ThermometerSun", title: "Confort toute l'année", text: "rafraîchissement l'été, chauffage d'appoint l'hiver." },
       { icon: "Waves", title: "Fonctionnement silencieux", text: "dès 19 dB(A) pour les modèles Inverter." },
       { icon: "PiggyBank", title: "Consommation maîtrisée", text: "grâce à la technologie Inverter haute performance." },
       { icon: "BadgePercent", title: "Installation rapide", text: "sans gros travaux, par des techniciens certifiés." },
+    ],
+    highlights: [
+      { icon: "ThermometerSun", title: "Confort toute l'année", text: "Rafraîchissement l'été, chauffage d'appoint l'hiver." },
+      { icon: "Waves", title: "Silencieux", text: "Dès 19 dB(A) pour les modèles Inverter." },
+      { icon: "PiggyBank", title: "Consommation maîtrisée", text: "Grâce à la technologie Inverter haute performance." },
+      { icon: "Wrench", title: "Installation rapide", text: "Sans gros travaux, posée en une journée." },
+      { icon: "BadgePercent", title: "Aides possibles", text: "Éligible sous conditions à certaines aides de l'État." },
     ],
     howItWorks: {
       title: "Comment se déroule l'installation ?",
@@ -289,7 +364,16 @@ export const solutions: Record<string, SolutionContent> = {
         "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Technicien installant une climatisation murale",
     },
-    aides: { amount: "5 000 €", text: "d'aides pour une climatisation réversible éligible*" },
+    aides: {
+      amount: "5 000 €",
+      text: "d'aides pour une climatisation réversible éligible*",
+      items: [
+        "Certificats d'économies d'énergie (CEE) sous conditions",
+        "TVA réduite à 5,5 % pose comprise",
+        "Aides locales selon votre région",
+      ],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Faut-il une autorisation pour installer une climatisation ?",
@@ -312,11 +396,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Panneaux photovoltaïques installés sur une toiture",
+    heroBadge: { icon: "Sun", text: "Une énergie gratuite et propre, produite directement sur votre toit." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 60 % d'économies", text: "sur votre facture d'électricité." },
       { icon: "Sun", title: "Énergie gratuite et propre", text: "produite directement sur votre toit." },
       { icon: "Leaf", title: "Revente du surplus", text: "à EDF OA, notre partenaire officiel." },
       { icon: "BadgePercent", title: "Prime à l'autoconsommation", text: "et TVA réduite selon votre projet." },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 60 % d'économies sur votre facture d'électricité." },
+      { icon: "Sun", title: "Énergie gratuite", text: "Produite directement sur votre toiture." },
+      { icon: "Leaf", title: "Revente du surplus", text: "À EDF OA, notre partenaire officiel." },
+      { icon: "Clock", title: "Faible entretien", text: "Une installation durable, sans entretien complexe." },
+      { icon: "BadgePercent", title: "Aides financières", text: "Prime à l'autoconsommation et TVA réduite." },
     ],
     howItWorks: {
       title: "Comment fonctionne une installation photovoltaïque ?",
@@ -330,7 +422,12 @@ export const solutions: Record<string, SolutionContent> = {
         "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Schéma de fonctionnement d'une installation photovoltaïque",
     },
-    aides: { amount: "8 000 €", text: "d'aides et primes pour une installation photovoltaïque*" },
+    aides: {
+      amount: "8 000 €",
+      text: "d'aides et primes pour une installation photovoltaïque*",
+      items: ["Prime à l'autoconsommation", "Revente du surplus à EDF OA", "TVA réduite selon la puissance installée"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Combien de panneaux sont nécessaires pour ma maison ?",
@@ -353,11 +450,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Capteurs solaires thermiques sur une toiture",
+    heroBadge: { icon: "Sun", text: "Chauffage et eau chaude solaire, la solution 2-en-1." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 60 % d'économies", text: "sur chauffage et eau chaude combinés." },
       { icon: "Sun", title: "Énergie solaire gratuite", text: "captée directement sur votre toiture." },
       { icon: "Leaf", title: "2 besoins couverts", text: "chauffage et eau chaude sanitaire." },
       { icon: "BadgePercent", title: "Éligible aux aides", text: "MaPrimeRénov', CEE, TVA à 5,5 %." },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 60 % d'économies sur chauffage et eau chaude." },
+      { icon: "Sun", title: "Énergie solaire gratuite", text: "Captée directement sur votre toiture." },
+      { icon: "Leaf", title: "2 besoins couverts", text: "Chauffage et eau chaude sanitaire." },
+      { icon: "ThermometerSun", title: "Confort toute l'année", text: "Un appoint automatique prend le relais si besoin." },
+      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov', CEE, TVA à 5,5 %." },
     ],
     howItWorks: {
       title: "Comment fonctionne un système solaire combiné ?",
@@ -371,7 +476,12 @@ export const solutions: Record<string, SolutionContent> = {
         "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Schéma de fonctionnement d'un système solaire combiné",
     },
-    aides: { amount: "4 000 €", text: "d'aides pour l'installation d'un système solaire combiné*" },
+    aides: {
+      amount: "4 000 €",
+      text: "d'aides pour l'installation d'un système solaire combiné*",
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Le SSC couvre-t-il 100 % de mes besoins de chauffage ?",
@@ -394,11 +504,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Chauffe-eau thermodynamique installé dans une buanderie",
+    heroBadge: { icon: "Leaf", text: "Une eau chaude économique grâce aux calories de l'air ambiant." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture d'eau chaude." },
       { icon: "BadgePercent", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE." },
       { icon: "ThermometerSun", title: "Confort en eau chaude", text: "toute l'année." },
       { icon: "Waves", title: "Technologie fiable", text: "et silencieuse." },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies sur votre facture d'eau chaude." },
+      { icon: "ThermometerSun", title: "Confort", text: "Une eau chaude disponible toute l'année, pour toute la famille." },
+      { icon: "Waves", title: "Technologie fiable", text: "Silencieuse et éprouvée." },
+      { icon: "Clock", title: "Faible entretien", text: "Un entretien annuel simple suffit." },
+      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov' et certificats d'économies d'énergie." },
     ],
     howItWorks: {
       title: "Comment fonctionne un chauffe-eau thermodynamique ?",
@@ -413,7 +531,12 @@ export const solutions: Record<string, SolutionContent> = {
         "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Schéma de fonctionnement d'un chauffe-eau thermodynamique",
     },
-    aides: { amount: "4 000 €", text: "d'aides pour l'installation d'un chauffe-eau thermodynamique*" },
+    aides: {
+      amount: "4 000 €",
+      text: "d'aides pour l'installation d'un chauffe-eau thermodynamique*",
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Quel volume de ballon choisir ?",
@@ -436,11 +559,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Capteurs solaires thermiques pour chauffe-eau solaire individuel",
+    heroBadge: { icon: "Sun", text: "L'eau chaude sanitaire produite gratuitement par le soleil." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture d'eau chaude." },
       { icon: "Sun", title: "Énergie solaire gratuite", text: "captée sur votre toiture." },
       { icon: "ThermometerSun", title: "Confort en eau chaude", text: "toute l'année, avec appoint électrique." },
       { icon: "BadgePercent", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE." },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies sur votre facture d'eau chaude." },
+      { icon: "Sun", title: "Énergie gratuite", text: "Captée sur votre toiture, sans limite." },
+      { icon: "ThermometerSun", title: "Confort garanti", text: "Un appoint électrique prend le relais si besoin." },
+      { icon: "Leaf", title: "Écologique", text: "Une eau chaude produite sans énergie fossile." },
+      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov' et certificats d'économies d'énergie." },
     ],
     howItWorks: {
       title: "Comment fonctionne un CESI ?",
@@ -455,7 +586,12 @@ export const solutions: Record<string, SolutionContent> = {
         "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Schéma de fonctionnement d'un chauffe-eau solaire individuel",
     },
-    aides: { amount: "4 000 €", text: "d'aides pour l'installation d'un CESI*" },
+    aides: {
+      amount: "4 000 €",
+      text: "d'aides pour l'installation d'un CESI*",
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Le CESI fonctionne-t-il en hiver ou par temps couvert ?",
@@ -472,31 +608,55 @@ export const solutions: Record<string, SolutionContent> = {
       "Installez un poêle à granulés performant et automatisé pour chauffer votre logement à moindre coût. Devis gratuit, aides MaPrimeRénov' avec Label Énergie.",
     breadcrumbLabel: "Poêle à granulés",
     category: "POÊLE À GRANULÉS",
-    h1: "La chaleur du bois, tout en simplicité.",
+    h1: "Le chauffage qui réchauffe <span>votre maison et votre budget</span>",
     intro:
       "Le poêle à granulés offre un chauffage performant, automatisé et économique grâce à une énergie renouvelable et locale : le bois.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
-    heroAlt: "Poêle à granulés dans un salon chaleureux",
+    heroImage: "/images/solutions/poele-1.jpg",
+    heroAlt: "Poêle à granulés dans un salon chaleureux, avec une énergie renouvelable et respectueuse de l'environnement",
+    heroImageAspect: "1098/976",
     quickBenefits: [
-      { icon: "PiggyBank", title: "Chauffage économique", text: "grâce au prix compétitif des granulés." },
-      { icon: "Leaf", title: "Énergie renouvelable", text: "et locale, faible impact carbone." },
-      { icon: "ThermometerSun", title: "Automatisation", text: "programmable et régulé avec précision." },
-      { icon: "BadgePercent", title: "Éligible MaPrimeRénov'", text: "et aux certificats d'économies d'énergie." },
+      { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture de chauffage." },
+      { icon: "ThermometerSun", title: "Chaleur douce et homogène", text: "dans toute la maison." },
+      { icon: "Leaf", title: "Écologique et renouvelable", text: "une énergie neutre en CO₂." },
+      { icon: "Home", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE, etc." },
+    ],
+    benefitCards: [
+      { icon: "PiggyBank", title: "ÉCONOMIQUE", text: "Jusqu'à 70 % d'économies sur votre facture de chauffage." },
+      { icon: "Clock", title: "AUTONOME", text: "Une grande autonomie grâce au réservoir de granulés." },
+      { icon: "ThermometerSun", title: "CONFORTABLE", text: "Une chaleur douce et constante dans toute la maison." },
+      {
+        icon: "BadgePercent",
+        title: "AIDES & SUBVENTIONS",
+        text: "Profitez des aides de l'État (MaPrimeRénov', CEE, etc.) pour alléger votre investissement.",
+      },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies d'énergie", text: "Réduisez votre facture jusqu'à 70 %." },
+      { icon: "Leaf", title: "Écologique", text: "Une énergie renouvelable et neutre en CO₂." },
+      { icon: "ThermometerSun", title: "Confort", text: "Chaleur douce et constante, programmable." },
+      { icon: "Clock", title: "Autonomie", text: "Jusqu'à plusieurs jours d'autonomie." },
+      { icon: "Sparkles", title: "Esthétique", text: "Des designs modernes qui s'adaptent à votre intérieur." },
     ],
     howItWorks: {
-      title: "Comment fonctionne un poêle à granulés ?",
-      intro: "Les granulés sont acheminés automatiquement vers la chambre de combustion.",
+      title: "Une technologie simple pour un confort optimal",
+      intro:
+        "Le poêle à granulés utilise des granulés de bois compressé pour produire une chaleur performante tout en réduisant votre impact environnemental.",
       steps: [
-        { n: 1, title: "Alimentation automatique", text: "Les granulés sont acheminés depuis le réservoir." },
-        { n: 2, title: "Combustion", text: "Une combustion propre et régulée produit la chaleur." },
-        { n: 3, title: "Diffusion", text: "La chaleur est diffusée dans la pièce, parfois via un système de distribution d'air." },
+        { n: 1, title: "", text: "Les granulés sont stockés dans le réservoir." },
+        { n: 2, title: "", text: "Ils sont acheminés automatiquement vers le foyer de combustion." },
+        { n: 3, title: "", text: "La chaleur est diffusée rapidement et uniformément dans votre intérieur." },
+        { n: 4, title: "", text: "Vous profitez d'un confort optimal avec une consommation maîtrisée." },
       ],
-      image:
-        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Fonctionnement d'un poêle à granulés",
+      image: "/images/solutions/poele-2.jpg",
+      imageAlt: "Schéma de fonctionnement d'un poêle à granulés : réservoir, alimentation, combustion, diffusion",
+      imageAspect: "1474/704",
     },
-    aides: { amount: "2 500 €", text: "d'aides pour l'installation d'un poêle à granulés*" },
+    aides: {
+      amount: "2 500 €",
+      text: "d'aides pour l'installation d'un poêle à granulés*",
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Quelle autonomie offre un poêle à granulés ?",
@@ -519,11 +679,19 @@ export const solutions: Record<string, SolutionContent> = {
     heroImage:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
     heroAlt: "Maison individuelle rénovée énergétiquement",
+    heroBadge: { icon: "Home", text: "Un accompagnement complet pour un logement plus performant." },
     quickBenefits: [
       { icon: "PiggyBank", title: "Économies maximisées", text: "en combinant plusieurs travaux complémentaires." },
       { icon: "ClipboardCheck", title: "Diagnostic complet", text: "audit énergétique de votre logement." },
       { icon: "Leaf", title: "Confort et valorisation", text: "de votre bien immobilier." },
       { icon: "BadgePercent", title: "MaPrimeRénov' Parcours accompagné", text: "et aides cumulables." },
+    ],
+    highlights: [
+      { icon: "PiggyBank", title: "Économies maximisées", text: "En combinant plusieurs travaux complémentaires." },
+      { icon: "ClipboardCheck", title: "Diagnostic complet", text: "Un audit énergétique de votre logement." },
+      { icon: "Leaf", title: "Confort et valeur", text: "Un bien plus confortable et mieux valorisé." },
+      { icon: "Clock", title: "Accompagnement de A à Z", text: "Du diagnostic à la réception des travaux." },
+      { icon: "BadgePercent", title: "Aides cumulables", text: "MaPrimeRénov' Parcours accompagné et aides locales." },
     ],
     howItWorks: {
       title: "Comment se déroule une rénovation globale ?",
@@ -538,7 +706,12 @@ export const solutions: Record<string, SolutionContent> = {
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
       imageAlt: "Accompagnement rénovation énergétique globale",
     },
-    aides: { amount: "70 000 €", text: "d'aides cumulées pour une rénovation globale*" },
+    aides: {
+      amount: "70 000 €",
+      text: "d'aides cumulées pour une rénovation globale*",
+      items: ["MaPrimeRénov' Parcours accompagné", "Certificats d'économies d'énergie (CEE)", "Éco-prêt à taux zéro"],
+    },
+    ctaTicks: defaultCtaTicks,
     faq: [
       {
         question: "Qu'est-ce que MaPrimeRénov' Parcours accompagné ?",

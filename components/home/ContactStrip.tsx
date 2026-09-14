@@ -14,7 +14,7 @@ export function ContactStrip() {
       </div>
       <div className="contact-phone">
         <strong>01 64 13 65 82</strong>
-        <span>Lun. - Ven. : 8h - 20h • Sam. : 9h - 12h</span>
+        <span>Lun. - Ven. : 8h - 19h / Sam. : 9h - 17h</span>
       </div>
       <Link href="/contact" className="btn btn-outline">
         ÊTRE RAPPELÉ GRATUITEMENT <ArrowRight />

@@ -23,9 +23,7 @@ export default function SimulerMonProjetPage() {
 
   return (
     <div className="container max-w-2xl py-4">
-      <p className="text-center text-[11px] font-extrabold tracking-wide text-teal2">
-        SIMULATION GRATUITE
-      </p>
+      <p className="eyebrow text-center">SIMULATION GRATUITE</p>
       <Stepper current={step} />
 
       {step === 1 && (
@@ -35,7 +33,7 @@ export default function SimulerMonProjetPage() {
             {needs.map((n) => (
               <label
                 key={n.slug}
-                className={`flex min-h-[140px] cursor-pointer items-center gap-4 rounded-lg border p-5 text-sm font-semibold ${
+                className={`flex min-h-[150px] cursor-pointer items-center gap-4 rounded-lg border p-5 text-sm font-semibold ${
                   need === n.slug ? "border-teal2 bg-soft text-navy" : "border-line text-muted"
                 }`}
               >
@@ -55,7 +53,7 @@ export default function SimulerMonProjetPage() {
             type="button"
             disabled={!need}
             onClick={() => setStep(2)}
-            className="mt-6 inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg disabled:opacity-50"
+            className="btn btn-primary mt-6 disabled:opacity-50"
           >
             CONTINUER <ArrowRight size={16} />
           </button>
@@ -73,18 +71,14 @@ export default function SimulerMonProjetPage() {
             className="mt-5 w-full rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
           />
           <div className="mt-6 flex justify-between">
-            <button
-              type="button"
-              onClick={() => setStep(1)}
-              className="inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 text-xs font-extrabold text-navy"
-            >
+            <button type="button" onClick={() => setStep(1)} className="btn btn-outline">
               <ArrowLeft size={16} /> RETOUR
             </button>
             <button
               type="button"
               disabled={postalCode.length < 4}
               onClick={() => setStep(3)}
-              className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg disabled:opacity-50"
+              className="btn btn-primary disabled:opacity-50"
             >
               CONTINUER <ArrowRight size={16} />
             </button>
@@ -130,17 +124,10 @@ export default function SimulerMonProjetPage() {
               className="rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
             />
             <div className="mt-2 flex justify-between">
-              <button
-                type="button"
-                onClick={() => setStep(2)}
-                className="inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 text-xs font-extrabold text-navy"
-              >
+              <button type="button" onClick={() => setStep(2)} className="btn btn-outline">
                 <ArrowLeft size={16} /> RETOUR
               </button>
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg"
-              >
+              <button type="submit" className="btn btn-primary">
                 VOIR MON ESTIMATION <ArrowRight size={16} />
               </button>
             </div>
@@ -156,10 +143,7 @@ export default function SimulerMonProjetPage() {
             Un conseiller Label Énergie va étudier votre projet et vous recontacter très
             prochainement avec une estimation personnalisée et le détail des aides disponibles.
           </p>
-          <Link
-            href="/"
-            className="mt-6 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg"
-          >
+          <Link href="/" className="btn btn-primary mt-6 justify-center">
             RETOUR À L&apos;ACCUEIL
           </Link>
         </div>

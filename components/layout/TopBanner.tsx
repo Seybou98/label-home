@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export function TopBanner() {
@@ -11,9 +12,13 @@ export function TopBanner() {
   return (
     <div className="topbar">
       <div className="container topbar-inner">
-        <span className="topbar-home" aria-hidden>
-          ⌂
-        </span>
+        <Image
+          src="/images/logo-prime-removebg-preview.png"
+          alt=""
+          width={20}
+          height={20}
+          className="topbar-home"
+        />
         <strong>MaPrimeRénov&apos;</strong> évolue en 2026 : nouvelles aides, nouveaux montants.
         <span className="topbar-green">Vérifiez votre éligibilité en 2 minutes.</span>
         <Link href="/aides-financement/calculer-mes-aides" className="topbar-btn">

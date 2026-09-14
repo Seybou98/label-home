@@ -133,31 +133,31 @@ export const realizations = [
 export const processSteps = [
   {
     n: "01",
-    icon: "FileSearch",
+    icon: "/images/1.jpg",
     title: "Étude gratuite",
     text: "Nous analysons votre logement et vos besoins.",
   },
   {
     n: "02",
-    icon: "Target",
+    icon: "/images/2.jpg",
     title: "Solutions & aides",
     text: "Nous vous proposons les meilleures solutions et les aides auxquelles vous avez droit.",
   },
   {
     n: "03",
-    icon: "Wrench",
+    icon: "/images/3.jpg",
     title: "Installation",
     text: "Nos équipes qualifiées installent vos équipements.",
   },
   {
     n: "04",
-    icon: "Settings",
+    icon: "/images/4.jpg",
     title: "Mise en service",
     text: "Nous testons et optimisons votre installation.",
   },
   {
     n: "05",
-    icon: "LifeBuoy",
+    icon: "/images/5.png",
     title: "Suivi & SAV",
     text: "Nous restons à vos côtés pour l'entretien et le SAV.",
   },

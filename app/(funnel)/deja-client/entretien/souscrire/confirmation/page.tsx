@@ -50,18 +50,10 @@ export default function SouscrireConfirmationPage() {
       </div>
 
       <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-        <Link
-          href="/espace-client"
-          onClick={() => reset()}
-          className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg"
-        >
+        <Link href="/espace-client" onClick={() => reset()} className="btn btn-primary justify-center">
           ACCÉDER À MON ESPACE CLIENT
         </Link>
-        <Link
-          href="/"
-          onClick={() => reset()}
-          className="inline-flex items-center justify-center rounded-md border border-line px-5 py-3 text-xs font-extrabold text-navy"
-        >
+        <Link href="/" onClick={() => reset()} className="btn btn-outline justify-center">
           RETOUR À L&apos;ACCUEIL
         </Link>
       </div>

@@ -24,7 +24,7 @@ export function AppPromoBlock() {
         </p>
         <div className="store-buttons">
           <button type="button">
-            {" "}
+            <Image src="/images/appl.png" alt="" width={30} height={30} />
             <span>
               Télécharger sur
               <br />
@@ -32,7 +32,7 @@ export function AppPromoBlock() {
             </span>
           </button>
           <button type="button">
-            ▶{" "}
+            <Image src="/images/googl.png" alt="" width={30} height={30} />
             <span>
               DISPONIBLE SUR
               <br />
@@ -50,11 +50,7 @@ export function AppPromoBlock() {
         ))}
       </div>
       <div className="qr">
-        <div className="qr-grid">
-          {Array.from({ length: 64 }).map((_, i) => (
-            <i key={i} className={i % 3 === 0 || i % 7 === 0 ? "on" : ""} />
-          ))}
-        </div>
+        <Image src="/images/qr.png" alt="QR code de téléchargement" width={180} height={180} className="qr-grid" />
         <span>
           Scannez pour
           <br />

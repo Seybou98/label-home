@@ -71,11 +71,7 @@ export function ContactForm() {
         onChange={(e) => setForm({ ...form, message: e.target.value })}
         className="rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
       />
-      <button
-        type="submit"
-        disabled={submitting}
-        className="mt-1 inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg disabled:opacity-50"
-      >
+      <button type="submit" disabled={submitting} className="btn btn-primary mt-1 justify-center disabled:opacity-50">
         {submitting ? "ENVOI EN COURS..." : "ENVOYER MON MESSAGE"} <ArrowRight size={16} />
       </button>
     </form>

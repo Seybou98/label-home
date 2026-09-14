@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { PageHeader } from "@/components/layout/PageHeader";
 
 export const metadata: Metadata = buildMetadata({
   title: "FAQ : questions fréquentes sur nos solutions énergétiques",
@@ -40,7 +41,11 @@ export default function FaqPage() {
       <Breadcrumb items={[{ name: "FAQ", path: "/faq" }]} />
       <section className="section">
         <div className="container max-w-3xl">
-          <h1 className="font-display text-2xl text-navy">Questions fréquentes</h1>
+          <PageHeader
+            eyebrow="BESOIN D'AIDE ?"
+            title="Questions fréquentes"
+            description="Retrouvez les réponses aux questions les plus posées sur nos solutions, les aides financières et le suivi de votre projet."
+          />
           <div className="mt-6 grid gap-3">
             {faq.map((item) => (
               <details key={item.question} className="rounded-card border border-line p-4">

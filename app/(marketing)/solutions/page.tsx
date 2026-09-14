@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { PageHeader } from "@/components/layout/PageHeader";
 import { solutions, solutionSlugs } from "@/lib/content/solutions";
 
 export const metadata: Metadata = buildMetadata({
@@ -19,11 +20,11 @@ export default function SolutionsIndexPage() {
       <Breadcrumb items={[{ name: "Solutions", path: "/solutions" }]} />
       <section className="section">
         <div className="container">
-          <h1 className="font-display text-2xl text-navy">Toutes nos solutions énergétiques</h1>
-          <p className="mt-3 max-w-2xl text-sm text-muted">
-            Chauffage, climatisation, production d&apos;électricité, eau chaude : Label Énergie
-            étudie, installe et entretient l&apos;ensemble de vos équipements énergétiques.
-          </p>
+          <PageHeader
+            eyebrow="NOS SOLUTIONS"
+            title="Toutes nos solutions énergétiques"
+            description="Chauffage, climatisation, production d'électricité, eau chaude : Label Énergie étudie, installe et entretient l'ensemble de vos équipements énergétiques."
+          />
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
             {solutionSlugs.map((slug) => {

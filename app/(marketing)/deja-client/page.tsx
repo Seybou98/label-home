@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Gift, LogIn, ShieldCheck, Wrench } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { PageHeader } from "@/components/layout/PageHeader";
 
 export const metadata: Metadata = buildMetadata({
   title: "Déjà client Label Énergie : espace, SAV, entretien, parrainage",
@@ -44,11 +45,11 @@ export default function DejaClientPage() {
       <Breadcrumb items={[{ name: "Déjà client", path: "/deja-client" }]} />
       <section className="section">
         <div className="container">
-          <h1 className="font-display text-2xl text-navy">Vous êtes déjà équipé par Label Énergie ?</h1>
-          <p className="mt-3 max-w-2xl text-sm text-muted">
-            Retrouvez tous les services dédiés à nos clients : suivi de votre installation, SAV,
-            entretien et parrainage.
-          </p>
+          <PageHeader
+            eyebrow="DÉJÀ CLIENT ?"
+            title="Vous êtes déjà équipé par Label Énergie ?"
+            description="Retrouvez tous les services dédiés à nos clients : suivi de votre installation, SAV, entretien et parrainage."
+          />
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
             {links.map((link) => (
               <Link

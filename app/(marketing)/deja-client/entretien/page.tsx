@@ -62,9 +62,7 @@ export default function EntretienPage() {
       <section className="bg-white">
         <div className="container grid gap-10 py-8 md:grid-cols-[1.1fr_0.9fr] md:items-start">
           <div>
-            <p className="mb-2 text-[11px] font-extrabold tracking-wide text-teal2">
-              ENTRETIEN &amp; MAINTENANCE
-            </p>
+            <p className="eyebrow">ENTRETIEN &amp; MAINTENANCE</p>
             <h1 className="font-display text-3xl leading-tight text-navy md:text-4xl">
               Prolongez la durée de vie de vos équipements et faites des économies.
             </h1>
@@ -85,16 +83,10 @@ export default function EntretienPage() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/deja-client/entretien/souscrire"
-                className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg"
-              >
+              <Link href="/deja-client/entretien/souscrire" className="btn btn-primary">
                 SOUSCRIRE UN CONTRAT D&apos;ENTRETIEN <ArrowRight size={16} />
               </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-md border border-teal2 px-5 py-3 text-xs font-extrabold text-[#17627b]"
-              >
+              <Link href="/contact" className="btn btn-outline">
                 DEMANDER UN DEVIS GRATUIT
               </Link>
             </div>
@@ -184,11 +176,7 @@ export default function EntretienPage() {
                 </p>
                 <Link
                   href={`/deja-client/entretien/souscrire?formule=${plan.slug}`}
-                  className={`mt-4 block rounded-md px-4 py-3 text-center text-xs font-extrabold ${
-                    plan.recommended
-                      ? "bg-gradient-to-r from-[#0b5877] to-[#18b9a0] text-white shadow-lg"
-                      : "border border-teal2 text-[#17627b]"
-                  }`}
+                  className={`btn mt-4 w-full ${plan.recommended ? "btn-primary" : "btn-outline"}`}
                 >
                   CHOISIR CETTE OFFRE
                 </Link>
@@ -243,16 +231,10 @@ export default function EntretienPage() {
             Protégez votre installation, réduisez vos dépenses.
           </p>
           <div className="flex gap-3">
-            <Link
-              href="/deja-client/entretien/souscrire"
-              className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-xs font-extrabold text-navy"
-            >
+            <Link href="/deja-client/entretien/souscrire" className="btn" style={{ background: "#fff", color: "var(--navy)" }}>
               SOUSCRIRE UN CONTRAT <ArrowRight size={16} />
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-md border border-white px-5 py-3 text-xs font-extrabold text-white"
-            >
+            <Link href="/contact" className="btn" style={{ border: "1px solid #fff", color: "#fff" }}>
               ÊTRE RAPPELÉ GRATUITEMENT
             </Link>
           </div>

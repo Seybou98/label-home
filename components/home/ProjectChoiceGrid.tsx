@@ -28,11 +28,11 @@ export function ProjectChoiceGrid() {
       <SectionTitle
         kicker="QUEL EST VOTRE PROJET ?"
         title={
-          <>
+          <strong>
             Nous avons la solution
             <br />
             adaptée à vos besoins
-          </>
+          </strong>
         }
       />
       <Reveal className="choice-grid">

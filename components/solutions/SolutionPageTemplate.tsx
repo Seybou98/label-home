@@ -3,19 +3,34 @@ import Link from "next/link";
 import {
   ArrowRight,
   BadgePercent,
+  Clock,
   ClipboardCheck,
+  Home,
   Leaf,
   Phone,
   PiggyBank,
+  ShieldCheck,
+  Sparkles,
+  Star,
   Sun,
   ThermometerSun,
+  Users,
   Waves,
+  Wrench,
   type LucideIcon,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { SectionTitle } from "@/components/home/SectionTitle";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqJsonLd, serviceJsonLd } from "@/lib/seo";
 import type { SolutionContent } from "@/lib/content/solutions";
+import { realizations } from "@/lib/content/home";
+import { siteConfig } from "@/lib/site";
+
+function renderHighlighted(text: string) {
+  const parts = text.split(/<span>(.*?)<\/span>/g);
+  return parts.map((part, i) => (i % 2 === 1 ? <span key={i}>{part}</span> : part));
+}
 
 const icons: Record<string, LucideIcon> = {
   PiggyBank,
@@ -25,15 +40,24 @@ const icons: Record<string, LucideIcon> = {
   Waves,
   Sun,
   ClipboardCheck,
+  Clock,
+  Sparkles,
+  Wrench,
+  Home,
 };
 
 export function SolutionPageTemplate({ solution }: { solution: SolutionContent }) {
+  const BadgeIcon = solution.heroBadge ? icons[solution.heroBadge.icon] ?? Leaf : null;
+  const hasSteps = solution.howItWorks.steps.length > 0;
+  const isFigureImage = Boolean(solution.howItWorks.imageAspect);
+  const showImageBadges = hasSteps && !isFigureImage;
+
   return (
     <>
       <JsonLd
         data={[
           serviceJsonLd({
-            name: solution.h1,
+            name: solution.h1.replace(/<\/?span>/g, ""),
             description: solution.metaDescription,
             path: `/solutions/${solution.slug}`,
           }),
@@ -43,34 +67,45 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
       <Breadcrumb items={[{ name: "Solutions", path: "/solutions" }, { name: solution.breadcrumbLabel, path: `/solutions/${solution.slug}` }]} />
 
       {/* Hero */}
-      <section className="bg-white">
-        <div className="container grid gap-10 py-8 md:grid-cols-2 md:items-center">
+      <section className="solution-hero">
+        <div className="container solution-hero-grid">
           <div>
-            <p className="mb-2 text-[11px] font-extrabold tracking-wide text-teal2">
-              {solution.category}
-            </p>
-            <h1 className="font-display text-3xl leading-tight text-navy md:text-4xl">
-              {solution.h1}
-            </h1>
+            <p className="eyebrow">{solution.category}</p>
+            <h1>{renderHighlighted(solution.h1)}</h1>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">{solution.intro}</p>
 
+            <div className="solution-ticks">
+              {solution.quickBenefits.map((b) => {
+                const Icon = icons[b.icon] ?? Leaf;
+                return (
+                  <div key={b.title} className="solution-tick">
+                    <span className="solution-tick-icon">
+                      <Icon size={20} />
+                    </span>
+                    <span className="solution-tick-label">{b.title}</span>
+                  </div>
+                );
+              })}
+            </div>
+
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/simuler-mon-projet"
-                className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg"
-              >
+              <Link href="/simuler-mon-projet" className="btn btn-primary">
                 SIMULER MON PROJET <ArrowRight size={16} />
               </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-md border border-teal2 px-5 py-3 text-xs font-extrabold text-[#17627b]"
-              >
+              <Link href="/contact" className="btn btn-outline">
                 ÊTRE RAPPELÉ GRATUITEMENT <Phone size={16} />
               </Link>
             </div>
+
+            <div className="solution-rating">
+              <Image src="/images/google-logo.webp" alt="Google" width={16} height={16} />
+              <strong>{siteConfig.rating.value}/5</strong>
+              <span className="stars">★★★★★</span>
+              <small>Basé sur +{siteConfig.rating.count} avis clients</small>
+            </div>
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden rounded-card shadow-card">
+          <div className="solution-hero-media" style={{ aspectRatio: solution.heroImageAspect }}>
             <Image
               src={solution.heroImage}
               alt={solution.heroAlt}
@@ -79,58 +114,77 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
               style={{ objectFit: "cover" }}
               priority
             />
+            {solution.heroBadge && BadgeIcon && (
+              <div className="solution-hero-badge">
+                <BadgeIcon size={22} />
+                <span>{solution.heroBadge.text}</span>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Quick benefits bar */}
-      <section className="border-y border-line bg-soft">
-        <div className="container grid gap-6 py-6 sm:grid-cols-2 md:grid-cols-4">
-          {solution.quickBenefits.map((b) => {
+      <div className="container">
+        <div className="solution-quickbar grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+          {(solution.benefitCards ?? solution.quickBenefits).map((b) => {
             const Icon = icons[b.icon] ?? Leaf;
             return (
               <div key={b.title} className="flex items-start gap-3">
-                <Icon className="mt-0.5 shrink-0 text-teal2" size={22} />
+                <span className="quickbar-icon">
+                  <Icon size={32} />
+                </span>
                 <div>
-                  <p className="text-xs font-bold text-navy">{b.title}</p>
-                  <p className="text-xs text-muted">{b.text}</p>
+                  <p className="text-xs font-extrabold tracking-wide text-navy">{b.title}</p>
+                  <p className="mt-1 text-xs text-muted">{b.text}</p>
                 </div>
               </div>
             );
           })}
         </div>
-      </section>
+      </div>
 
       {/* How it works */}
       <section className="section">
-        <div className="container grid gap-10 md:grid-cols-2 md:items-center">
+        <div className="container grid gap-10 md:grid-cols-[0.99fr_2.1fr] md:items-center">
           <div>
-            <p className="eyebrow">FONCTIONNEMENT</p>
-            <h2 className="font-display text-xl text-navy">{solution.howItWorks.title}</h2>
+            <SectionTitle kicker="COMMENT ÇA MARCHE" title={<strong>{solution.howItWorks.title}</strong>} align="left" />
             <p className="mt-3 text-sm text-muted">{solution.howItWorks.intro}</p>
-            <ol className="mt-5 grid gap-4">
-              {solution.howItWorks.steps.map((step) => (
-                <li key={step.n} className="flex gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal2 text-[11px] font-bold text-white">
-                    {step.n}
-                  </span>
-                  <div>
-                    <p className="text-xs font-bold text-navy">{step.title}</p>
-                    <p className="text-xs text-muted">{step.text}</p>
+            {hasSteps && (
+              <div className="mini-steps">
+                {solution.howItWorks.steps.map((step) => (
+                  <div key={step.n} className="mini-step">
+                    <span>{step.n}</span>
+                    <div>
+                      {step.title && <p className="text-xs font-bold text-navy">{step.title}</p>}
+                      <p className="text-xs text-muted">{step.text}</p>
+                    </div>
                   </div>
-                </li>
-              ))}
-            </ol>
+                ))}
+              </div>
+            )}
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-card shadow-card">
+          <div className="how-it-works-media" style={{ aspectRatio: solution.howItWorks.imageAspect }}>
             <Image
               src={solution.howItWorks.image}
               alt={solution.howItWorks.imageAlt}
               fill
               sizes="(max-width: 900px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: isFigureImage ? "contain" : "cover" }}
               loading="lazy"
             />
+            {showImageBadges && (
+              <div className="how-it-works-badges">
+                {solution.howItWorks.steps.slice(0, 4).map((step) => (
+                  <div key={step.n} className="how-it-works-badge">
+                    <strong>
+                      <span>{step.n}</span> {step.title.toUpperCase()}
+                    </strong>
+                    <p>{step.text}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -139,9 +193,7 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
       {solution.variants && (
         <section className="section bg-soft">
           <div className="container">
-            <h2 className="text-center font-display text-xl text-navy">
-              {solution.variants.title}
-            </h2>
+            <SectionTitle kicker="VARIANTES" title={solution.variants.title} />
             <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
               {solution.variants.items.map((item) => (
                 <article key={item.title} className="overflow-hidden rounded-card bg-white shadow-card">
@@ -166,39 +218,137 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
         </section>
       )}
 
+      {/* Highlights */}
+      <section className="section bg-soft">
+        <div className="container">
+          <SectionTitle
+            kicker="POURQUOI CHOISIR CETTE SOLUTION ?"
+            title={`${solution.breadcrumbLabel}, les points forts`}
+          />
+          <div className="highlights-grid mt-8">
+            {solution.highlights.map((h) => {
+              const Icon = icons[h.icon] ?? Leaf;
+              return (
+                <div key={h.title} className="highlight-card">
+                  <Icon size={26} className="highlight-card-icon" />
+                  <h3>{h.title}</h3>
+                  <p>{h.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Aides */}
       <section className="section">
-        <div className="container rounded-card bg-soft p-8 md:flex md:items-center md:justify-between md:gap-8">
-          <div className="max-w-md">
-            <h2 className="font-display text-lg text-navy">
-              Combien d&apos;aides pouvez-vous obtenir pour votre projet ?
-            </h2>
+        <div className="container aides-banner">
+          <div>
+            <h2>Combien d&apos;aides pouvez-vous obtenir pour votre projet ?</h2>
             <p className="mt-2 text-sm text-muted">
               Simulez gratuitement vos aides en quelques clics et réduisez le coût de votre
               installation.
             </p>
-            <Link
-              href="/aides-financement/calculer-mes-aides"
-              className="mt-4 inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg"
-            >
+            <Link href="/aides-financement/calculer-mes-aides" className="btn btn-primary mt-4">
               CALCULER MES AIDES <ArrowRight size={16} />
             </Link>
           </div>
-          <div className="mt-6 md:mt-0">
+          <div>
             <p className="text-xs font-bold text-muted">Jusqu&apos;à</p>
-            <p className="font-display text-3xl text-teal2">{solution.aides.amount}</p>
+            <p className="aides-banner-amount">{solution.aides.amount}</p>
             <p className="text-xs text-muted">{solution.aides.text}</p>
             <p className="mt-1 text-[10px] text-muted">
               *Montant indicatif selon votre situation et les aides en vigueur.
             </p>
           </div>
+          <ul className="aides-banner-items">
+            {solution.aides.items.map((item) => (
+              <li key={item}>
+                <BadgePercent size={16} /> {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
+
+      {/* Réalisations */}
+      <section className="section bg-soft">
+        <div className="container">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <SectionTitle kicker="NOS RÉALISATIONS" title="Ils ont choisi le confort et les économies" align="left" />
+            <Link href="/realisations" className="inline-flex items-center gap-2 text-xs font-extrabold text-teal2">
+              Voir toutes nos réalisations <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-4">
+            {realizations.map((r) => (
+              <article key={r.location} className="overflow-hidden rounded-card border border-line bg-white shadow-card">
+                <div className="relative h-32">
+                  <Image
+                    src={r.image}
+                    alt={`${r.title} — ${r.location}`}
+                    fill
+                    sizes="(max-width: 900px) 50vw, 25vw"
+                    style={{ objectFit: "cover" }}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-[10px] font-bold text-teal2">{r.location}</p>
+                  <h3 className="mt-1 text-sm font-bold text-navy">{r.title}</h3>
+                  <p className="mt-1 text-xs text-muted">{r.details}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust stats */}
+      <div className="container">
+        <div className="trust solution-trust">
+          <div className="trust-item trust-inline">
+            <Home className="trust-mark trust-icon" aria-hidden />
+            <div className="trust-text">
+              <strong>{siteConfig.stats.installations}</strong>
+              <span className="trust-caption">Installations réalisées</span>
+            </div>
+          </div>
+          <div className="trust-item trust-inline">
+            <Star className="trust-mark trust-icon" aria-hidden />
+            <div className="trust-text">
+              <strong>{siteConfig.rating.value}/5</strong>
+              <span className="trust-caption">+{siteConfig.rating.count} avis Google</span>
+            </div>
+          </div>
+          <div className="trust-item trust-inline">
+            <Users className="trust-mark trust-icon" aria-hidden />
+            <div className="trust-text">
+              <strong>{siteConfig.stats.collaborators}</strong>
+              <span className="trust-caption">Collaborateurs à votre service</span>
+            </div>
+          </div>
+          <div className="trust-item trust-inline">
+            <Clock className="trust-mark trust-icon" aria-hidden />
+            <div className="trust-text">
+              <strong>{siteConfig.stats.experienceYears} ans</strong>
+              <span className="trust-caption">D&apos;expérience à vos côtés</span>
+            </div>
+          </div>
+          <div className="trust-item trust-inline">
+            <ShieldCheck className="trust-mark trust-icon" aria-hidden />
+            <div className="trust-text">
+              <strong>RGE</strong>
+              <span className="trust-caption">Entreprise certifiée</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* FAQ */}
       <section className="section">
         <div className="container max-w-3xl">
-          <h2 className="text-center font-display text-xl text-navy">Questions fréquentes</h2>
+          <SectionTitle kicker="BESOIN D'AIDE ?" title="Questions fréquentes" />
           <div className="mt-6 grid gap-3">
             {solution.faq.map((item) => (
               <details key={item.question} className="rounded-card border border-line p-4">
@@ -215,23 +365,29 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
       {/* CTA banner */}
       <section className="bg-gradient-to-r from-navy to-teal2 py-8 text-white">
         <div className="container flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <p className="text-base font-bold">
-            Prêt à passer à une énergie plus économique et plus respectueuse de l&apos;environnement ?
-          </p>
+          <div>
+            <p className="text-base font-bold">
+              Un projet {solution.breadcrumbLabel.toLowerCase()} ? Parlons-en !
+            </p>
+            <p className="text-xs text-white/80">
+              Nos conseillers vous accompagnent gratuitement dans votre projet.
+            </p>
+          </div>
           <div className="flex gap-3">
-            <Link
-              href="/simuler-mon-projet"
-              className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-xs font-extrabold text-navy"
-            >
+            <Link href="/simuler-mon-projet" className="btn" style={{ background: "#fff", color: "var(--navy)" }}>
               SIMULER MON PROJET <ArrowRight size={16} />
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-md border border-white px-5 py-3 text-xs font-extrabold text-white"
-            >
+            <Link href="/contact" className="btn" style={{ border: "1px solid #fff", color: "#fff" }}>
               ÊTRE RAPPELÉ GRATUITEMENT <Phone size={16} />
             </Link>
           </div>
+        </div>
+        <div className="container cta-banner-ticks">
+          {solution.ctaTicks.map((tick) => (
+            <span key={tick}>
+              <ClipboardCheck size={14} /> {tick}
+            </span>
+          ))}
         </div>
       </section>
     </>

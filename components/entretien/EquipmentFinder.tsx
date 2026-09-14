@@ -47,10 +47,7 @@ export function EquipmentFinder() {
           placeholder="Année d'installation (optionnel)"
           className="rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
         />
-        <button
-          type="submit"
-          className="mt-1 inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg"
-        >
+        <button type="submit" className="btn btn-primary mt-1 justify-center">
           VOIR LES OFFRES ADAPTÉES <ArrowRight size={16} />
         </button>
       </form>

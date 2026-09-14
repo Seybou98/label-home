@@ -21,7 +21,12 @@ export function RealizationsSection() {
             <SectionTitle
               align="left"
               kicker="NOS RÉALISATIONS PRÈS DE CHEZ VOUS"
-              title="Découvrez quelques projets réalisés"
+              title=
+              {
+                <strong>
+                  "Découvrez quelques projets réalisés"
+                </strong>
+              }
             />
           </div>
           <div className="real-header-right">
@@ -97,7 +102,8 @@ export function RealizationsSection() {
               <strong>Sophie D.</strong>
               <small>Melun (77)</small>
               <Link href="/temoignages">
-                Voir tous les avis Google <ArrowRight size={24} />
+                
+                Voir tous les avis Google <ArrowRight size={20} />
               </Link>
 
               <div className="carousel-dots">
@@ -116,7 +122,7 @@ export function RealizationsSection() {
         </Reveal>
 
         <Link className="more-link" href="/realisations">
-          Voir toutes nos réalisations <ArrowRight />
+          Voir toutes nos réalisations <ArrowRight size={34} />
         </Link >
       </div>
     </section>

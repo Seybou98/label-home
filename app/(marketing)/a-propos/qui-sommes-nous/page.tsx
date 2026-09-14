@@ -12,10 +12,7 @@ export const metadata: Metadata = buildMetadata({
 export default function QuiSommesNousPage() {
   return (
     <PagePlaceholder
-      breadcrumb={[
-        { name: "À propos", path: "/a-propos/qui-sommes-nous" },
-        { name: "Qui sommes-nous ?", path: "/a-propos/qui-sommes-nous" },
-      ]}
+      breadcrumb={[{ name: "Qui sommes-nous ?", path: "/a-propos/qui-sommes-nous" }]}
       eyebrow="À PROPOS"
       title="Label Énergie, votre partenaire de confiance"
       description="Depuis plus de 13 ans, Label Énergie accompagne les particuliers dans leurs projets de rénovation énergétique : pompe à chaleur, climatisation, solaire et eau chaude."

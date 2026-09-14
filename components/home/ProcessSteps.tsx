@@ -1,23 +1,8 @@
-import {
-  ChevronRight,
-  ClipboardCheck,
-  HeartHandshake,
-  Settings,
-  Target,
-  Wrench,
-  type LucideIcon,
-} from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { SectionTitle } from "./SectionTitle";
 import { processSteps } from "@/lib/content/home";
 import { Reveal } from "@/components/animation/Reveal";
-
-const icons: Record<string, LucideIcon> = {
-  FileSearch: ClipboardCheck,
-  Target,
-  Wrench,
-  Settings,
-  LifeBuoy: HeartHandshake,
-};
 
 export function ProcessSteps() {
   return (
@@ -25,15 +10,19 @@ export function ProcessSteps() {
       <div className="container">
         <SectionTitle
           kicker="NOTRE ACCOMPAGNEMENT DE A À Z"
-          title="Un accompagnement simple et transparent"
+          title=
+          {
+            <strong>
+              "Un accompagnement simple et transparent"
+            </strong>
+          }
         />
         <Reveal className="process">
           {processSteps.map((s, i) => {
-            const Icon = icons[s.icon];
             return (
               <div className="step" key={s.n}>
                 <div className="step-icon">
-                  <Icon />
+                  <Image src={s.icon} alt="" width={22} height={22} />
                 </div>
                 <div>
                   <span>{s.n}</span>

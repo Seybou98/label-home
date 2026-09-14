@@ -116,15 +116,11 @@ export default function SouscrireCoordonneesPage() {
           <button
             type="button"
             onClick={() => router.push("/deja-client/entretien/souscrire/formule")}
-            className="inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 text-xs font-extrabold text-navy"
+            className="btn btn-outline"
           >
             <ArrowLeft size={16} /> RETOUR
           </button>
-          <button
-            type="submit"
-            disabled={submitting}
-            className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg disabled:opacity-50"
-          >
+          <button type="submit" disabled={submitting} className="btn btn-primary disabled:opacity-50">
             {submitting ? "ENVOI EN COURS..." : "CONFIRMER MA SOUSCRIPTION"} <ArrowRight size={16} />
           </button>
         </div>

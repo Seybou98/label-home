@@ -33,10 +33,7 @@ export default function ConnexionPage() {
             placeholder="Mot de passe"
             className="rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
           />
-          <button
-            type="submit"
-            className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg"
-          >
+          <button type="submit" className="btn btn-primary mt-2 justify-center">
             SE CONNECTER <ArrowRight size={16} />
           </button>
         </form>

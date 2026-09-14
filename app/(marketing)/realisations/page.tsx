@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { PageHeader } from "@/components/layout/PageHeader";
 import { realizations } from "@/lib/content/home";
 
 export const metadata: Metadata = buildMetadata({
@@ -17,10 +18,11 @@ export default function RealisationsPage() {
       <Breadcrumb items={[{ name: "Réalisations", path: "/realisations" }]} />
       <section className="section">
         <div className="container">
-          <h1 className="font-display text-2xl text-navy">Nos réalisations près de chez vous</h1>
-          <p className="mt-3 max-w-2xl text-sm text-muted">
-            Découvrez quelques-unes de nos installations récentes, dans votre région.
-          </p>
+          <PageHeader
+            eyebrow="NOS RÉALISATIONS"
+            title="Nos réalisations près de chez vous"
+            description="Découvrez quelques-unes de nos installations récentes, dans votre région."
+          />
           <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-4">
             {realizations.map((p) => (
               <article key={p.location} className="overflow-hidden rounded-card border border-line shadow-card">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Phone } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { PageHeader } from "@/components/layout/PageHeader";
 import { ContactForm } from "@/components/marketing/ContactForm";
 import { siteConfig } from "@/lib/site";
 
@@ -19,11 +20,11 @@ export default function ContactPage() {
       <section className="section">
         <div className="container grid gap-10 md:grid-cols-2">
           <div>
-            <h1 className="font-display text-2xl text-navy">Parlons de votre projet</h1>
-            <p className="mt-3 text-sm text-muted">
-              Nos conseillers vous répondent et vous accompagnent gratuitement, du lundi au
-              vendredi de 8h à 20h et le samedi de 9h à 12h.
-            </p>
+            <PageHeader
+              eyebrow="CONTACT"
+              title="Parlons de votre projet"
+              description="Nos conseillers vous répondent et vous accompagnent gratuitement, du lundi au vendredi de 8h à 20h et le samedi de 9h à 12h."
+            />
             <div className="mt-6 flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-teal2">
                 <Phone size={18} />

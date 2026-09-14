@@ -65,7 +65,7 @@ function StepFormule() {
         <button
           type="button"
           onClick={() => router.push("/deja-client/entretien/souscrire")}
-          className="inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 text-xs font-extrabold text-navy"
+          className="btn btn-outline"
         >
           <ArrowLeft size={16} /> RETOUR
         </button>
@@ -73,7 +73,7 @@ function StepFormule() {
           type="button"
           disabled={!state.formule}
           onClick={() => router.push("/deja-client/entretien/souscrire/coordonnees")}
-          className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg disabled:opacity-50"
+          className="btn btn-primary disabled:opacity-50"
         >
           CONTINUER <ArrowRight size={16} />
         </button>

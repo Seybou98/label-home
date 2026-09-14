@@ -10,7 +10,12 @@ export function SolutionsGrid() {
     <>
       <SectionTitle
         kicker="NOS SOLUTIONS POUR VOTRE CONFORT"
-        title="Des équipements performants et durables"
+        title=
+        {
+          <strong>
+          "Des équipements performants et durables"
+          </strong>
+        }
       />
       <Reveal className="products-grid">
         {products.map((p) => (

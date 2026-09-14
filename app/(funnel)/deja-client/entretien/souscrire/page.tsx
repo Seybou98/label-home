@@ -69,11 +69,7 @@ function StepEquipement() {
           />
         </div>
 
-        <button
-          type="submit"
-          disabled={!state.equipement}
-          className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#0b5877] to-[#18b9a0] px-5 py-3 text-xs font-extrabold text-white shadow-lg disabled:opacity-50"
-        >
+        <button type="submit" disabled={!state.equipement} className="btn btn-primary mt-2 justify-center disabled:opacity-50">
           CONTINUER <ArrowRight size={16} />
         </button>
       </form>

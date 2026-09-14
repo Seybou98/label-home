@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import logo from "@/maquette/logo.png";
 
 const columns = [
   {
@@ -47,9 +49,7 @@ export function Footer() {
     <footer className="footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <div className="brand-footer">
-            <span>Label</span>Energie
-          </div>
+          <Image src={logo} alt="Label Energie" className="footer-logo" priority={false} />
           <p>
             Expert en solutions énergétiques
             <br />
