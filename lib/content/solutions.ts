@@ -2,6 +2,7 @@ export interface SolutionVariant {
   title: string;
   text: string;
   image: string;
+  href?: string;
 }
 
 export interface SolutionContent {
@@ -17,9 +18,12 @@ export interface SolutionContent {
   heroImageAspect?: string;
   heroBadge?: { icon: string; text: string };
   quickBenefits: { icon: string; title: string; text: string }[];
+  quickBenefitsStacked?: boolean;
   benefitCards?: { icon: string; title: string; text: string }[];
   highlights: { icon: string; title: string; text: string }[];
+  highlightsTitle?: string;
   howItWorks: {
+    kicker?: string;
     title: string;
     intro: string;
     steps: { n: number; title: string; text: string }[];
@@ -29,14 +33,47 @@ export interface SolutionContent {
   };
   variants?: {
     title: string;
+    compact?: boolean;
     items: SolutionVariant[];
   };
   aides: {
+    heading?: string;
     amount: string;
+    amountColor?: string;
     text: string;
     items: string[];
   };
+  teamTrust?: {
+    subtitle: string;
+    image: string;
+    imageAlt: string;
+    items: string[];
+  };
+  installations?: {
+    title: string;
+    items: {
+      location: string;
+      capacity: string;
+      type: string;
+      status: string;
+      image: string;
+    }[];
+  };
+  testimonials?: {
+    title: string;
+    items: {
+      quote: string;
+      rating: number;
+      name: string;
+      location: string;
+    }[];
+  };
+  ctaIcon?: string;
+  ctaIconFallback?: string;
+  ctaTitle?: string;
+  ctaTheme?: "blue" | "green";
   ctaTicks: string[];
+  hideCtaTicks?: boolean;
   faq: { question: string; answer: string }[];
 }
 
@@ -59,15 +96,37 @@ export const solutions: Record<string, SolutionContent> = {
     h1: "Chauffez mieux, consommez moins.",
     intro:
       "La pompe à chaleur capte les calories présentes dans l'air, l'eau ou le sol pour chauffer votre logement et votre eau chaude sanitaire. Une solution économique, écologique et durable.",
-    heroImage:
-      "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/images/solutions/pomp1.jpg",
     heroAlt: "Unité extérieure de pompe à chaleur installée par Label Énergie",
-    heroBadge: { icon: "Leaf", text: "Une énergie renouvelable, gratuite et disponible toute l'année." },
+    heroImageAspect: "1078/992",
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture de chauffage." },
-      { icon: "ThermometerSun", title: "Confort toute l'année", text: "chauffage en hiver, rafraîchissement possible en été." },
-      { icon: "Leaf", title: "Énergie renouvelable", text: "réduit votre impact carbone." },
-      { icon: "BadgePercent", title: "Aides & subventions", text: "MaPrimeRénov', CEE, éco-prêt à taux 0." },
+      { icon: "Snowflake", title: "Confort optimal été comme hiver", text: "chauffage en hiver, rafraîchissement possible en été." },
+      { icon: "Leaf", title: "Énergie renouvelable et écologique", text: "réduit votre impact carbone." },
+      { icon: "Euro", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE, éco-prêt à taux 0." },
+    ],
+    quickBenefitsStacked: true,
+    benefitCards: [
+      {
+        icon: "PiggyBank",
+        title: "ÉCONOMIQUE",
+        text: "Jusqu'à 70 % d'économies sur votre facture de chauffage par rapport à une chaudière classique.",
+      },
+      {
+        icon: "ThermometerSun",
+        title: "CONFORT TOUTE L'ANNÉE",
+        text: "Chauffage en hiver, rafraîchissement en été avec les modèles réversibles.",
+      },
+      {
+        icon: "Leaf",
+        title: "ÉCOLOGIQUE",
+        text: "Une énergie renouvelable qui réduit votre impact carbone et préserve l'environnement.",
+      },
+      {
+        icon: "Award",
+        title: "AIDES & SUBVENTIONS",
+        text: "Profitez des aides de l'État (MaPrimeRénov', CEE, etc.) pour alléger votre investissement.",
+      },
     ],
     highlights: [
       { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies sur votre facture de chauffage." },
@@ -77,6 +136,7 @@ export const solutions: Record<string, SolutionContent> = {
       { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov', CEE, éco-prêt à taux 0." },
     ],
     howItWorks: {
+      kicker: "TECHNOLOGIE",
       title: "Comment fonctionne une pompe à chaleur ?",
       intro:
         "Elle capte les calories gratuites présentes dans l'environnement pour les transformer en chaleur dans votre logement.",
@@ -85,28 +145,32 @@ export const solutions: Record<string, SolutionContent> = {
         { n: 2, title: "Compression", text: "Elle augmente la température grâce à un système de compression." },
         { n: 3, title: "Restitution", text: "Elle restitue la chaleur dans votre logement via vos émetteurs." },
       ],
-      image:
-        "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Schéma de fonctionnement d'une pompe à chaleur",
+      image: "/images/solutions/pomp2.jpg",
+      imageAlt: "Schéma de fonctionnement d'une pompe à chaleur : captation, compression, restitution",
+      imageAspect: "1461/720",
     },
     variants: {
       title: "Quelle pompe à chaleur pour votre logement ?",
+      compact: true,
       items: [
         {
           title: "Pompe à chaleur Air / Eau",
           text: "Idéale pour remplacer une chaudière et alimenter vos radiateurs ou votre plancher chauffant.",
+          href: "/solutions/pompe-a-chaleur-air-eau",
           image:
             "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80",
         },
         {
           title: "Pompe à chaleur Air / Air",
           text: "Parfaite pour chauffer ou rafraîchir votre logement avec des unités intérieures (climatisation réversible).",
+          href: "/solutions/pompe-a-chaleur-air-air",
           image:
             "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
         },
         {
           title: "Pompe à chaleur Géothermique",
           text: "Utilise la chaleur du sol pour un rendement optimal et des économies maximales.",
+          href: "/solutions/pompe-a-chaleur-geothermie",
           image:
             "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
         },
@@ -114,10 +178,23 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "10 000 €",
-      text: "d'aides pour l'installation d'une pompe à chaleur*",
-      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+      text: "d'aides pour l'installation d'une pompe à chaleur",
+      items: ["MaPrimeRénov'", "Les certificats d'économies d'énergie", "Éco-prêt à taux 0%"],
+    },
+    teamTrust: {
+      subtitle: "Une expertise reconnue et un accompagnement de A à Z",
+      image: "/images/solutions/pomp3.jpg",
+      imageAlt: "Équipe Label Énergie devant ses véhicules de service",
+      items: [
+        "Étude gratuite et personnalisée",
+        "Matériel performant",
+        "Installation par nos équipes RGE",
+        "Mise en service et explications",
+        "SAV & entretien assurés",
+      ],
     },
     ctaTicks: defaultCtaTicks,
+    hideCtaTicks: true,
     faq: [
       {
         question: "Quelle est la durée de vie d'une pompe à chaleur ?",
@@ -173,7 +250,7 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "10 000 €",
-      text: "d'aides pour l'installation d'une PAC Air/Eau*",
+      text: "d'aides pour l'installation d'une PAC Air/Eau",
       items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
     },
     ctaTicks: defaultCtaTicks,
@@ -253,7 +330,7 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "5 000 €",
-      text: "d'aides disponibles (MaPrimeRénov', CEE, aides locales)*",
+      text: "d'aides disponibles (MaPrimeRénov', CEE, aides locales)",
       items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "Aides locales selon votre région"],
     },
     ctaTicks: defaultCtaTicks,
@@ -312,7 +389,7 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "10 000 €",
-      text: "d'aides pour l'installation d'une PAC géothermique*",
+      text: "d'aides pour l'installation d'une PAC géothermique",
       items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
     },
     ctaTicks: defaultCtaTicks,
@@ -366,7 +443,7 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "5 000 €",
-      text: "d'aides pour une climatisation réversible éligible*",
+      text: "d'aides pour une climatisation réversible éligible",
       items: [
         "Certificats d'économies d'énergie (CEE) sous conditions",
         "TVA réduite à 5,5 % pose comprise",
@@ -424,7 +501,7 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "8 000 €",
-      text: "d'aides et primes pour une installation photovoltaïque*",
+      text: "d'aides et primes pour une installation photovoltaïque",
       items: ["Prime à l'autoconsommation", "Revente du surplus à EDF OA", "TVA réduite selon la puissance installée"],
     },
     ctaTicks: defaultCtaTicks,
@@ -478,7 +555,7 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "4 000 €",
-      text: "d'aides pour l'installation d'un système solaire combiné*",
+      text: "d'aides pour l'installation d'un système solaire combiné",
       items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
     },
     ctaTicks: defaultCtaTicks,
@@ -533,7 +610,7 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "4 000 €",
-      text: "d'aides pour l'installation d'un chauffe-eau thermodynamique*",
+      text: "d'aides pour l'installation d'un chauffe-eau thermodynamique",
       items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
     },
     ctaTicks: defaultCtaTicks,
@@ -553,45 +630,139 @@ export const solutions: Record<string, SolutionContent> = {
       "Le CESI utilise l'énergie gratuite du soleil pour produire votre eau chaude sanitaire. Jusqu'à 70 % d'économies, solution durable, aides MaPrimeRénov' et CEE.",
     breadcrumbLabel: "Chauffe-eau solaire (CESI)",
     category: "CESI – CHAUFFE-EAU SOLAIRE INDIVIDUEL",
-    h1: "L'eau chaude sanitaire autrement, naturellement.",
+    h1: "L'eau chaude sanitaire autrement, <span>naturellement.</span>",
     intro:
       "Le CESI utilise l'énergie gratuite du soleil pour produire votre eau chaude sanitaire. Une solution économique, écologique et durable.",
-    heroImage:
-      "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
-    heroAlt: "Capteurs solaires thermiques pour chauffe-eau solaire individuel",
-    heroBadge: { icon: "Sun", text: "L'eau chaude sanitaire produite gratuitement par le soleil." },
+    heroImage: "/images/solutions/cesi1.jpg",
+    heroAlt: "Capteurs solaires thermiques et ballon de stockage pour chauffe-eau solaire individuel",
+    heroImageAspect: "1132/928",
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture d'eau chaude." },
       { icon: "Sun", title: "Énergie solaire gratuite", text: "captée sur votre toiture." },
-      { icon: "ThermometerSun", title: "Confort en eau chaude", text: "toute l'année, avec appoint électrique." },
-      { icon: "BadgePercent", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE." },
+      { icon: "Waves", title: "Confort en eau chaude toute l'année", text: "avec appoint électrique." },
+      { icon: "Home", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE." },
+    ],
+    benefitCards: [
+      { icon: "PiggyBank", title: "ÉCONOMIQUE", text: "Jusqu'à 70 % d'économies sur votre facture d'eau chaude." },
+      { icon: "Leaf", title: "ÉCOLOGIQUE", text: "Une énergie solaire propre et sans émission de CO2." },
+      { icon: "ShowerHead", title: "CONFORTABLE", text: "De l'eau chaude disponible toute l'année." },
+      {
+        icon: "Award",
+        title: "AIDES & SUBVENTIONS",
+        text: "Profitez des aides de l'État (MaPrimeRénov', CEE, etc.) pour réduire votre investissement.",
+      },
     ],
     highlights: [
-      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies sur votre facture d'eau chaude." },
-      { icon: "Sun", title: "Énergie gratuite", text: "Captée sur votre toiture, sans limite." },
-      { icon: "ThermometerSun", title: "Confort garanti", text: "Un appoint électrique prend le relais si besoin." },
-      { icon: "Leaf", title: "Écologique", text: "Une eau chaude produite sans énergie fossile." },
-      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov' et certificats d'économies d'énergie." },
+      { icon: "Leaf", title: "Économies durables", text: "Réduisez votre facture d'eau chaude jusqu'à 70 %." },
+      { icon: "Zap", title: "Indépendance énergétique", text: "Produisez votre propre eau chaude." },
+      { icon: "Home", title: "Valorisation de votre bien", text: "Augmentez la valeur de votre logement." },
+      { icon: "Settings", title: "Technologie fiable", text: "Une solution éprouvée, performante et durable." },
+      { icon: "Recycle", title: "Respect de l'environnement", text: "Réduisez votre empreinte carbone." },
     ],
+    highlightsTitle: "Pourquoi choisir un CESI ?",
     howItWorks: {
+      kicker: "FONCTIONNEMENT",
       title: "Comment fonctionne un CESI ?",
       intro: "Les capteurs solaires thermiques captent l'énergie du soleil pour chauffer votre eau sanitaire.",
       steps: [
-        { n: 1, title: "Capteurs solaires", text: "Captent l'énergie du soleil." },
-        { n: 2, title: "Circuit primaire", text: "Un fluide caloporteur transfère la chaleur au ballon de stockage." },
-        { n: 3, title: "Ballon de stockage", text: "L'eau est chauffée et stockée." },
-        { n: 4, title: "Appoint", text: "Un appoint électrique prend le relais en cas de manque d'ensoleillement." },
+        { n: 1, title: "", text: "Les capteurs solaires thermiques captent l'énergie du soleil." },
+        {
+          n: 2,
+          title: "",
+          text: "Cette énergie chauffe un fluide caloporteur qui transfère la chaleur au ballon de stockage.",
+        },
+        { n: 3, title: "", text: "L'eau contenue dans le ballon est chauffée et reste disponible pour vos besoins." },
+        { n: 4, title: "", text: "Un appoint électrique prend le relais en cas de manque d'ensoleillement." },
       ],
-      image:
-        "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Schéma de fonctionnement d'un chauffe-eau solaire individuel",
+      image: "/images/solutions/cesi2.jpg",
+      imageAlt: "Schéma de fonctionnement d'un CESI : capteurs solaires, circuit primaire, ballon de stockage, appoint",
+      imageAspect: "1559/688",
     },
     aides: {
+      heading: "Des aides pour un projet plus accessible",
       amount: "4 000 €",
-      text: "d'aides pour l'installation d'un CESI*",
-      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+      amountColor: "var(--teal2)",
+      text: "d'aides pour l'installation d'un CESI",
+      items: [
+        "MaPrimeRénov'",
+        "Certificats d'économies d'énergie (CEE)",
+        "TVA réduite à 5,5 %",
+        "Cumulable avec d'autres aides locales",
+      ],
     },
+    installations: {
+      title: "Nos dernières installations de CESI",
+      items: [
+        {
+          location: "Melun (77)",
+          capacity: "CESI 300 L",
+          type: "Maison individuelle",
+          status: "Installation complète",
+          image: "/images/solutions/cesi1.jpg",
+        },
+        {
+          location: "Brie-Comte-Robert (77)",
+          capacity: "CESI 250 L",
+          type: "Maison individuelle",
+          status: "Installation complète",
+          image: "/images/solutions/cesi1.jpg",
+        },
+        {
+          location: "Lagny-sur-Marne (77)",
+          capacity: "CESI 300 L",
+          type: "Maison individuelle",
+          status: "Installation complète",
+          image: "/images/solutions/cesi1.jpg",
+        },
+        {
+          location: "Coulommiers (77)",
+          capacity: "CESI 250 L",
+          type: "Maison individuelle",
+          status: "Installation complète",
+          image: "/images/solutions/cesi1.jpg",
+        },
+      ],
+    },
+    testimonials: {
+      title: "Ils nous font confiance",
+      items: [
+        {
+          quote: "Une équipe professionnelle et à l'écoute. Installation rapide et matériel de qualité. Je recommande Label Energie !",
+          rating: 5,
+          name: "Sophie L.",
+          location: "Melun (77)",
+        },
+        {
+          quote: "Grâce au CESI, nous avons réduit de 60 % notre facture d'eau chaude. Très satisfait du résultat !",
+          rating: 5,
+          name: "Marc D.",
+          location: "Brie-Comte-Robert (77)",
+        },
+        {
+          quote: "Excellent accompagnement du début à la fin du projet. Aides obtenues sans stress.",
+          rating: 4.5,
+          name: "Nathalie et David P.",
+          location: "Lagny-sur-Marne (77)",
+        },
+        {
+          quote: "Devis clair, pose soignée et conseillers disponibles. Notre eau chaude est désormais quasi gratuite en été !",
+          rating: 5,
+          name: "Julien R.",
+          location: "Coulommiers (77)",
+        },
+        {
+          quote: "Un peu de retard sur le planning au départ, mais le résultat final est top et le SAV répond vite.",
+          rating: 4,
+          name: "Christelle M.",
+          location: "Meaux (77)",
+        },
+      ],
+    },
+    ctaTitle: "Passez à l'eau chaude solaire et faites des économies durables.",
+    ctaTheme: "green",
+    ctaIconFallback: "Sun",
     ctaTicks: defaultCtaTicks,
+    hideCtaTicks: true,
     faq: [
       {
         question: "Le CESI fonctionne-t-il en hiver ou par temps couvert ?",
@@ -652,10 +823,11 @@ export const solutions: Record<string, SolutionContent> = {
       imageAspect: "1474/704",
     },
     aides: {
-      amount: "2 500 €",
-      text: "d'aides pour l'installation d'un poêle à granulés*",
+      amount: "3 000 €",
+      text: "d'aides pour l'installation d'un poêle à granulés",
       items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
     },
+    ctaIcon: "/images/solutions/projets.png",
     ctaTicks: defaultCtaTicks,
     faq: [
       {
@@ -708,7 +880,7 @@ export const solutions: Record<string, SolutionContent> = {
     },
     aides: {
       amount: "70 000 €",
-      text: "d'aides cumulées pour une rénovation globale*",
+      text: "d'aides cumulées pour une rénovation globale",
       items: ["MaPrimeRénov' Parcours accompagné", "Certificats d'économies d'énergie (CEE)", "Éco-prêt à taux zéro"],
     },
     ctaTicks: defaultCtaTicks,

@@ -3,14 +3,14 @@ export function SectionTitle({
   title,
   align = "center",
 }: {
-  kicker: string;
-  title: React.ReactNode;
+  kicker?: string;
+  title?: React.ReactNode;
   align?: "center" | "left";
 }) {
   return (
     <div className={`section-title ${align}`}>
-      <div className="eyebrow">{kicker}</div>
-      <h2>{title}</h2>
+      {kicker && <div className="eyebrow">{kicker}</div>}
+      {title && <h2>{title}</h2>}
       <span className="title-line" />
     </div>
   );
