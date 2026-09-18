@@ -7,6 +7,7 @@ import {
   BadgePercent,
   Clock,
   ClipboardCheck,
+  Droplet,
   Euro,
   Gem,
   Home,
@@ -36,6 +37,7 @@ import { SectionTitle } from "@/components/home/SectionTitle";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { InstallationsCarousel } from "@/components/solutions/InstallationsCarousel";
 import { TestimonialsCarousel } from "@/components/solutions/TestimonialsCarousel";
+import { TrustTestimonialCard } from "@/components/solutions/TrustTestimonialCard";
 import { serviceJsonLd } from "@/lib/seo";
 import type { SolutionContent } from "@/lib/content/solutions";
 import { realizations } from "@/lib/content/home";
@@ -56,7 +58,7 @@ function aidesItemIcon(item: string) {
 
 function aidesFallbackIcon(item: string): LucideIcon {
   if (item.toLowerCase().includes("prêt")) return PiggyBank;
-  if (item.toLowerCase().includes("cumulable")) return TrendingUp;
+  if (item.toLowerCase().includes("cumulable") || item.toLowerCase().includes("revente")) return TrendingUp;
   return BadgePercent;
 }
 
@@ -69,7 +71,7 @@ function teamTrustIcon(item: string): LucideIcon {
   return ClipboardCheck;
 }
 
-function ctaTickIcon(tick: string): LucideIcon {
+export function ctaTickIcon(tick: string): LucideIcon {
   if (tick.includes("Étude")) return Star;
   if (tick.includes("Installation")) return Wrench;
   if (tick.includes("Matériel")) return ShieldCheck;
@@ -86,7 +88,7 @@ const ctaTickLineBreaks: Record<string, [string, string]> = {
   "Accompagnement de A à Z": ["Accompagnement", "de A à Z"],
 };
 
-function ctaTickLabel(tick: string) {
+export function ctaTickLabel(tick: string) {
   const lines = ctaTickLineBreaks[tick];
   if (!lines) return tick;
   return (
@@ -105,6 +107,9 @@ const quickBenefitLineBreaks: Record<string, [string, string]> = {
   "Éligible aux aides de l'État": ["Éligible aux aides", "de l'État"],
   "Énergie solaire gratuite": ["Énergie solaire", "gratuite"],
   "Confort en eau chaude toute l'année": ["Confort en eau", "chaude toute l'année"],
+  "Énergie propre et renouvelable": ["Énergie propre", "et renouvelable"],
+  "Valorisation de votre bien": ["Valorisation de", "votre bien"],
+  "Technologie fiable et silencieuse": ["Technologie fiable", "et silencieuse"],
 };
 
 function quickBenefitLabel(title: string) {
@@ -146,6 +151,29 @@ function variantTextLabel(text: string) {
   );
 }
 
+const ctaTitleLineBreaks: Record<string, [string, string]> = {
+  "Produisez votre propre électricité et reprenez le contrôle de votre énergie.": [
+    "Produisez votre propre électricité",
+    "et reprenez le contrôle de votre énergie.",
+  ],
+  "Passez à une eau chaude plus économique et plus respectueuse de l'environnement.": [
+    "Passez à une eau chaude plus économique",
+    "et plus respectueuse de l'environnement.",
+  ],
+};
+
+function ctaTitleLabel(title: string) {
+  const lines = ctaTitleLineBreaks[title];
+  if (!lines) return title;
+  return (
+    <>
+      {lines[0]}
+      <br />
+      {lines[1]}
+    </>
+  );
+}
+
 const icons: Record<string, LucideIcon> = {
   PiggyBank,
   ThermometerSun,
@@ -155,6 +183,7 @@ const icons: Record<string, LucideIcon> = {
   Sun,
   ClipboardCheck,
   Clock,
+  Droplet,
   Sparkles,
   Wrench,
   Home,
@@ -224,7 +253,7 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
 
             <div className="solution-rating">
               <Image src="/images/google-logo.webp" alt="Google" width={16} height={16} />
-              <strong>{siteConfig.rating.value}/5</strong>
+              <strong>{siteConfig.rating.valueLabel}/5</strong>
               <span className="stars">★★★★★</span>
               <small>Basé sur +{siteConfig.rating.count} avis clients</small>
             </div>
@@ -359,16 +388,13 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
       )}
 
       {/* Highlights */}
-      {!solution.teamTrust && (
+      {!solution.teamTrust && !solution.hideHighlights && (
         <Reveal as="section" className="section ">
           <div className="container">
             {solution.highlightsTitle ? (
               <SectionTitle title={solution.highlightsTitle} />
             ) : (
-              <SectionTitle
-                kicker="POURQUOI CHOISIR CETTE SOLUTION ?"
-                // title={`${solution.breadcrumbLabel}, les points forts`}
-              />
+              <SectionTitle kicker={solution.highlightsKicker ?? "POURQUOI CHOISIR CETTE SOLUTION ?"} />
             )}
             <div className="highlights-grid mt-8">
               {solution.highlights.map((h) => {
@@ -476,12 +502,16 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
       {solution.installations && (
         <Reveal as="section" className="section bg-soft">
           <div className="container">
-            <InstallationsCarousel title={solution.installations.title} items={solution.installations.items} />
+            <InstallationsCarousel
+              kicker={solution.installations.kicker}
+              title={solution.installations.title}
+              items={solution.installations.items}
+            />
           </div>
         </Reveal>
       )}
 
-      {!solution.teamTrust && (
+      {!solution.teamTrust && !solution.testimonials?.combined && (
         <>
           {/* Trust stats */}
           <div className="container">
@@ -496,7 +526,7 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
               <div className="trust-item trust-inline">
                 <Star className="trust-mark trust-icon" aria-hidden />
                 <div className="trust-text">
-                  <strong>{siteConfig.rating.value}/5</strong>
+                  <strong>{siteConfig.rating.valueLabel}/5</strong>
                   <span className="trust-caption">+{siteConfig.rating.count} avis Google</span>
                 </div>
               </div>
@@ -524,6 +554,15 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
             </div>
           </div>
         </>
+      )}
+
+      {/* Trust + testimonial combined card */}
+      {solution.testimonials?.combined && (
+        <Reveal as="section" className="section pb-0">
+          <div className="container">
+            <TrustTestimonialCard items={solution.testimonials.items} />
+          </div>
+        </Reveal>
       )}
 
       {/* Team trust */}
@@ -562,7 +601,7 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
       )}
 
       {/* Testimonials */}
-      {solution.testimonials && (
+      {solution.testimonials && !solution.testimonials.combined && (
         <Reveal as="section" className="section">
           <div className="container">
             <SectionTitle title={solution.testimonials.title} />
@@ -574,7 +613,7 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
       )}
 
       {/* CTA */}
-      <Reveal as="section" className="section">
+      <Reveal as="section" className={`section${solution.testimonials?.combined ? " pt-10" : ""}`}>
         <div className="container">
           <div className={`cta-card${solution.ctaTheme === "green" ? " cta-card-green" : ""}`}>
             <div className="cta-card-main">
@@ -590,7 +629,9 @@ export function SolutionPageTemplate({ solution }: { solution: SolutionContent }
               </span>
               <div>
                 <p className="cta-card-title">
-                  {solution.ctaTitle ?? `Un projet ${solution.breadcrumbLabel.toLowerCase()} ? Parlons-en !`}
+                  {solution.ctaTitle
+                    ? ctaTitleLabel(solution.ctaTitle)
+                    : `Un projet ${solution.breadcrumbLabel.toLowerCase()} ? Parlons-en !`}
                 </p>
                 <p className="cta-card-subtitle">
                   Nos conseillers vous accompagnent gratuitement <br />dans votre projet.

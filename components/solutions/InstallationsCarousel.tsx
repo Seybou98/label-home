@@ -6,9 +6,11 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export function InstallationsCarousel({
+  kicker,
   title,
   items,
 }: {
+  kicker?: string;
   title: string;
   items: { location: string; capacity: string; type: string; status: string; image: string }[];
 }) {
@@ -25,7 +27,10 @@ export function InstallationsCarousel({
   return (
     <div className="installations-carousel">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h2 className="installations-title">{title}</h2>
+        <div>
+          {kicker && <p className="eyebrow">{kicker}</p>}
+          <h2 className="installations-title">{title}</h2>
+        </div>
         <div className="flex items-center gap-4">
           <Link href="/realisations" className="inline-flex items-center gap-2 text-xs font-extrabold text-teal2">
             Voir toutes nos réalisations <ArrowRight size={14} />
@@ -43,7 +48,7 @@ export function InstallationsCarousel({
       <div ref={trackRef} className="installations-track mt-8">
         {items.map((item) => (
           <article key={item.location} className="installations-card">
-            <div className="relative h-32">
+            <div className="relative h-44">
               <Image
                 src={item.image}
                 alt={item.location}
@@ -54,10 +59,10 @@ export function InstallationsCarousel({
               />
               <span className="installations-badge">{item.location}</span>
             </div>
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-navy">{item.capacity}</h3>
-              <p className="mt-1 text-xs text-muted">{item.type}</p>
-              <p className="mt-1 text-xs text-muted">{item.status}</p>
+            <div className="p-5">
+              <h3 className="text-base font-bold text-navy">{item.capacity}</h3>
+              <p className="mt-1 text-sm text-muted">{item.type}</p>
+              <p className="mt-1 text-sm text-muted">{item.status}</p>
             </div>
           </article>
         ))}

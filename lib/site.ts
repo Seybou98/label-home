@@ -19,7 +19,7 @@ export const siteConfig = {
     "https://www.instagram.com/labelenergie",
     "https://www.linkedin.com/company/labelenergie",
   ],
-  rating: { value: 4.6, count: 800 },
+  rating: { value: 4.6, valueLabel: "4,6", count: 800 },
   stats: {
     installations: "+ 12 000",
     collaborators: "90",

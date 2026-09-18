@@ -22,6 +22,8 @@ export interface SolutionContent {
   benefitCards?: { icon: string; title: string; text: string }[];
   highlights: { icon: string; title: string; text: string }[];
   highlightsTitle?: string;
+  highlightsKicker?: string;
+  hideHighlights?: boolean;
   howItWorks: {
     kicker?: string;
     title: string;
@@ -50,6 +52,7 @@ export interface SolutionContent {
     items: string[];
   };
   installations?: {
+    kicker?: string;
     title: string;
     items: {
       location: string;
@@ -61,6 +64,7 @@ export interface SolutionContent {
   };
   testimonials?: {
     title: string;
+    combined?: boolean;
     items: {
       quote: string;
       rating: number;
@@ -467,44 +471,133 @@ export const solutions: Record<string, SolutionContent> = {
       "Installez des panneaux photovoltaïques et réduisez votre facture d'électricité grâce à l'autoconsommation. Étude gratuite, aides et revente du surplus avec Label Énergie.",
     breadcrumbLabel: "Panneaux photovoltaïques",
     category: "SOLAIRE PHOTOVOLTAÏQUE",
-    h1: "Produisez votre électricité, gagnez en autonomie.",
+    h1: "Produisez votre propre électricité, <span>économisez durablement.</span>",
     intro:
-      "Les panneaux photovoltaïques transforment l'énergie du soleil en électricité pour votre logement. Autoconsommez et revendez votre surplus.",
-    heroImage:
-      "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
-    heroAlt: "Panneaux photovoltaïques installés sur une toiture",
-    heroBadge: { icon: "Sun", text: "Une énergie gratuite et propre, produite directement sur votre toit." },
+      "Les panneaux photovoltaïques vous permettent de produire une électricité propre et renouvelable, de réduire vos factures et de gagner en indépendance énergétique.",
+    heroImage: "/images/solutions/panneaux1.jpg",
+    heroAlt: "Panneaux photovoltaïques installés sur une toiture de maison individuelle",
+    heroImageAspect: "1196/896",
     quickBenefits: [
-      { icon: "PiggyBank", title: "Jusqu'à 60 % d'économies", text: "sur votre facture d'électricité." },
-      { icon: "Sun", title: "Énergie gratuite et propre", text: "produite directement sur votre toit." },
-      { icon: "Leaf", title: "Revente du surplus", text: "à EDF OA, notre partenaire officiel." },
-      { icon: "BadgePercent", title: "Prime à l'autoconsommation", text: "et TVA réduite selon votre projet." },
+      { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture d'électricité." },
+      { icon: "Leaf", title: "Énergie propre et renouvelable", text: "produite directement sur votre toit." },
+      { icon: "Home", title: "Valorisation de votre bien", text: "grâce à une installation durable." },
+      { icon: "Home", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE, etc." },
+    ],
+    benefitCards: [
+      { icon: "PiggyBank", title: "ÉCONOMIES DURABLES", text: "Réduisez jusqu'à 70 % sur votre facture d'électricité." },
+      { icon: "Zap", title: "INDÉPENDANCE ÉNERGÉTIQUE", text: "Produisez et consommez votre propre électricité." },
+      { icon: "Leaf", title: "ÉCOLOGIQUE", text: "Une énergie propre qui réduit votre empreinte carbone." },
+      {
+        icon: "Award",
+        title: "AIDES & SUBVENTIONS",
+        text: "Profitez des aides de l'État (MaPrimeRénov', CEE, etc.).",
+      },
     ],
     highlights: [
-      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 60 % d'économies sur votre facture d'électricité." },
-      { icon: "Sun", title: "Énergie gratuite", text: "Produite directement sur votre toiture." },
-      { icon: "Leaf", title: "Revente du surplus", text: "À EDF OA, notre partenaire officiel." },
-      { icon: "Clock", title: "Faible entretien", text: "Une installation durable, sans entretien complexe." },
-      { icon: "BadgePercent", title: "Aides financières", text: "Prime à l'autoconsommation et TVA réduite." },
+      { icon: "Leaf", title: "Économies immédiates", text: "Réduisez votre facture d'électricité dès la mise en service." },
+      { icon: "Zap", title: "Rentabilité durable", text: "Un investissement rentable sur le long terme." },
+      { icon: "Settings", title: "Faible entretien", text: "Des installations fiables et durables." },
+      { icon: "Home", title: "Adapté à tous les toits", text: "Solutions sur mesure pour chaque type d'habitat." },
+      { icon: "Recycle", title: "Valorisation immobilière", text: "Augmente la valeur de votre bien immobilier." },
     ],
+    highlightsKicker: "POURQUOI CHOISIR LE PHOTOVOLTAÏQUE ?",
     howItWorks: {
-      title: "Comment fonctionne une installation photovoltaïque ?",
+      kicker: "FONCTIONNEMENT",
+      title: "Un fonctionnement simple et performant",
       intro: "Les panneaux captent la lumière du soleil et la convertissent en électricité utilisable.",
       steps: [
-        { n: 1, title: "Captation", text: "Les panneaux captent l'énergie lumineuse du soleil." },
-        { n: 2, title: "Conversion", text: "Un onduleur transforme le courant continu en courant alternatif." },
-        { n: 3, title: "Utilisation", text: "L'électricité alimente votre logement, le surplus est revendu ou stocké." },
+        { n: 1, title: "", text: "Les panneaux captent la lumière du soleil." },
+        { n: 2, title: "", text: "L'onduleur transforme cette énergie en électricité." },
+        { n: 3, title: "", text: "L'électricité alimente votre logement en priorité." },
+        { n: 4, title: "", text: "Le surplus est stocké ou revendu (selon votre contrat)." },
       ],
-      image:
-        "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Schéma de fonctionnement d'une installation photovoltaïque",
+      image: "/images/solutions/panneaux2.jpg",
+      imageAlt: "Schéma de fonctionnement d'une installation photovoltaïque : captation, conversion, consommation, surplus",
+      imageAspect: "1635/569",
     },
     aides: {
-      amount: "8 000 €",
-      text: "d'aides et primes pour une installation photovoltaïque",
-      items: ["Prime à l'autoconsommation", "Revente du surplus à EDF OA", "TVA réduite selon la puissance installée"],
+      heading: "Des aides pour un projet plus accessible",
+      amount: "5 000 €",
+      amountColor: "var(--teal2)",
+      text: "d'aides pour l'installation de panneaux photovoltaïques",
+      items: ["MaPrimeRénov'", "Prime à l'autoconsommation", "TVA réduite à 10 %", "Revente du surplus possible"],
     },
+    installations: {
+      kicker: "NOS RÉALISATIONS",
+      title: "Ils ont choisi le solaire avec Label Energie",
+      items: [
+        {
+          location: "Melun (77)",
+          capacity: "Installation 3 kWc",
+          type: "Maison individuelle",
+          status: "Autoconsommation",
+          image: "/images/solutions/panneaux1.jpg",
+        },
+        {
+          location: "Brie-Comte-Robert (77)",
+          capacity: "Installation 6 kWc",
+          type: "Maison individuelle",
+          status: "Autoconsommation",
+          image: "/images/solutions/panneaux1.jpg",
+        },
+        {
+          location: "Lagny-sur-Marne (77)",
+          capacity: "Installation 9 kWc",
+          type: "Maison individuelle",
+          status: "Autoconsommation",
+          image: "/images/solutions/panneaux1.jpg",
+        },
+        {
+          location: "Coulommiers (77)",
+          capacity: "Installation 6 kWc",
+          type: "Maison individuelle",
+          status: "Autoconsommation",
+          image: "/images/solutions/panneaux1.jpg",
+        },
+        {
+          location: "Saint Denis (93)",
+          capacity: "Installation 9 kWc",
+          type: "Maison individuelle",
+          status: "Autoconsommation",
+          image: "/images/solutions/panneaux1.jpg",
+        },
+        {
+          location: "Stains (93)",
+          capacity: "Installation 3 kWc",
+          type: "Maison individuelle",
+          status: "Autoconsommation",
+          image: "/images/solutions/panneaux1.jpg",
+        },
+      ],
+    },
+    testimonials: {
+      title: "Ils nous font confiance",
+      combined: true,
+      items: [
+        {
+          quote: "Équipe professionnelle, installation rapide et performance au rendez-vous. Je recommande Label Energie !",
+          rating: 5,
+          name: "Thomas D.",
+          location: "Melun (77)",
+        },
+        {
+          quote: "Depuis l'installation, notre facture d'électricité a chuté de moitié. Un investissement rentable !",
+          rating: 5,
+          name: "Isabelle F.",
+          location: "Brie-Comte-Robert (77)",
+        },
+        {
+          quote: "Conseillers à l'écoute et démarches administratives simplifiées pour les aides. Très satisfaits.",
+          rating: 4.5,
+          name: "Karim B.",
+          location: "Lagny-sur-Marne (77)",
+        },
+      ],
+    },
+    ctaTitle: "Produisez votre propre électricité et reprenez le contrôle de votre énergie.",
+    ctaIcon: "/images/solutions/icon-m.png",
     ctaTicks: defaultCtaTicks,
+    hideCtaTicks: true,
     faq: [
       {
         question: "Combien de panneaux sont nécessaires pour ma maison ?",
@@ -575,27 +668,32 @@ export const solutions: Record<string, SolutionContent> = {
       "Le chauffe-eau thermodynamique utilise les calories de l'air pour chauffer votre eau sanitaire. Jusqu'à 70 % d'économies, éligible MaPrimeRénov' et CEE.",
     breadcrumbLabel: "Chauffe-eau thermodynamique",
     category: "CHAUFFE-EAU THERMODYNAMIQUE",
-    h1: "De l'eau chaude intelligente, des économies durables.",
+    h1: "De l'eau chaude intelligente, des <span>économies</span> durables.",
     intro:
       "Le chauffe-eau thermodynamique utilise les calories de l'air ambiant pour chauffer l'eau sanitaire. Une solution économique, écologique et idéale pour réduire votre facture d'énergie.",
-    heroImage:
-      "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/images/solutions/btd.jpg",
     heroAlt: "Chauffe-eau thermodynamique installé dans une buanderie",
-    heroBadge: { icon: "Leaf", text: "Une eau chaude économique grâce aux calories de l'air ambiant." },
+    heroImageAspect: "1120/958",
     quickBenefits: [
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture d'eau chaude." },
-      { icon: "BadgePercent", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE." },
-      { icon: "ThermometerSun", title: "Confort en eau chaude", text: "toute l'année." },
-      { icon: "Waves", title: "Technologie fiable", text: "et silencieuse." },
+      { icon: "Home", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE." },
+      { icon: "Leaf", title: "Confort en eau chaude toute l'année", text: "avec une technologie fiable." },
+      { icon: "Home", title: "Technologie fiable et silencieuse", text: "et éprouvée." },
     ],
-    highlights: [
-      { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies sur votre facture d'eau chaude." },
-      { icon: "ThermometerSun", title: "Confort", text: "Une eau chaude disponible toute l'année, pour toute la famille." },
-      { icon: "Waves", title: "Technologie fiable", text: "Silencieuse et éprouvée." },
-      { icon: "Clock", title: "Faible entretien", text: "Un entretien annuel simple suffit." },
-      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov' et certificats d'économies d'énergie." },
+    benefitCards: [
+      { icon: "PiggyBank", title: "ÉCONOMIQUE", text: "Réduisez jusqu'à 70 % votre facture d'eau chaude." },
+      { icon: "Leaf", title: "ÉCOLOGIQUE", text: "Une énergie renouvelable qui réduit vos émissions de CO2." },
+      { icon: "ShowerHead", title: "CONFORT", text: "De l'eau chaude disponible à tout moment, même en hiver." },
+      {
+        icon: "Award",
+        title: "AIDES & SUBVENTIONS",
+        text: "Profitez des aides de l'État (MaPrimeRénov', CEE, etc.) pour réduire votre investissement.",
+      },
     ],
+    highlights: [],
+    hideHighlights: true,
     howItWorks: {
+      kicker: "FONCTIONNEMENT",
       title: "Comment fonctionne un chauffe-eau thermodynamique ?",
       intro: "Il capte les calories présentes dans l'air pour chauffer l'eau de votre ballon de stockage.",
       steps: [
@@ -604,16 +702,61 @@ export const solutions: Record<string, SolutionContent> = {
         { n: 3, title: "Stockage", text: "La chaleur est transférée à l'eau du ballon de stockage." },
         { n: 4, title: "Distribution", text: "L'eau chaude est disponible dans toute la maison." },
       ],
-      image:
-        "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Schéma de fonctionnement d'un chauffe-eau thermodynamique",
+      image: "/images/solutions/btd2.jpg",
+      imageAlt: "Schéma de fonctionnement d'un chauffe-eau thermodynamique : captation, transfert, stockage, distribution",
+      imageAspect: "1552/688",
     },
     aides: {
+      heading: "Des aides pour alléger votre investissement",
       amount: "4 000 €",
+      amountColor: "var(--teal2)",
       text: "d'aides pour l'installation d'un chauffe-eau thermodynamique",
-      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+      items: [
+        "MaPrimeRénov'",
+        "Certificats d'économies d'énergie (CEE)",
+        "TVA réduite à 5,5 %",
+        "Cumulable avec d'autres aides locales",
+      ],
     },
+    installations: {
+      kicker: "NOS RÉALISATIONS",
+      title: "",
+      items: [
+        {
+          location: "Melun (77)",
+          capacity: "Chauffe-eau thermodynamique 270 L",
+          type: "Maison individuelle",
+          status: "Installation complète",
+          image: "/images/solutions/btd.jpg",
+        },
+        {
+          location: "Brie-Comte-Robert (77)",
+          capacity: "Chauffe-eau thermodynamique 270 L",
+          type: "Maison individuelle",
+          status: "Installation complète",
+          image: "/images/solutions/btd.jpg",
+        },
+        {
+          location: "Lagny-sur-Marne (77)",
+          capacity: "Chauffe-eau thermodynamique 200 L",
+          type: "Maison individuelle",
+          status: "Installation complète",
+          image: "/images/solutions/btd.jpg",
+        },
+        {
+          location: "Coulommiers (77)",
+          capacity: "Chauffe-eau thermodynamique 200 L",
+          type: "Maison individuelle",
+          status: "Installation complète",
+          image: "/images/solutions/btd.jpg",
+        },
+      ],
+    },
+    ctaTitle: "Passez à une eau chaude plus économique et plus respectueuse de l'environnement.",
+    ctaTheme: "green",
+    ctaIcon: "/images/solutions/icon-btd.png",
     ctaTicks: defaultCtaTicks,
+    hideCtaTicks: true,
     faq: [
       {
         question: "Quel volume de ballon choisir ?",

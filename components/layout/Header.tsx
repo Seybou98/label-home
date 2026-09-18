@@ -10,7 +10,8 @@ const navSections = [
     href: "/solutions",
     items: [
       { label: "Pompe à chaleur", href: "/solutions/pompe-a-chaleur" },
-      { label: "Climatisation", href: "/solutions/climatisation" },
+      { label: "Pompe à chaleur Air/Air", href: "/solutions/pompe-a-chaleur-air-air" },
+      // { label: "Climatisation", href: "/solutions/climatisation" },
       { label: "Panneaux photovoltaïques", href: "/solutions/panneaux-photovoltaiques" },
       { label: "Système solaire combiné", href: "/solutions/systeme-solaire-combine" },
       { label: "Chauffe-eau thermodynamique", href: "/solutions/chauffe-eau-thermodynamique" },
