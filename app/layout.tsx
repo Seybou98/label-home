@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body>
+    <html lang="fr" data-scroll-behavior="smooth">
+      <body suppressHydrationWarning>
         <JsonLd data={localBusinessJsonLd()} />
         {children}
       </body>

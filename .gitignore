@@ -30,3 +30,7 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Firebase service account (secret)
+service-account*.json
+*-firebase-adminsdk-*.json

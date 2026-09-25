@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: "Label Énergie",
   legalName: "Label Énergie",
-  url: "https://www.label-energie.fr",
+  url: "https://www.labelenergie.fr",
   description:
     "Label Énergie installe vos pompes à chaleur, climatisations, panneaux solaires et solutions d'eau chaude. Entreprise RGE, étude gratuite, aides MaPrimeRénov' et SAV assurés.",
   phone: "+33184804000",
   phoneDisplay: "01 84 80 40 00",
-  email: "contact@label-energie.fr",
+  email: "contact@labelenergie.fr",
   address: {
     streetAddress: "12 avenue de la République",
     addressLocality: "Melun",

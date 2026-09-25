@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import logo from "@/maquette/logo.png";
 
 const navSections = [
   {
@@ -40,7 +42,7 @@ const navSections = [
       { label: "Nos certifications", href: "/a-propos/certifications" },
       { label: "Nos équipes", href: "/a-propos/nos-equipes" },
       { label: "Nos partenaires", href: "/a-propos/nos-partenaires" },
-      { label: "Recrutement", href: "/a-propos/recrutement" },
+      // { label: "Recrutement", href: "/a-propos/recrutement" },
     ],
   },
   {
@@ -71,9 +73,7 @@ export function Header() {
     <header className={`header${scrolled ? " header-scrolled" : ""}`}>
       <div className="container nav">
         <Link href="/" className="brand" aria-label="Label Énergie, retour à l'accueil">
-          <span className="brand-label">Label</span>
-          <span className="brand-energy">Energie</span>
-          <small>Créons une énergie plus sereine</small>
+          <Image src={logo} alt="Label Energie" className="header-logo" priority />
         </Link>
 
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>

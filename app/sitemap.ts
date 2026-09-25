@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { solutionSlugs } from "@/lib/content/solutions";
+import { cityServiceSlugs, villeSlugs } from "@/lib/content/villes";
 
 const staticPaths = [
   "/",
@@ -26,12 +27,19 @@ const staticPaths = [
   "/deja-client/entretien",
   "/deja-client/parrainage",
   "/plan-du-site",
+  "/mentions-legales",
+  "/confidentialite",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const solutionPaths = solutionSlugs.map((slug) => `/solutions/${slug}`);
 
-  return [...staticPaths, ...solutionPaths].map((path) => ({
+  const cityPaths = villeSlugs.flatMap((v) => [
+    `/zones-intervention/${v}`,
+    ...cityServiceSlugs.map((slug) => `/zones-intervention/${v}/${slug}`),
+  ]);
+
+  return [...staticPaths, ...solutionPaths, ...cityPaths].map((path) => ({
     url: `${siteConfig.url}${path}`,
     lastModified: new Date(),
     changeFrequency: path === "/" ? "daily" : "weekly",

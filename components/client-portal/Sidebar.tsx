@@ -33,7 +33,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-64 shrink-0 border-r border-line bg-white py-4 md:block">
+    <aside className="portal-sidebar hidden w-64 shrink-0 border-r border-line bg-white py-4 md:block">
       <nav className="grid gap-1 px-3">
         {items.map((item) => {
           const active = pathname === item.href;

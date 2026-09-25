@@ -249,35 +249,35 @@ export default function ConseilsPage() {
           </div>
           <div className="pac-final-cta-stats mt-8">
             <div className="pac-final-cta-stat">
-              <ShieldCheck size={20} />
+              <ShieldCheck size={42} />
               <div>
                 <p className="pac-stat-label">Entreprise RGE</p>
                 <p className="pac-stat-sublabel">certifiée</p>
               </div>
             </div>
             <div className="pac-final-cta-stat">
-              <Home size={20} />
+              <Home size={42} />
               <div>
                 <p className="pac-stat-label">{siteConfig.stats.installations}</p>
                 <p className="pac-stat-sublabel">installations réalisées</p>
               </div>
             </div>
             <div className="pac-final-cta-stat">
-              <Star size={20} />
+              <Star size={42} />
               <div>
                 <p className="pac-stat-label">{siteConfig.rating.valueLabel}/5</p>
                 <p className="pac-stat-sublabel">sur +{siteConfig.rating.count} avis Google</p>
               </div>
             </div>
             <div className="pac-final-cta-stat">
-              <Award size={20} />
+              <Award size={42} />
               <div>
                 <p className="pac-stat-label">Plus de {siteConfig.stats.experienceYears} ans</p>
                 <p className="pac-stat-sublabel">d&apos;expérience</p>
               </div>
             </div>
             <div className="pac-final-cta-stat">
-              <Bird size={20} />
+              <Bird size={42} />
               <div>
                 <p className="pac-stat-label">Accompagnement</p>
                 <p className="pac-stat-sublabel">de A à Z</p>
