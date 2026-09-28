@@ -1,10 +1,20 @@
-import { PortalPlaceholder } from "@/components/client-portal/PortalPlaceholder";
+import Link from "next/link";
+import { DocumentsExplorer } from "@/components/client-portal/DocumentsExplorer";
+import { getMyPortal } from "@/lib/portal";
 
-export default function DocumentsPage() {
+export default async function DocumentsPage() {
+  const data = await getMyPortal();
   return (
-    <PortalPlaceholder
-      title="Mes documents"
-      description="Retrouvez ici tous vos documents : devis, factures, certificats de garantie et notices d'utilisation."
-    />
+    <div className="grid gap-5">
+      <div className="flex items-center gap-2 text-[11px] text-muted">
+        <Link href="/espace-client" className="hover:text-teal2">
+          Espace client
+        </Link>
+        <span>›</span>
+        <span className="font-semibold text-navy">Mes documents</span>
+      </div>
+
+      <DocumentsExplorer documents={data.documents} />
+    </div>
   );
 }

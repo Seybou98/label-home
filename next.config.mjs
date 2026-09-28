@@ -21,6 +21,9 @@ const nextConfig = {
       { source: "/solutions/chaudiere-a-granule", destination: "/solutions/poele-a-granules", permanent },
       { source: "/solutions/panneaux-solaire-photovoltaique", destination: "/solutions/panneaux-photovoltaiques", permanent },
       { source: "/solutions/panneaux-solaires-hybrides", destination: "/solutions/panneaux-photovoltaiques", permanent },
+      // Anciennes étapes du tunnel de souscription : désormais un seul assistant en 7 étapes.
+      { source: "/deja-client/entretien/souscrire/formule", destination: "/deja-client/entretien/souscrire", permanent: false },
+      { source: "/deja-client/entretien/souscrire/coordonnees", destination: "/deja-client/entretien/souscrire", permanent: false },
     ];
   },
 };

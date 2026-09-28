@@ -49,20 +49,20 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
       />
 
       <section className="pt-2">
-        <div className="container max-w-3xl">
+        <div className="container">
           <p className="eyebrow">
             INSTALLATEUR RGE · {ville.name.toUpperCase()} ({ville.departmentCode})
           </p>
           <h1 className="qsn-hero-title">
             Rénovation énergétique à <span className="text-teal">{ville.name}</span>.
           </h1>
-          <p className="mt-4 text-sm leading-relaxed text-muted">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
             Label Énergie accompagne les habitants de {ville.name} ({ville.postalCode}, {ville.department}) de
             l&apos;étude à l&apos;installation : pompe à chaleur, panneaux photovoltaïques, chauffe-eau
             thermodynamique ou solaire, système solaire combiné et poêle à granulés. Nos équipes sont
             certifiées RGE, ce qui vous ouvre l&apos;accès à MaPrimeRénov&apos; et aux primes CEE.
           </p>
-          {ville.note && <p className="mt-4 text-sm leading-relaxed text-muted">{ville.note}</p>}
+          {ville.note && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">{ville.note}</p>}
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/simuler-mon-projet" className="btn btn-primary">
               SIMULER MON PROJET <ArrowRight size={16} />
@@ -96,9 +96,9 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
       </section>
 
       <section className="section pt-0">
-        <div className="container max-w-3xl">
+        <div className="container">
           <h2 className="qsn-section-heading">Communes voisines desservies</h2>
-          <p className="mt-3 text-sm leading-relaxed text-muted">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
             Depuis {ville.name}, nous intervenons également à {ville.nearby.join(", ")}. Une autre commune ?{" "}
             <Link href="/contact" className="font-semibold text-teal2 underline">
               Demandez-nous

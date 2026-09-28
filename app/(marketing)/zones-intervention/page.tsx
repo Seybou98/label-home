@@ -18,12 +18,12 @@ export default function ZonesInterventionPage() {
       <Breadcrumb items={[{ name: "Zones d'intervention", path: "/zones-intervention" }]} />
 
       <section className="pt-2">
-        <div className="container max-w-3xl">
+        <div className="container">
           <p className="eyebrow">ZONES D&apos;INTERVENTION</p>
           <h1 className="qsn-hero-title">
             Nous intervenons <span className="text-teal">près de chez vous.</span>
           </h1>
-          <p className="mt-4 text-sm leading-relaxed text-muted">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
             Label Énergie, entreprise RGE basée en Seine-et-Marne, installe et entretient pompes à
             chaleur, panneaux solaires, chauffe-eau et poêles à granulés en Île-de-France. Choisissez
             votre ville pour découvrir nos solutions, les aides disponibles et nos interventions à

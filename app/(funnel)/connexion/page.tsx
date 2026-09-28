@@ -8,7 +8,11 @@ import { ArrowRight, Mail, ShieldCheck } from "lucide-react";
 const inputClass =
   "rounded-md border border-line px-3 py-3 text-sm text-ink outline-none focus:border-teal2";
 
+// Redirection après connexion : uniquement l'espace client ou la reprise de la souscription d'un contrat.
+const SOUSCRIPTION = "/deja-client/entretien/souscrire";
+
 function safeNext(value: string | null) {
+  if (value === SOUSCRIPTION) return value;
   return value && value.startsWith("/espace-client") ? value : "/espace-client";
 }
 

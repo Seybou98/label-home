@@ -1291,8 +1291,12 @@ button,input,select{font:inherit} button{cursor:pointer} img{max-width:100%;disp
 /* Le fond blanc du menu latéral s'étend jusqu'au bord gauche de l'écran (sans décaler le menu). */
 .portal-shell{overflow-x:clip}
 .portal-sidebar{position:relative}
-/* Écart entre le bord de l'écran et la mise en page centrée (80rem), en pixels de mise en page. */
-.portal-shell{--off:max(0px,calc((100vw / var(--z,1) - 80rem) / 2))}
-aside.portal-sidebar{width:calc(16rem - var(--off))}
-.portal-sidebar nav{position:relative;left:calc(-1 * var(--off));width:16rem}
+/* Écart entre le bord de l'écran et la mise en page centrée (80rem), en pixels de mise en page.
+   Uniquement quand le zoom proportionnel est actif (>=1440px) : en dessous, --z vaut 1 et 100vw peut
+   déjà dépasser 80rem (dès 1280px), ce qui réduisait le menu sans raison et coupait son contenu. */
+@media(min-width:1440px){
+  .portal-shell{--off:max(0px,calc((100vw / var(--z,1) - 80rem) / 2))}
+  aside.portal-sidebar{width:calc(16rem - var(--off))}
+  .portal-sidebar nav,.portal-aide{position:relative;left:calc(-1 * var(--off));width:16rem}
+}
 .portal-sidebar::before{content:"";position:absolute;top:0;bottom:0;right:100%;width:100vw;background:#fff}

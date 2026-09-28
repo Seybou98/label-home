@@ -19,7 +19,7 @@ import { buildMetadata, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { EquipmentFinder } from "@/components/entretien/EquipmentFinder";
-import { contractPlans, entretienFaq, entretienSteps, equipmentTypes } from "@/lib/content/entretien";
+import { contractPlans, entretienFaq, entretienSteps, equipmentTypes, formatEuro } from "@/lib/content/entretien";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contrat d'entretien : pompe à chaleur, solaire, chauffe-eau",
@@ -171,8 +171,8 @@ export default function EntretienPage() {
                 </ul>
                 <p className="mt-5 text-center">
                   <span className="text-xs text-muted">À partir de </span>
-                  <span className="font-display text-2xl text-navy">{plan.price} €</span>
-                  <span className="text-xs text-muted"> TTC / an</span>
+                  <span className="font-display text-2xl text-navy">{formatEuro(plan.price)}</span>
+                  <span className="text-xs text-muted"> TTC / mois</span>
                 </p>
                 <Link
                   href={`/deja-client/entretien/souscrire?formule=${plan.slug}`}
@@ -184,7 +184,7 @@ export default function EntretienPage() {
             ))}
           </div>
           <p className="mt-4 text-center text-[10px] text-muted">
-            * Hors pièces &nbsp;&nbsp; ** Pièces d&apos;usure : joints, filtres, bougies d&apos;allumage, etc.
+            Contrat d&apos;un an. Tarif mensuel TTC par équipement, selon l&apos;équipement choisi.
           </p>
         </div>
       </section>

@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "firebase-admin": "^14.5.0",
+    "html2canvas": "^1.4.1",
     "jose": "^6.2.12",
+    "jspdf": "^2.5.2",
     "lucide-react": "^0.468.0",
     "next": "^15.1.0",
     "react": "^18.3.1",

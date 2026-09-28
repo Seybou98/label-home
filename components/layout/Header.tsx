@@ -5,57 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import logo from "@/maquette/logo.png";
-
-const navSections = [
-  {
-    label: "Solutions",
-    href: "/solutions",
-    items: [
-      { label: "Pompe à chaleur", href: "/solutions/pompe-a-chaleur" },
-      { label: "Pompe à chaleur Air/Air", href: "/solutions/pompe-a-chaleur-air-air" },
-      // { label: "Climatisation", href: "/solutions/climatisation" },
-      { label: "Panneaux photovoltaïques", href: "/solutions/panneaux-photovoltaiques" },
-      { label: "Système solaire combiné", href: "/solutions/systeme-solaire-combine" },
-      { label: "Chauffe-eau thermodynamique", href: "/solutions/chauffe-eau-thermodynamique" },
-      { label: "Chauffe-eau solaire (CESI)", href: "/solutions/chauffe-eau-solaire-individuel" },
-      { label: "Poêle à granulés", href: "/solutions/poele-a-granules" },
-      { label: "Toutes nos solutions", href: "/solutions" },
-    ],
-  },
-  {
-    label: "Aides & financement",
-    href: "/aides-financement",
-    items: [
-      { label: "Calculer mes aides", href: "/aides-financement/calculer-mes-aides" },
-      { label: "MaPrimeRénov'", href: "/aides-financement/maprimerenov" },
-      { label: "CEE", href: "/aides-financement/cee" },
-      { label: "Financement", href: "/aides-financement/financement" },
-    ],
-  },
-  { label: "Réalisations", href: "/realisations" },
-  { label: "Conseils", href: "/conseils" },
-  {
-    label: "À propos",
-    href: "/a-propos/qui-sommes-nous",
-    items: [
-      { label: "Qui sommes-nous ?", href: "/a-propos/qui-sommes-nous" },
-      { label: "Nos certifications", href: "/a-propos/certifications" },
-      { label: "Nos équipes", href: "/a-propos/nos-equipes" },
-      { label: "Nos partenaires", href: "/a-propos/nos-partenaires" },
-      // { label: "Recrutement", href: "/a-propos/recrutement" },
-    ],
-  },
-  {
-    label: "Déjà client",
-    href: "/deja-client",
-    items: [
-      { label: "Mon espace client", href: "/espace-client" },
-      { label: "Déclarer un SAV", href: "/deja-client/sav" },
-      { label: "Entretien & contrats", href: "/deja-client/entretien" },
-      { label: "Parrainage", href: "/deja-client/parrainage" },
-    ],
-  },
-];
+import { navSections } from "@/lib/navigation";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

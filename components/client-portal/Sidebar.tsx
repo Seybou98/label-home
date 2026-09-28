@@ -10,11 +10,14 @@ import {
   Home,
   LogOut,
   MessageSquare,
+  Phone,
   Receipt,
   ShieldCheck,
   User,
   type LucideIcon,
 } from "lucide-react";
+import { siteConfig } from "@/lib/site";
+import { logout } from "./LogoutButton";
 
 const items: { label: string; href: string; sub?: string; icon: LucideIcon }[] = [
   { label: "Accueil", href: "/espace-client", icon: Home },
@@ -53,13 +56,42 @@ export function Sidebar() {
             </Link>
           );
         })}
-        <Link
-          href="/"
-          className="mt-4 flex items-center gap-3 rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-soft"
+        <button
+          type="button"
+          onClick={logout}
+          className="mt-4 flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-xs font-semibold text-muted hover:bg-soft"
         >
           <LogOut size={16} /> Déconnexion
-        </Link>
+        </button>
       </nav>
+
+      <div className="portal-aide px-3 pt-4">
+        <div className="rounded-card border border-line bg-soft p-4">
+          <p className="text-xs font-bold text-navy">Besoin d&apos;aide ?</p>
+          <p className="mt-3 text-[11px] leading-relaxed text-muted">
+            Notre service client
+            <br />
+            est à votre écoute.
+          </p>
+          <a
+            href={`tel:${siteConfig.phone}`}
+            className="mt-3 flex items-center gap-2 text-xs font-bold text-navy"
+          >
+            <Phone size={14} className="text-teal2" /> {siteConfig.phoneDisplay}
+          </a>
+          <p className="mt-2 text-[11px] leading-relaxed text-muted">
+            Du lundi au vendredi
+            <br />
+            de 8h à 18h
+          </p>
+          <Link
+            href="/contact"
+            className="btn btn-outline mt-4 w-full justify-center py-2 text-[11px]"
+          >
+            NOUS CONTACTER
+          </Link>
+        </div>
+      </div>
     </aside>
   );
 }

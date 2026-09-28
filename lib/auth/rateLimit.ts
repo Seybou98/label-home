@@ -7,7 +7,12 @@ export async function allowIp(request: Request, max = 10, windowMs = 60 * 60 * 1
     request.headers.get("x-nf-client-connection-ip") ||
     request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
     "unknown";
-  const ref = db().collection("webAuthRateLimits").doc(createHash("sha256").update(ip).digest("hex"));
+  return allowKey(`ip:${ip}`, max, windowMs);
+}
+
+/** Limite générique par clé (true = autorisé) ; la clé est hachée avant stockage. */
+export async function allowKey(key: string, max: number, windowMs: number): Promise<boolean> {
+  const ref = db().collection("webAuthRateLimits").doc(createHash("sha256").update(key).digest("hex"));
   const now = Date.now();
 
   return db().runTransaction(async (tx) => {

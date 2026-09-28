@@ -25,7 +25,7 @@ const faq = [
   {
     question: "Proposez-vous un contrat d'entretien pour mes équipements ?",
     answer:
-      "Oui, nous proposons plusieurs formules d'entretien (Essentiel, Sérénité, Confort+) pour vos pompes à chaleur, panneaux solaires, chauffe-eau et poêles à granulés.",
+      "Oui, nous proposons plusieurs formules d'entretien (Standard, Premium, VIP) pour vos pompes à chaleur, systèmes solaires combinés, chauffe-eau thermodynamiques, poêles et chaudières à granulés.",
   },
   {
     question: "Combien de temps dure une installation ?",
@@ -40,7 +40,7 @@ export default function FaqPage() {
       <JsonLd data={faqJsonLd(faq)} />
       <Breadcrumb items={[{ name: "FAQ", path: "/faq" }]} />
       <section className="section">
-        <div className="container max-w-3xl">
+        <div className="container">
           <PageHeader
             eyebrow="BESOIN D'AIDE ?"
             title="Questions fréquentes"

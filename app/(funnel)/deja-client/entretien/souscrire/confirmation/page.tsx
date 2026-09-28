@@ -1,59 +1,73 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { CheckCircle2 } from "lucide-react";
-import { useContractFunnel } from "@/components/funnel/FunnelContext";
-import { contractPlans, equipmentTypes } from "@/lib/content/entretien";
+import { contractPlans, equipmentTypes, formatEuro } from "@/lib/content/entretien";
+
+type Summary = { number: string; formule: string; products: string[]; monthly: number; email: string };
+
+// Résumé enregistré par l'assistant juste après l'envoi du contrat (le contexte du tunnel est alors vidé).
+const CONFIRMATION_KEY = "label-energie-souscription-confirmation";
 
 export default function SouscrireConfirmationPage() {
-  const router = useRouter();
-  const { state, reset } = useContractFunnel();
+  const [summary, setSummary] = useState<Summary | null | undefined>(undefined);
 
   useEffect(() => {
-    if (!state.email) {
-      router.replace("/deja-client/entretien/souscrire");
+    try {
+      const raw = sessionStorage.getItem(CONFIRMATION_KEY);
+      setSummary(raw ? (JSON.parse(raw) as Summary) : null);
+    } catch {
+      setSummary(null);
     }
-  }, [state.email, router]);
+  }, []);
 
-  const equipment = equipmentTypes.find((eq) => eq.slug === state.equipement);
-  const plan = contractPlans.find((p) => p.slug === state.formule);
+  if (summary === undefined) return null;
 
-  if (!state.email) return null;
+  const plan = contractPlans.find((p) => p.slug === summary?.formule);
 
   return (
     <div className="mt-4 rounded-card border border-line bg-white p-8 text-center shadow-card">
       <CheckCircle2 className="mx-auto text-teal2" size={48} />
-      <h1 className="mt-4 font-display text-2xl text-navy">
-        Votre demande de contrat a bien été enregistrée !
-      </h1>
-      <p className="mt-3 text-sm text-muted">
-        Merci {state.prenom}, un conseiller Label Énergie va confirmer votre contrat{" "}
-        {plan ? <strong className="text-navy">{plan.name}</strong> : null} et vous recontacter
-        sous 48h pour planifier votre premier entretien.
+      <h1 className="mt-4 font-display text-2xl text-navy">Votre contrat a bien été envoyé !</h1>
+      <p className="mt-3 text-sm leading-relaxed text-muted">
+        {summary ? (
+          <>
+            Vous allez recevoir votre contrat à <strong className="text-navy">{summary.email}</strong> pour signature
+            électronique. Une fois signé, un lien sécurisé GoCardless vous permettra de mettre en place votre prélèvement
+            mensuel.
+          </>
+        ) : (
+          <>Vous allez recevoir votre contrat par e-mail pour signature électronique.</>
+        )}
       </p>
 
-      <div className="mx-auto mt-6 max-w-sm rounded-md bg-soft p-4 text-left text-xs text-muted">
-        <p>
-          <span className="font-bold text-navy">Équipement : </span>
-          {equipment?.label ?? "—"}
-        </p>
-        <p className="mt-1">
-          <span className="font-bold text-navy">Formule : </span>
-          {plan ? `${plan.name} — ${plan.priceLabel}` : "—"}
-        </p>
-        <p className="mt-1">
-          <span className="font-bold text-navy">Contact : </span>
-          {state.email} · {state.telephone}
-        </p>
-      </div>
+      {summary && (
+        <div className="mx-auto mt-6 max-w-sm rounded-md bg-soft p-4 text-left text-xs text-muted">
+          <p>
+            <span className="font-bold text-navy">Contrat : </span>
+            {summary.number}
+          </p>
+          <p className="mt-1">
+            <span className="font-bold text-navy">Formule : </span>
+            {plan?.name ?? summary.formule}
+          </p>
+          <p className="mt-1">
+            <span className="font-bold text-navy">Équipements : </span>
+            {summary.products.map((id) => equipmentTypes.find((e) => e.slug === id)?.label ?? id).join(", ")}
+          </p>
+          <p className="mt-1">
+            <span className="font-bold text-navy">Mensualité : </span>
+            {formatEuro(summary.monthly)} TTC
+          </p>
+        </div>
+      )}
 
       <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-        <Link href="/espace-client" onClick={() => reset()} className="btn btn-primary justify-center">
-          ACCÉDER À MON ESPACE CLIENT
+        <Link href="/espace-client/contrats" className="btn btn-primary justify-center">
+          VOIR MES CONTRATS
         </Link>
-        <Link href="/" onClick={() => reset()} className="btn btn-outline justify-center">
+        <Link href="/" className="btn btn-outline justify-center">
           RETOUR À L&apos;ACCUEIL
         </Link>
       </div>

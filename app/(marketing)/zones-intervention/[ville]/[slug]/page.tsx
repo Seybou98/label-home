@@ -86,19 +86,19 @@ export default async function VilleServicePage({
       />
 
       <section className="pt-2">
-        <div className="container max-w-3xl">
+        <div className="container">
           <p className="eyebrow">
             {solution.category} · {ville.name.toUpperCase()} ({ville.departmentCode})
           </p>
           <h1 className="qsn-hero-title">
             {label} à <span className="text-teal">{ville.name}</span>.
           </h1>
-          <p className="mt-4 text-sm leading-relaxed text-muted">{solution.intro}</p>
-          <p className="mt-3 text-sm leading-relaxed text-muted">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">{solution.intro}</p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
             Label Énergie, entreprise RGE, vous accompagne à {ville.name} ({ville.postalCode}) : étude gratuite,
             installation par nos équipes et suivi après-vente.
           </p>
-          {ville.note && <p className="mt-3 text-sm leading-relaxed text-muted">{ville.note}</p>}
+          {ville.note && <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{ville.note}</p>}
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/simuler-mon-projet" className="btn btn-primary">
               SIMULER MON PROJET <ArrowRight size={16} />
@@ -125,11 +125,11 @@ export default async function VilleServicePage({
       </section>
 
       <section className="section pt-0">
-        <div className="container max-w-3xl">
+        <div className="container">
           <h2 className="qsn-section-heading">Aides disponibles à {ville.name}</h2>
-          <p className="mt-3 text-sm leading-relaxed text-muted">
-            {solution.aides.text} Montant pouvant atteindre <strong className="text-navy">{solution.aides.amount}</strong>{" "}
-            selon vos revenus et votre projet.
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+            Jusqu'à <strong className="text-navy">{solution.aides.amount}</strong> d'aides pour votre projet à {ville.name},
+            selon vos revenus et la nature des travaux. Nous montons les dossiers pour vous.
           </p>
           <ul className="mt-4 grid gap-2">
             {solution.aides.items.map((item) => (
@@ -145,9 +145,9 @@ export default async function VilleServicePage({
       </section>
 
       <section className="section pt-0">
-        <div className="container max-w-3xl">
+        <div className="container">
           <h2 className="qsn-section-heading">Questions fréquentes à {ville.name}</h2>
-          <div className="mt-6">
+          <div className="mt-6 max-w-3xl">
             <FaqAccordion items={faq.map((f) => ({ q: f.question, a: f.answer }))} single />
           </div>
         </div>
