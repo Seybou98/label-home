@@ -1,153 +1,25 @@
-"use client";
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+import { SimulationWizard } from "@/components/funnel/SimulationWizard";
 
-import { useState } from "react";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
-import { Stepper } from "@/components/funnel/Stepper";
-
-const needs = [
-  { slug: "pompe-a-chaleur", label: "Réduire ma facture de chauffage" },
-  { slug: "climatisation", label: "Climatiser mon logement" },
-  { slug: "panneaux-photovoltaiques", label: "Produire mon électricité" },
-  { slug: "chauffe-eau-thermodynamique", label: "Réduire le coût de mon eau chaude" },
-  { slug: "renovation-energetique-globale", label: "Rénovation énergétique globale" },
-  { slug: "autre", label: "Je ne sais pas, je souhaite être conseillé" },
-];
+export const metadata: Metadata = buildMetadata({
+  title: "Simulez vos aides pompe à chaleur en 2 minutes",
+  description:
+    "Répondez à quelques questions pour connaître votre profil MaPrimeRénov' et estimer vos aides CEE pour l'installation d'une pompe à chaleur. Simulation gratuite et sans engagement.",
+  path: "/simuler-mon-projet",
+});
 
 export default function SimulerMonProjetPage() {
-  const [step, setStep] = useState(1);
-  const [need, setNeed] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [contact, setContact] = useState({ prenom: "", email: "", telephone: "" });
-  const [submitted, setSubmitted] = useState(false);
-
   return (
-    <div className="container max-w-2xl py-4">
+    <div className="sim-shell py-8">
       <p className="eyebrow text-center">SIMULATION GRATUITE</p>
-      <Stepper current={step} />
-
-      {step === 1 && (
-        <div className="mt-4 rounded-card border border-line bg-white p-6 shadow-card">
-          <h1 className="font-display text-xl text-navy">Quel est votre projet ?</h1>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {needs.map((n) => (
-              <label
-                key={n.slug}
-                className={`flex min-h-[150px] cursor-pointer items-center gap-4 rounded-lg border p-5 text-sm font-semibold ${
-                  need === n.slug ? "border-teal2 bg-soft text-navy" : "border-line text-muted"
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="need"
-                  value={n.slug}
-                  checked={need === n.slug}
-                  onChange={() => setNeed(n.slug)}
-                  className="h-4 w-4 accent-teal2"
-                />
-                {n.label}
-              </label>
-            ))}
-          </div>
-          <button
-            type="button"
-            disabled={!need}
-            onClick={() => setStep(2)}
-            className="btn btn-primary mt-6 disabled:opacity-50"
-          >
-            CONTINUER <ArrowRight size={16} />
-          </button>
-        </div>
-      )}
-
-      {step === 2 && (
-        <div className="mt-4 rounded-card border border-line bg-white p-6 shadow-card">
-          <h1 className="font-display text-xl text-navy">Où se situe votre logement ?</h1>
-          <input
-            placeholder="Code postal"
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
-            inputMode="numeric"
-            className="mt-5 w-full rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
-          />
-          <div className="mt-6 flex justify-between">
-            <button type="button" onClick={() => setStep(1)} className="btn btn-outline">
-              <ArrowLeft size={16} /> RETOUR
-            </button>
-            <button
-              type="button"
-              disabled={postalCode.length < 4}
-              onClick={() => setStep(3)}
-              className="btn btn-primary disabled:opacity-50"
-            >
-              CONTINUER <ArrowRight size={16} />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {step === 3 && !submitted && (
-        <div className="mt-4 rounded-card border border-line bg-white p-6 shadow-card">
-          <h1 className="font-display text-xl text-navy">Vos coordonnées</h1>
-          <p className="mt-2 text-sm text-muted">
-            Pour vous envoyer votre estimation personnalisée et les aides auxquelles vous avez
-            droit.
-          </p>
-          <form
-            className="mt-5 grid gap-3"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSubmitted(true);
-            }}
-          >
-            <input
-              required
-              placeholder="Prénom"
-              value={contact.prenom}
-              onChange={(e) => setContact({ ...contact, prenom: e.target.value })}
-              className="rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
-            />
-            <input
-              required
-              type="email"
-              placeholder="Adresse e-mail"
-              value={contact.email}
-              onChange={(e) => setContact({ ...contact, email: e.target.value })}
-              className="rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
-            />
-            <input
-              required
-              type="tel"
-              placeholder="Téléphone"
-              value={contact.telephone}
-              onChange={(e) => setContact({ ...contact, telephone: e.target.value })}
-              className="rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2"
-            />
-            <div className="mt-2 flex justify-between">
-              <button type="button" onClick={() => setStep(2)} className="btn btn-outline">
-                <ArrowLeft size={16} /> RETOUR
-              </button>
-              <button type="submit" className="btn btn-primary">
-                VOIR MON ESTIMATION <ArrowRight size={16} />
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-
-      {step === 3 && submitted && (
-        <div className="mt-4 rounded-card border border-line bg-white p-8 text-center shadow-card">
-          <CheckCircle2 className="mx-auto text-teal2" size={48} />
-          <h1 className="mt-4 font-display text-2xl text-navy">Merci {contact.prenom} !</h1>
-          <p className="mt-3 text-sm text-muted">
-            Un conseiller Label Énergie va étudier votre projet et vous recontacter très
-            prochainement avec une estimation personnalisée et le détail des aides disponibles.
-          </p>
-          <Link href="/" className="btn btn-primary mt-6 justify-center">
-            RETOUR À L&apos;ACCUEIL
-          </Link>
-        </div>
-      )}
+      <h1 className="mt-2 text-center font-display text-2xl text-navy">Estimez vos aides pompe à chaleur</h1>
+      <p className="mx-auto mt-2 max-w-md text-center text-[13px] text-muted">
+        Répondez à 8 questions rapides pour connaître votre profil MaPrimeRénov&apos; et votre fourchette d&apos;aides.
+      </p>
+      <div className="mt-8">
+        <SimulationWizard />
+      </div>
     </div>
   );
 }

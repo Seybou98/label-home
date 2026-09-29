@@ -55,11 +55,18 @@ export const formatEuro = (n: number): string => `${n.toFixed(2).replace(".", ",
 
 export interface ContractPlan {
   slug: FormulaId;
+  /** Badge au-dessus du nom (copie exacte du CRM, affiché en majuscules via CSS). */
+  kicker: string;
   name: string;
-  tagline: string;
   /** Prix d'appel mensuel TTC (« à partir de »). */
   price: number;
   priceLabel: string;
+  /** Précision sous le prix (uniquement sur Standard dans le CRM). */
+  priceNote?: string;
+  /** Paragraphe de présentation. */
+  tagline: string;
+  /** En-tête de liste mis en avant ("Tout le Standard, plus :"), absent sur Standard. */
+  highlightIntro?: string;
   recommended?: boolean;
   features: string[];
 }
@@ -67,36 +74,51 @@ export interface ContractPlan {
 export const contractPlans: ContractPlan[] = [
   {
     slug: "standard",
+    kicker: "Essentiel",
     name: "Standard",
-    tagline: "1 visite annuelle, 2 dépannages/an, attestation officielle et hotline dédiée.",
     price: minMonthly("standard"),
-    priceLabel: `dès ${formatEuro(minMonthly("standard"))} TTC / mois`,
-    features: ["1 visite annuelle préventive", "2 dépannages / an par équipement", "Attestation d'entretien officielle"],
+    priceLabel: `À partir de ${formatEuro(minMonthly("standard"))} /mois`,
+    priceNote: "Selon équipement",
+    tagline: "Pour garder l'essentiel sous contrôle avec une visite annuelle et une priorité d'intervention.",
+    features: [
+      "1 visite annuelle préventive",
+      "2 dépannages/an par équipement",
+      "Délai d'intervention sous 7 jours ouvrés",
+      "Attestation d'entretien officielle",
+      "Accès hotline 01 81 72 39 59",
+    ],
   },
   {
     slug: "premium",
+    kicker: "Recommandé",
     name: "Premium",
-    tagline: "3 dépannages/an, priorité renforcée, 10 % sur les pièces et hotline prioritaire.",
     price: minMonthly("premium"),
-    priceLabel: `dès ${formatEuro(minMonthly("premium"))} TTC / mois`,
+    priceLabel: `À partir de ${formatEuro(minMonthly("premium"))} /mois`,
+    tagline: "Le meilleur équilibre entre sérénité, rapidité d'intervention et confort de suivi au quotidien.",
+    highlightIntro: "Tout le Standard, plus :",
     recommended: true,
     features: [
-      "3 dépannages / an (vs 2 en Standard)",
-      "Délai sous 5 jours ouvrés",
-      "−10 % sur les pièces de rechange",
-      "Hotline technicien senior",
+      "3 dépannages/an (au lieu de 2)",
+      "Délai d'intervention sous 5 jours ouvrés",
+      "Priorité renforcée — tête de file",
+      "−10% sur pièces de rechange",
+      "Hotline directe technicien senior",
     ],
   },
   {
     slug: "vip",
+    kicker: "maximal",
     name: "VIP",
-    tagline: "Dépannages illimités en usage normal, 30 % sur les pièces et main-d'œuvre incluse.",
     price: minMonthly("vip"),
-    priceLabel: `dès ${formatEuro(minMonthly("vip"))} TTC / mois`,
+    priceLabel: `À partir de ${formatEuro(minMonthly("vip"))} /mois`,
+    tagline: "Pour les clients qui veulent une prise en charge prioritaire avec le niveau de service le plus élevé.",
+    highlightIntro: "Tout le Premium, plus :",
     features: [
-      "Dépannages illimités (usage normal)",
-      "−30 % sur les pièces · main-d'œuvre incluse",
-      "Intervention sous 3 jours ouvrés",
+      "Dépannages illimités en usage normal",
+      "Délai d'intervention sous 3 jours ouvrés",
+      "Priorité absolue — premier servi",
+      "−30% sur les pièces de rechange",
+      "Main-d'œuvre dépannage incluse",
     ],
   },
 ];

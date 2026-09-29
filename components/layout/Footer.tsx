@@ -42,6 +42,14 @@ const columns = [
       { label: "Parrainage", href: "/deja-client/parrainage" },
     ],
   },
+  {
+    title: "BESOIN D'AIDE ?",
+    items: [
+      { label: "FAQ", href: "/faq" },
+      { label: "Nous contacter", href: "/contact" },
+      { label: "Zones d'intervention", href: "/zones-intervention" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -80,6 +88,8 @@ export function Footer() {
       <div className="container legal">
         <span>© {new Date().getFullYear()} Label Énergie</span>
         <Link href="/mentions-legales">Mentions légales</Link>
+        <Link href="/cgu">CGU</Link>
+        <Link href="/cgv">CGV</Link>
         <Link href="/confidentialite">Politique de confidentialité</Link>
         <Link href="/cookies">Gestion des cookies</Link>
         <Link href="/plan-du-site">Plan du site</Link>

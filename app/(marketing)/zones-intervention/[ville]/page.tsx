@@ -57,10 +57,9 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
             Rénovation énergétique à <span className="text-teal">{ville.name}</span>.
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-            Label Énergie accompagne les habitants de {ville.name} ({ville.postalCode}, {ville.department}) de
-            l&apos;étude à l&apos;installation : pompe à chaleur, panneaux photovoltaïques, chauffe-eau
-            thermodynamique ou solaire, système solaire combiné et poêle à granulés. Nos équipes sont
-            certifiées RGE, ce qui vous ouvre l&apos;accès à MaPrimeRénov&apos; et aux primes CEE.
+            {ville.scope === "national"
+              ? `Avec plus de 20 équipes techniques internes présentes sur tout le territoire, Label Énergie accompagne aussi les habitants de ${ville.name} (${ville.postalCode}, ${ville.department}) de l'étude à l'installation : pompe à chaleur, panneaux photovoltaïques, chauffe-eau thermodynamique ou solaire, système solaire combiné et poêle à granulés. Nos équipes sont certifiées RGE, ce qui vous ouvre l'accès à MaPrimeRénov' et aux primes CEE.`
+              : `Label Énergie accompagne les habitants de ${ville.name} (${ville.postalCode}, ${ville.department}) de l'étude à l'installation : pompe à chaleur, panneaux photovoltaïques, chauffe-eau thermodynamique ou solaire, système solaire combiné et poêle à granulés. Nos équipes sont certifiées RGE, ce qui vous ouvre l'accès à MaPrimeRénov' et aux primes CEE.`}
           </p>
           {ville.note && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">{ville.note}</p>}
           <div className="mt-6 flex flex-wrap gap-3">
@@ -99,7 +98,8 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         <div className="container">
           <h2 className="qsn-section-heading">Communes voisines desservies</h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-            Depuis {ville.name}, nous intervenons également à {ville.nearby.join(", ")}. Une autre commune ?{" "}
+            {ville.scope === "national" ? "Nous intervenons également à" : `Depuis ${ville.name}, nous intervenons également à`}{" "}
+            {ville.nearby.join(", ")}. Une autre commune ?{" "}
             <Link href="/contact" className="font-semibold text-teal2 underline">
               Demandez-nous
             </Link>

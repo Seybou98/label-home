@@ -7,6 +7,7 @@ import logo from "@/maquette/logo.png";
 import { Sidebar } from "@/components/client-portal/Sidebar";
 import { LogoutButton } from "@/components/client-portal/LogoutButton";
 import { PortalHeaderNav } from "@/components/client-portal/PortalHeaderNav";
+import { PortalMobileNav } from "@/components/client-portal/PortalMobileNav";
 import { PortalFooterCta } from "@/components/client-portal/PortalFooterCta";
 import { getSession } from "@/lib/auth/session";
 import { getPortalData } from "@/lib/portal/data";
@@ -41,7 +42,10 @@ export default async function ClientPortalLayout({ children }: { children: React
               )}
             </Link>
             <span className="hidden text-xs font-semibold text-navy sm:inline">Bonjour, {session.name}</span>
-            <LogoutButton />
+            <div className="hidden md:block">
+              <LogoutButton />
+            </div>
+            <PortalMobileNav />
           </div>
         </div>
       </header>

@@ -418,7 +418,10 @@ async function loadPortal(clientId: string, source: string, name: string, email:
 function toContract(id: string, x: Doc, m: Doc | undefined, today: string, docId?: string, hasPdf?: boolean): PortalContract {
   const start = toIsoDay(x.contractStartDate);
   const end = toIsoDay(x.contractEndDate) ?? toIsoDay(m?.contractEndDate);
-  const pendingSignature = str(x.signatureStatus || m?.signatureStatus) === "pending";
+  // Le CRM met parfois à jour `maintenances.signatureStatus` sans réussir à mettre à jour `contracts.signatureStatus`
+  // (webhook DocuSign) : un "signé" de n'importe quelle des deux sources fait foi.
+  const signed = x.signatureStatus === "signed" || m?.signatureStatus === "signed";
+  const pendingSignature = !signed && (x.signatureStatus === "pending" || m?.signatureStatus === "pending");
   const status: PortalContract["status"] = pendingSignature
     ? "signature"
     : end && end < today

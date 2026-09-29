@@ -28,12 +28,12 @@ import { Reveal } from "@/components/animation/Reveal";
 import { SectionTitle } from "@/components/home/SectionTitle";
 import { siteConfig } from "@/lib/site";
 import {
-  conseilsArticles,
   conseilsCategories,
   conseilsGuides,
   conseilsHeroTicks,
   conseilsTips,
 } from "@/lib/content/conseilsPage";
+import { articles } from "@/lib/content/articles";
 
 export const metadata: Metadata = buildMetadata({
   title: "Conseils énergie : guides pompe à chaleur, solaire, aides",
@@ -166,20 +166,24 @@ export default function ConseilsPage() {
           <div>
             <SectionTitle title="Articles &amp; conseils récents" align="left" />
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {conseilsArticles.map((a) => (
-                <article key={a.title} className="article-card">
+              {articles.map((a) => (
+                <Link key={a.slug} href={`/conseils/${a.slug}`} className="article-card">
                   <div className="relative h-32">
                     <Image src={a.image} alt={a.title} fill sizes="(max-width: 900px) 50vw, 20vw" style={{ objectFit: "cover" }} loading="lazy" />
                   </div>
                   <div className="p-4">
-                    <p className="article-card-date">{a.date}</p>
+                    <p className="article-card-date">
+                      {new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" }).format(
+                        new Date(`${a.publishedAt}T12:00:00Z`),
+                      )}
+                    </p>
                     <h3 className="mt-2 text-sm font-bold text-navy">{a.title}</h3>
-                    <p className="mt-2 text-xs text-muted">{a.text}</p>
-                    <Link href="/conseils" className="variant-link mt-4">
+                    <p className="mt-2 text-xs text-muted">{a.excerpt}</p>
+                    <span className="variant-link mt-4">
                       Lire l&apos;article <ArrowRight size={14} />
-                    </Link>
+                    </span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </div>

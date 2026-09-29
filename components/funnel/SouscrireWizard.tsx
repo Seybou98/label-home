@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Loader2, LogIn, ShieldCheck } from "lucide-react";
 import { useContractFunnel, type SouscrireStep } from "@/components/funnel/FunnelContext";
+import { FormulaCard } from "@/components/funnel/FormulaCard";
 import { Stepper } from "@/components/funnel/Stepper";
 import {
   contractPlans,
@@ -41,9 +42,9 @@ const STEPS: { key: SouscrireStep; label: string }[] = [
 ];
 
 const CONFIRMATION_KEY = "label-energie-souscription-confirmation";
-const inputClass = "rounded-md border border-line px-3 py-3 text-xs text-ink outline-none focus:border-teal2";
-const labelClass = "grid gap-1.5 text-[11px] font-bold text-navy";
-const card = "mt-4 rounded-card border border-line bg-white p-6 shadow-card";
+const inputClass = "rounded-md border border-line px-3.5 py-3 text-[14.5px] text-ink outline-none focus:border-teal2";
+const labelClass = "grid gap-2 text-[13px] font-bold text-navy";
+const card = "mt-4 rounded-card border border-line bg-white p-6 shadow-card sm:p-8";
 
 const productLabel = (id: string) => equipmentTypes.find((e) => e.slug === id)?.label ?? id;
 
@@ -107,6 +108,7 @@ export function SouscrireWizard({ prefill }: { prefill: WizardPrefill | null }) 
       {state.step === "formule" && (
         <FormuleStep
           selected={state.formule}
+          products={state.products}
           onSelect={(f) => update({ formule: f })}
           onNext={() => go("produit")}
         />
@@ -210,15 +212,22 @@ function NavButtons({
   busy?: boolean;
 }) {
   return (
-    <div className="mt-6 flex items-center justify-between gap-3">
+    // Empilés pleine largeur sur mobile (un libellé long comme "ENVOYER MON CONTRAT POUR SIGNATURE" ne tient
+    // pas à côté de "PRÉCÉDENT" sans se comprimer en une colonne de texte illisible) ; côte à côte à partir de sm.
+    <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
       {onBack ? (
-        <button type="button" onClick={onBack} disabled={busy} className="btn btn-outline">
+        <button type="button" onClick={onBack} disabled={busy} className="btn btn-outline w-full text-[13px] sm:w-auto">
           <ArrowLeft size={16} /> PRÉCÉDENT
         </button>
       ) : (
-        <span />
+        <span className="hidden sm:block" />
       )}
-      <button type="button" onClick={onNext} disabled={disabled || busy} className="btn btn-primary disabled:opacity-50">
+      <button
+        type="button"
+        onClick={onNext}
+        disabled={disabled || busy}
+        className="btn btn-primary w-full text-[13px] disabled:opacity-50 sm:w-auto"
+      >
         {busy ? <Loader2 size={16} className="animate-spin" /> : null}
         {nextLabel} {!busy && <ArrowRight size={16} />}
       </button>
@@ -228,47 +237,23 @@ function NavButtons({
 
 function FormuleStep({
   selected,
+  products,
   onSelect,
   onNext,
 }: {
   selected: string;
+  products: ProductId[];
   onSelect: (f: "standard" | "premium" | "vip") => void;
   onNext: () => void;
 }) {
   return (
     <div className="mt-4">
-      <h1 className="font-display text-xl text-navy">Choisissez votre formule d&apos;entretien</h1>
-      <p className="mt-2 text-sm text-muted">Le tarif s&apos;applique par équipement et par mois, sur un contrat d&apos;un an.</p>
+      <h1 className="font-display text-2xl text-navy">Choisissez votre formule</h1>
+      <p className="mt-2.5 text-[15px] text-muted">Le tarif s&apos;applique par équipement et par mois, sur un contrat d&apos;un an.</p>
       <div className="mt-6 grid gap-5 md:grid-cols-3">
-        {contractPlans.map((plan) => {
-          const on = selected === plan.slug;
-          return (
-            <button
-              key={plan.slug}
-              type="button"
-              onClick={() => onSelect(plan.slug)}
-              className={`relative rounded-card border bg-white p-5 text-left shadow-card transition ${
-                on ? "border-teal2 ring-2 ring-teal2" : "border-line"
-              }`}
-            >
-              {plan.recommended && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-teal2 px-3 py-1 text-[10px] font-extrabold text-white">
-                  RECOMMANDÉ
-                </span>
-              )}
-              <h3 className="text-sm font-bold text-navy">{plan.name}</h3>
-              <ul className="mt-3 grid gap-1.5">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-xs text-muted">
-                    <Check className="mt-0.5 shrink-0 text-teal2" size={14} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 font-display text-lg text-navy">{plan.priceLabel}</p>
-            </button>
-          );
-        })}
+        {contractPlans.map((plan) => (
+          <FormulaCard key={plan.slug} plan={plan} active={selected === plan.slug} onSelect={onSelect} products={products} />
+        ))}
       </div>
       <NavButtons onNext={onNext} disabled={!selected} />
     </div>
@@ -290,8 +275,8 @@ function ProduitStep({
 }) {
   return (
     <div className={card}>
-      <h1 className="font-display text-xl text-navy">Quels équipements souhaitez-vous entretenir ?</h1>
-      <p className="mt-2 text-sm text-muted">Sélectionnez un ou plusieurs équipements.</p>
+      <h1 className="font-display text-2xl text-navy">Quels équipements souhaitez-vous entretenir ?</h1>
+      <p className="mt-2.5 text-[15px] text-muted">Sélectionnez un ou plusieurs équipements.</p>
       <div className="mt-6 grid gap-2 sm:grid-cols-2">
         {equipmentTypes.map((eq) => {
           const on = selected.includes(eq.slug);
@@ -301,13 +286,13 @@ function ProduitStep({
               type="button"
               onClick={() => onToggle(eq.slug)}
               aria-pressed={on}
-              className={`flex items-center justify-between gap-3 rounded-md border p-3 text-left text-xs font-semibold ${
+              className={`flex items-center justify-between gap-3 rounded-md border p-3.5 text-left text-[13.5px] font-semibold ${
                 on ? "border-teal2 bg-soft text-navy" : "border-line text-muted"
               }`}
             >
               <span>
                 {eq.label}
-                <span className="mt-0.5 block text-[11px] font-medium text-teal2">
+                <span className="mt-1 block text-[12.5px] font-medium text-teal2">
                   {formatEuro(productPrice(eq.slug, formule))} TTC / mois
                 </span>
               </span>
@@ -352,11 +337,11 @@ function EquipementStep({
 
   return (
     <div className={card}>
-      <p className="text-[11px] font-bold text-teal2">
+      <p className="text-xs font-bold text-teal2">
         ÉQUIPEMENT {index + 1} / {total}
       </p>
-      <h1 className="mt-1 font-display text-xl text-navy">{productLabel(productId)}</h1>
-      <p className="mt-2 text-sm text-muted">Ces informations figureront sur votre contrat.</p>
+      <h1 className="mt-1 font-display text-2xl text-navy">{productLabel(productId)}</h1>
+      <p className="mt-2.5 text-[15px] text-muted">Ces informations figureront sur votre contrat.</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <label className={labelClass}>
@@ -390,7 +375,7 @@ function EquipementStep({
         </label>
       </div>
       {showErrors && missing && (
-        <p role="alert" className="mt-3 text-xs text-red-600">
+        <p role="alert" className="mt-3 text-[13px] text-red-600">
           Renseignez la marque, le modèle et la date de mise en service.
         </p>
       )}
@@ -420,8 +405,8 @@ function RecapStep({
   const plan = contractPlans.find((p) => p.slug === state.formule);
   return (
     <div className={card}>
-      <h1 className="font-display text-xl text-navy">Récapitulatif de votre contrat</h1>
-      <p className="mt-2 text-sm text-muted">
+      <h1 className="font-display text-2xl text-navy">Récapitulatif de votre contrat</h1>
+      <p className="mt-2.5 text-[15px] text-muted">
         Formule <strong className="text-navy">{plan?.name}</strong> · contrat d&apos;un an
       </p>
 
@@ -429,17 +414,17 @@ function RecapStep({
         {state.products.map((id, idx) => {
           const d = state.equipment[id];
           return (
-            <li key={id} className="flex items-start justify-between gap-3 rounded-md border border-line p-3">
-              <div className="text-xs">
+            <li key={id} className="flex items-start justify-between gap-3 rounded-md border border-line p-3.5">
+              <div className="text-[13.5px]">
                 <p className="font-bold text-navy">{productLabel(id)}</p>
                 <p className="mt-1 text-muted">
                   {d?.marque} {d?.modele} · mise en service le {d?.dateMiseEnService.split("-").reverse().join("/")}
                 </p>
-                <button type="button" onClick={() => onEdit(idx)} className="mt-1 text-[11px] font-bold text-teal2">
+                <button type="button" onClick={() => onEdit(idx)} className="mt-1.5 text-[12.5px] font-bold text-teal2">
                   Modifier
                 </button>
               </div>
-              <p className="whitespace-nowrap text-xs font-bold text-navy">
+              <p className="whitespace-nowrap text-[13.5px] font-bold text-navy">
                 {formatEuro(productPrice(id, state.formule as "standard"))} / mois
               </p>
             </li>
@@ -448,18 +433,18 @@ function RecapStep({
       </ul>
 
       <div className="mt-4 flex items-center justify-between rounded-md bg-soft p-4">
-        <span className="text-xs font-bold text-navy">Total mensuel TTC</span>
-        <span className="font-display text-xl text-navy">{formatEuro(monthly)}</span>
+        <span className="text-[13.5px] font-bold text-navy">Total mensuel TTC</span>
+        <span className="font-display text-2xl text-navy">{formatEuro(monthly)}</span>
       </div>
 
       {loggedIn ? (
         <NavButtons onBack={onBack} onNext={onNext} />
       ) : (
         <div className="mt-6 rounded-md border border-teal2 bg-soft p-4">
-          <p className="flex items-center gap-2 text-xs font-bold text-navy">
+          <p className="flex items-center gap-2 text-[13.5px] font-bold text-navy">
             <LogIn size={16} className="text-teal2" /> Connexion requise pour continuer
           </p>
-          <p className="mt-2 text-xs leading-relaxed text-muted">
+          <p className="mt-2 text-[13px] leading-relaxed text-muted">
             Déjà client ? Connectez-vous avec le code reçu par e-mail. Nouveau client ? Créez votre espace en quelques
             secondes (onglet « Inscription »). Votre sélection est conservée.
           </p>
@@ -507,15 +492,15 @@ function PaiementStep({
 
   return (
     <div className={card}>
-      <h1 className="font-display text-xl text-navy">Planification &amp; paiement</h1>
-      <p className="mt-2 text-sm text-muted">
+      <h1 className="font-display text-2xl text-navy">Planification &amp; paiement</h1>
+      <p className="mt-2.5 text-[15px] text-muted">
         Le contrat démarre aujourd&apos;hui pour une durée d&apos;un an. Le paiement se fait par prélèvement mensuel.
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className={labelClass}>
           Montant mensuel (calculé)
-          <div className="rounded-md border border-line bg-soft px-3 py-3 text-xs text-ink">{formatEuro(monthly)} TTC</div>
+          <div className="rounded-md border border-line bg-soft px-3.5 py-3 text-[14.5px] text-ink">{formatEuro(monthly)} TTC</div>
         </div>
         <label className={labelClass}>
           Jour de prélèvement *
@@ -586,7 +571,7 @@ function PaiementStep({
         </label>
       </div>
 
-      <p className="mt-5 flex items-start gap-2 rounded-md bg-soft p-3 text-xs leading-relaxed text-muted">
+      <p className="mt-5 flex items-start gap-2.5 rounded-md bg-soft p-3.5 text-[13px] leading-relaxed text-muted">
         <ShieldCheck size={16} className="mt-0.5 shrink-0 text-teal2" />
         <span>
           Vous ne saisissez pas votre IBAN ici. Après la signature du contrat, un lien sécurisé GoCardless est envoyé à{" "}
@@ -595,7 +580,7 @@ function PaiementStep({
       </p>
 
       {showErrors && invalid && (
-        <p role="alert" className="mt-3 text-xs text-red-600">
+        <p role="alert" className="mt-3 text-[13px] text-red-600">
           Complétez les champs signalés pour continuer.
         </p>
       )}
@@ -617,8 +602,8 @@ function NotesStep({
 }) {
   return (
     <div className={card}>
-      <h1 className="font-display text-xl text-navy">Une remarque pour notre équipe ?</h1>
-      <p className="mt-2 text-sm text-muted">Facultatif : accès au logement, disponibilités, précisions sur vos équipements…</p>
+      <h1 className="font-display text-2xl text-navy">Une remarque pour notre équipe ?</h1>
+      <p className="mt-2.5 text-[15px] text-muted">Facultatif : accès au logement, disponibilités, précisions sur vos équipements…</p>
       <textarea
         className={`${inputClass} mt-5 min-h-[140px] w-full`}
         maxLength={1000}
@@ -626,7 +611,7 @@ function NotesStep({
         onChange={(e) => onChange(e.target.value)}
         placeholder="Votre message"
       />
-      <p className="mt-1 text-right text-[10px] text-muted">{notes.length} / 1000</p>
+      <p className="mt-1.5 text-right text-[11.5px] text-muted">{notes.length} / 1000</p>
       <NavButtons onBack={onBack} onNext={onNext} />
     </div>
   );
@@ -783,30 +768,33 @@ function ApercuStep({
 
   return (
     <div className={card}>
-      <h1 className="font-display text-xl text-navy">Aperçu de votre contrat</h1>
-      <p className="mt-2 text-sm text-muted">
+      <h1 className="font-display text-2xl text-navy">Aperçu de votre contrat</h1>
+      <p className="mt-2.5 text-[15px] text-muted">
         Relisez votre contrat n° {state.contractNumber}. En l&apos;envoyant, vous le recevrez par e-mail pour signature
         électronique.
       </p>
 
       <div className="mt-5 overflow-hidden rounded-md border border-line bg-soft">
         {generating && (
-          <div className="flex h-[300px] items-center justify-center gap-2 text-xs text-muted">
+          <div className="flex h-[300px] items-center justify-center gap-2 text-[13px] text-muted">
             <Loader2 size={16} className="animate-spin" /> Génération du contrat…
           </div>
         )}
-        {pdfUrl && <iframe title="Aperçu du contrat" src={pdfUrl} className="hidden h-[560px] w-full bg-white sm:block" />}
         {pdfUrl && (
-          <div className="p-4 text-center text-xs sm:hidden">
-            <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-              OUVRIR L&apos;APERÇU DU CONTRAT (PDF)
+          // Affiché sur toutes les tailles : les navigateurs mobiles rendent le PDF dans l'iframe (pas de redirection).
+          <iframe title="Aperçu du contrat" src={pdfUrl} className="h-[75vh] max-h-[640px] min-h-[380px] w-full bg-white sm:h-[560px]" />
+        )}
+        {pdfUrl && (
+          <div className="border-t border-line p-3 text-center">
+            <a href={pdfUrl} download={`${state.contractNumber}.pdf`} className="text-[12px] font-bold text-teal2">
+              Télécharger le PDF
             </a>
           </div>
         )}
       </div>
 
       {error && (
-        <p role="alert" className="mt-4 rounded-md border border-red-300 bg-red-50 p-3 text-xs text-red-700">
+        <p role="alert" className="mt-4 rounded-md border border-red-300 bg-red-50 p-3 text-[13px] text-red-700">
           {error}
         </p>
       )}

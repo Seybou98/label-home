@@ -16,14 +16,9 @@ export async function POST(request: Request) {
   }
 
   await db()
-    .collection("contact_requests")
+    .collection("simulation_requests")
     .add({
-      name: String(data.name ?? "").slice(0, 200),
-      phone: String(data.phone ?? "").slice(0, 40),
-      email: String(data.email ?? "").slice(0, 200),
-      who: String(data.who ?? "").slice(0, 200),
-      subject: String(data.subject ?? "").slice(0, 200),
-      message: String(data.message ?? "").slice(0, 5000),
+      ...data,
       status: "nouveau",
       createdAt: new Date().toISOString(),
     });

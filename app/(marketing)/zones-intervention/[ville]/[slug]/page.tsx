@@ -45,7 +45,10 @@ export default async function VilleServicePage({
   const faq = [
     {
       question: `Label Énergie installe-t-elle une ${label.toLowerCase()} à ${ville.name} ?`,
-      answer: `Oui. Nos équipes interviennent à ${ville.name} (${ville.postalCode}) et dans les communes voisines : ${ville.nearby.join(", ")}. L'étude de votre projet est gratuite.`,
+      answer:
+        ville.scope === "national"
+          ? `Oui. Avec plus de 20 équipes techniques internes sur tout le territoire, nous intervenons à ${ville.name} (${ville.postalCode}) et dans les environs : ${ville.nearby.join(", ")}. L'étude de votre projet est gratuite.`
+          : `Oui. Nos équipes interviennent à ${ville.name} (${ville.postalCode}) et dans les communes voisines : ${ville.nearby.join(", ")}. L'étude de votre projet est gratuite.`,
     },
     {
       question: `Quelles aides pour une installation à ${ville.name} ?`,
@@ -95,8 +98,9 @@ export default async function VilleServicePage({
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">{solution.intro}</p>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-            Label Énergie, entreprise RGE, vous accompagne à {ville.name} ({ville.postalCode}) : étude gratuite,
-            installation par nos équipes et suivi après-vente.
+            {ville.scope === "national"
+              ? `Label Énergie, entreprise RGE, vous accompagne aussi à ${ville.name} (${ville.postalCode}) grâce à ses équipes techniques présentes sur tout le territoire : étude gratuite, installation par nos équipes et suivi après-vente.`
+              : `Label Énergie, entreprise RGE, vous accompagne à ${ville.name} (${ville.postalCode}) : étude gratuite, installation par nos équipes et suivi après-vente.`}
           </p>
           {ville.note && <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{ville.note}</p>}
           <div className="mt-6 flex flex-wrap gap-3">

@@ -19,7 +19,8 @@ import { buildMetadata, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { EquipmentFinder } from "@/components/entretien/EquipmentFinder";
-import { contractPlans, entretienFaq, entretienSteps, equipmentTypes, formatEuro } from "@/lib/content/entretien";
+import { FormulaCard } from "@/components/funnel/FormulaCard";
+import { contractPlans, entretienFaq, entretienSteps, equipmentTypes } from "@/lib/content/entretien";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contrat d'entretien : pompe à chaleur, solaire, chauffe-eau",
@@ -148,39 +149,7 @@ export default function EntretienPage() {
           <h2 className="text-center font-display text-xl text-navy">Nos contrats d&apos;entretien</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {contractPlans.map((plan) => (
-              <div
-                key={plan.slug}
-                className={`relative rounded-card border bg-white p-6 shadow-card ${
-                  plan.recommended ? "border-teal2 ring-2 ring-teal2" : "border-line"
-                }`}
-              >
-                {plan.recommended && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-teal2 px-3 py-1 text-[10px] font-extrabold text-white">
-                    RECOMMANDÉ
-                  </span>
-                )}
-                <h3 className="text-center text-base font-bold text-navy">{plan.name}</h3>
-                <p className="mt-1 text-center text-xs font-semibold text-teal2">{plan.tagline}</p>
-                <ul className="mt-4 grid gap-2">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-xs text-muted">
-                      <Check className="mt-0.5 shrink-0 text-teal2" size={14} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-5 text-center">
-                  <span className="text-xs text-muted">À partir de </span>
-                  <span className="font-display text-2xl text-navy">{formatEuro(plan.price)}</span>
-                  <span className="text-xs text-muted"> TTC / mois</span>
-                </p>
-                <Link
-                  href={`/deja-client/entretien/souscrire?formule=${plan.slug}`}
-                  className={`btn mt-4 w-full ${plan.recommended ? "btn-primary" : "btn-outline"}`}
-                >
-                  CHOISIR CETTE OFFRE
-                </Link>
-              </div>
+              <FormulaCard key={plan.slug} plan={plan} href={`/deja-client/entretien/souscrire?formule=${plan.slug}`} />
             ))}
           </div>
           <p className="mt-4 text-center text-[10px] text-muted">

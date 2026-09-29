@@ -35,6 +35,7 @@ export const navSections: NavSection[] = [
   },
   { label: "Réalisations", href: "/realisations" },
   { label: "Conseils", href: "/conseils" },
+  { label: "FAQ", href: "/faq" },
   {
     label: "À propos",
     href: "/a-propos/qui-sommes-nous",

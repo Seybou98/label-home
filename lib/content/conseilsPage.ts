@@ -84,40 +84,6 @@ export const conseilsGuides: ConseilGuide[] = [
   },
 ];
 
-export interface ConseilArticle {
-  date: string;
-  title: string;
-  text: string;
-  image: string;
-}
-
-export const conseilsArticles: ConseilArticle[] = [
-  {
-    date: "24 MAI 2024",
-    title: "MaPrimeRénov' 2024 : ce qui change",
-    text: "Nouveaux montants, nouvelles conditions... on vous explique tout simplement.",
-    image: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    date: "15 MAI 2024",
-    title: "Comment réduire votre facture d'énergie ?",
-    text: "10 astuces simples et efficaces pour faire baisser vos consommations.",
-    image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    date: "08 MAI 2024",
-    title: "Rénovation énergétique : par où commencer ?",
-    text: "Les étapes clés pour réussir votre projet de rénovation sereinement.",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    date: "02 MAI 2024",
-    title: "Isolation : le premier pas vers les économies",
-    text: "Pourquoi l'isolation est essentielle et quelles solutions existent.",
-    image: "https://images.unsplash.com/photo-1621905252472-943afaa20e20?auto=format&fit=crop&w=800&q=80",
-  },
-];
-
 export const conseilsTips = [
   {
     icon: "Thermometer",

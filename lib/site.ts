@@ -8,9 +8,9 @@ export const siteConfig = {
   phoneDisplay: "01 84 80 40 00",
   email: "contact@labelenergie.fr",
   address: {
-    streetAddress: "12 avenue de la République",
-    addressLocality: "Melun",
-    postalCode: "77000",
+    streetAddress: "3 allée du 1er Mai",
+    addressLocality: "Croissy-Beaubourg",
+    postalCode: "77183",
     addressRegion: "Île-de-France",
     addressCountry: "FR",
   },

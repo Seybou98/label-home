@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         "/espace-client",
         "/espace-client/",
         "/connexion",
-        "/simuler-mon-projet",
+        "/simuler-mon-projet/confirmation",
         "/deja-client/entretien/souscrire",
         "/deja-client/entretien/souscrire/",
       ],

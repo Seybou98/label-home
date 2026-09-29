@@ -19,7 +19,7 @@ import {
 import { siteConfig } from "@/lib/site";
 import { logout } from "./LogoutButton";
 
-const items: { label: string; href: string; sub?: string; icon: LucideIcon }[] = [
+export const sidebarItems: { label: string; href: string; sub?: string; icon: LucideIcon }[] = [
   { label: "Accueil", href: "/espace-client", icon: Home },
   { label: "Mon projet", href: "/espace-client/mon-projet", sub: "Suivi de mon installation", icon: FileText },
   { label: "Mes documents", href: "/espace-client/documents", icon: FileText },
@@ -38,7 +38,7 @@ export function Sidebar() {
   return (
     <aside className="portal-sidebar hidden w-64 shrink-0 border-r border-line bg-white py-4 md:block">
       <nav className="grid gap-1 px-3">
-        {items.map((item) => {
+        {sidebarItems.map((item) => {
           const active = pathname === item.href;
           return (
             <Link

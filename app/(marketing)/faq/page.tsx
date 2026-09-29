@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import { buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { PageHeader } from "@/components/layout/PageHeader";
+import { FaqExperience } from "@/components/marketing/FaqExperience";
 
 export const metadata: Metadata = buildMetadata({
-  title: "FAQ : questions fréquentes sur nos solutions énergétiques",
+  title: "FAQ & Centre d'aide : questions fréquentes",
   description:
-    "Retrouvez les réponses aux questions les plus fréquentes sur la pompe à chaleur, le solaire, les aides financières et l'entretien de vos équipements.",
+    "Retrouvez les réponses aux questions les plus fréquentes sur nos solutions, les aides financières, l'installation, l'entretien et votre espace client.",
   path: "/faq",
 });
 
-const faq = [
+const faqForJsonLd = [
   {
     question: "Quelles aides puis-je obtenir pour mon projet ?",
     answer:
@@ -23,41 +23,22 @@ const faq = [
       "Oui, Label Énergie est une entreprise certifiée RGE (Reconnu Garant de l'Environnement), condition indispensable pour bénéficier des aides de l'État.",
   },
   {
-    question: "Proposez-vous un contrat d'entretien pour mes équipements ?",
+    question: "Quels sont les délais d'installation ?",
     answer:
-      "Oui, nous proposons plusieurs formules d'entretien (Standard, Premium, VIP) pour vos pompes à chaleur, systèmes solaires combinés, chauffe-eau thermodynamiques, poêles et chaudières à granulés.",
+      "Comptez généralement quelques semaines entre la signature du devis et la pose. L'installation elle-même dure 1 à 2 jours pour une pompe à chaleur, et 1 jour pour des panneaux photovoltaïques.",
   },
   {
-    question: "Combien de temps dure une installation ?",
-    answer:
-      "La durée dépend du type d'équipement : comptez généralement 1 à 2 jours pour une pompe à chaleur ou une climatisation, et 1 jour pour des panneaux photovoltaïques.",
+    question: "Les équipements sont-ils garantis ?",
+    answer: "Oui, nos équipements bénéficient de la garantie constructeur, de notre garantie de pose et de l'assurance décennale.",
   },
 ];
 
 export default function FaqPage() {
   return (
     <>
-      <JsonLd data={faqJsonLd(faq)} />
-      <Breadcrumb items={[{ name: "FAQ", path: "/faq" }]} />
-      <section className="section">
-        <div className="container">
-          <PageHeader
-            eyebrow="BESOIN D'AIDE ?"
-            title="Questions fréquentes"
-            description="Retrouvez les réponses aux questions les plus posées sur nos solutions, les aides financières et le suivi de votre projet."
-          />
-          <div className="mt-6 grid gap-3">
-            {faq.map((item) => (
-              <details key={item.question} className="rounded-card border border-line p-4">
-                <summary className="cursor-pointer text-sm font-bold text-navy">
-                  {item.question}
-                </summary>
-                <p className="mt-2 text-sm text-muted">{item.answer}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <JsonLd data={faqJsonLd(faqForJsonLd)} />
+      <Breadcrumb items={[{ name: "Centre d'aide / FAQ", path: "/faq" }]} />
+      <FaqExperience />
     </>
   );
 }

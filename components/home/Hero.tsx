@@ -64,7 +64,9 @@ export function Hero() {
             />
           </div>
           <div className="hero-rating">
-            <span className="google-g">G</span>
+            <span className="google-g">
+              <img src="/images/google-logo.webp" alt="Google" />
+            </span>
             <strong>{siteConfig.rating.valueLabel}/5</strong>
             <span className="stars">★★★★★</span>
             <small>Basé sur +{siteConfig.rating.count} avis clients</small>

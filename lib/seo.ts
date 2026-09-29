@@ -9,8 +9,11 @@ interface PageSeoInput {
   image?: string;
 }
 
+const DEFAULT_OG_IMAGE = "/og-default.png";
+
 export function buildMetadata({ title, description, path, noIndex, image }: PageSeoInput): Metadata {
   const url = `${siteConfig.url}${path}`;
+  const ogImage = image ?? DEFAULT_OG_IMAGE;
   return {
     title,
     description,
@@ -23,13 +26,13 @@ export function buildMetadata({ title, description, path, noIndex, image }: Page
       siteName: siteConfig.name,
       locale: "fr_FR",
       type: "website",
-      images: image ? [{ url: image }] : undefined,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: image ? [image] : undefined,
+      images: [ogImage],
     },
   };
 }
@@ -92,6 +95,21 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       name: item.name,
       item: `${siteConfig.url}${item.path}`,
     })),
+  };
+}
+
+export function articleJsonLd(input: { title: string; description: string; path: string; image: string; publishedAt: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: input.title,
+    description: input.description,
+    image: `${siteConfig.url}${input.image}`,
+    datePublished: input.publishedAt,
+    dateModified: input.publishedAt,
+    author: { "@type": "Organization", name: siteConfig.name },
+    publisher: { "@type": "Organization", name: siteConfig.name },
+    mainEntityOfPage: `${siteConfig.url}${input.path}`,
   };
 }
 
