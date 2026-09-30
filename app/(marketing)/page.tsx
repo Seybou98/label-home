@@ -12,7 +12,7 @@ import { AppPromoBlock } from "@/components/home/AppPromoBlock";
 import { ContactStrip } from "@/components/home/ContactStrip";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Label Énergie | Réduisez vos factures d'énergie durablement",
+  title: "Réduisez vos factures d'énergie durablement",
   description:
     "Pompe à chaleur, climatisation, solaire photovoltaïque, eau chaude : Label Énergie étudie, installe et entretient vos équipements. Entreprise RGE, étude gratuite, aides MaPrimeRénov'.",
   path: "/",
