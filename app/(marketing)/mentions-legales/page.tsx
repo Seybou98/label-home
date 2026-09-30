@@ -41,7 +41,7 @@ export default function MentionsLegalesPage() {
 
       <h2>Propriété intellectuelle</h2>
       <p>
-        L&apos;ensemble des contenu présents sur ce site (textes, images, logos, mise en page) est la
+        L&apos;ensemble des contenus présents sur ce site (textes, images, logos, mise en page) est la
         propriété de LABEL ENERGIE ou de ses partenaires, sauf mention contraire, et est protégé par le
         droit de la propriété intellectuelle. Toute reproduction, même partielle, est soumise à
         autorisation préalable.
