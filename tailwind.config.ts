@@ -12,7 +12,7 @@ const config: Config = {
         navy2: "#071b31",
         brandblue: "#0877bd",
         teal: "#1db79c",
-        teal2: "#08a88e",
+        teal2: "#0a7d6c",
         ink: "#132e4e",
         muted: "#60738b",
         line: "#e7eef3",

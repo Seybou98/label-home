@@ -46,6 +46,8 @@ export function localBusinessJsonLd() {
     url: siteConfig.url,
     telephone: siteConfig.phone,
     email: siteConfig.email,
+    image: `${siteConfig.url}/og-default.png`,
+    priceRange: "€€",
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.streetAddress,

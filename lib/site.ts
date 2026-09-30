@@ -4,8 +4,8 @@ export const siteConfig = {
   url: "https://www.labelenergie.fr",
   description:
     "Label Énergie installe vos pompes à chaleur, climatisations, panneaux solaires et solutions d'eau chaude. Entreprise RGE, étude gratuite, aides MaPrimeRénov' et SAV assurés.",
-  phone: "+33184804000",
-  phoneDisplay: "01 84 80 40 00",
+  phone: "+33181723959",
+  phoneDisplay: "01 81 72 39 59",
   email: "contact@labelenergie.fr",
   address: {
     streetAddress: "3 allée du 1er Mai",

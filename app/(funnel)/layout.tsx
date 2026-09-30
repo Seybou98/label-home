@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, X } from "lucide-react";
 import logo from "@/maquette/logo.png";
+import { siteConfig } from "@/lib/site";
 
 export default function FunnelLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,8 +13,8 @@ export default function FunnelLayout({ children }: { children: React.ReactNode }
             <Image src={logo} alt="Label Energie" className="header-logo" priority />
           </Link>
           <div className="flex items-center gap-4">
-            <a href="tel:+33184804000" className="hidden items-center gap-2 text-xs font-bold text-navy sm:flex">
-              <Phone size={14} /> 01 84 80 40 00
+            <a href={`tel:${siteConfig.phone}`} className="hidden items-center gap-2 text-xs font-bold text-navy sm:flex">
+              <Phone size={14} /> {siteConfig.phoneDisplay}
             </a>
             <Link href="/" aria-label="Quitter le parcours" className="text-muted">
               <X size={20} />
