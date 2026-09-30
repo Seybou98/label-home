@@ -5,7 +5,6 @@ import { Bell } from "lucide-react";
 import { redirect } from "next/navigation";
 import logo from "@/maquette/logo.png";
 import { Sidebar } from "@/components/client-portal/Sidebar";
-import { LogoutButton } from "@/components/client-portal/LogoutButton";
 import { PortalHeaderNav } from "@/components/client-portal/PortalHeaderNav";
 import { PortalMobileNav } from "@/components/client-portal/PortalMobileNav";
 import { PortalFooterCta } from "@/components/client-portal/PortalFooterCta";
@@ -28,7 +27,7 @@ export default async function ClientPortalLayout({ children }: { children: React
     <div className="portal-shell flex flex-col bg-soft">
       <header className="border-b border-line bg-white">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4">
-          <Link href="/espace-client" className="brand shrink-0" aria-label="Label Énergie, espace client">
+          <Link href="/" className="brand shrink-0" aria-label="Label Énergie, retour à l'accueil">
             <Image src={logo} alt="Label Energie" className="header-logo" priority />
           </Link>
           <PortalHeaderNav />
@@ -42,9 +41,6 @@ export default async function ClientPortalLayout({ children }: { children: React
               )}
             </Link>
             <span className="hidden text-xs font-semibold text-navy sm:inline">Bonjour, {session.name}</span>
-            <div className="hidden md:block">
-              <LogoutButton />
-            </div>
             <PortalMobileNav />
           </div>
         </div>
