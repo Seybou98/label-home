@@ -1,4 +1,4 @@
-export const heroImage = "/images/engage.png";
+export const heroImage = "/images/engage.webp";
 export const teamImage =
   "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80";
 export const phoneImage = "/images/app-label.png";

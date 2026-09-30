@@ -32,7 +32,7 @@ export function AppPromoBlock() {
             </span>
           </button>
           <button type="button">
-            <Image src="/images/googl.png" alt="" width={30} height={30} />
+            <Image src="/images/googl.webp" alt="" width={30} height={30} />
             <span>
               DISPONIBLE SUR
               <br />

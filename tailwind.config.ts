@@ -19,8 +19,8 @@ const config: Config = {
         soft: "#f4fafb",
       },
       fontFamily: {
-        sans: ["Poppins", "Arial", "sans-serif"],
-        display: ["Poppins", "Arial", "sans-serif"],
+        sans: ["var(--font-poppins)", "Arial", "sans-serif"],
+        display: ["var(--font-poppins)", "Arial", "sans-serif"],
       },
       boxShadow: {
         card: "0 8px 30px rgba(11,39,71,.08)",
