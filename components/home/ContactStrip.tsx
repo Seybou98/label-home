@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Headphones } from "lucide-react";
 import { Reveal } from "@/components/animation/Reveal";
+import { siteConfig } from "@/lib/site";
 
 export function ContactStrip() {
   return (
@@ -13,7 +14,7 @@ export function ContactStrip() {
         <span>Nos conseillers vous répondent et vous accompagnent gratuitement.</span>
       </div>
       <div className="contact-phone">
-        <strong>01 81 72 39 59</strong>
+        <strong>{siteConfig.phoneDisplay}</strong>
         <span>Lun. - Ven. : 8h - 19h / Sam. : 9h - 17h</span>
       </div>
       <Link href="/contact" className="btn btn-outline">

@@ -85,7 +85,7 @@ export const contractPlans: ContractPlan[] = [
       "2 dépannages/an par équipement",
       "Délai d'intervention sous 7 jours ouvrés",
       "Attestation d'entretien officielle",
-      "Accès hotline 01 81 72 39 59",
+      "Accès hotline 01 84 80 40 00",
     ],
   },
   {

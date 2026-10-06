@@ -235,7 +235,7 @@ export default function CalculerMesAidesPage() {
       <Reveal as="section" className="section">
         <div className="container ca-result-row">
           <div className="ca-result-card">
-            <p className="ca-card-title">Exemple de résultat</p>
+            <p className="ca-card-title">Exemple illustratif</p>
             <div className="ca-result-body">
               <div className="ca-donut">
                 <svg width="160" height="160" viewBox="0 0 42 42" style={{ transform: "rotate(-90deg)" }}>
@@ -264,7 +264,7 @@ export default function CalculerMesAidesPage() {
                   <span>Reste à charge estimé</span>
                   <strong>3 800 €</strong>
                 </div>
-                <p className="ca-remaining-note">sur un projet de 16 000 € TTC</p>
+                <p className="ca-remaining-note">Chiffres indicatifs, sur un projet type de 16 000 € TTC (non contractuel). Votre estimation personnalisée est dans le simulateur ci-dessus.</p>
               </div>
             </div>
           </div>

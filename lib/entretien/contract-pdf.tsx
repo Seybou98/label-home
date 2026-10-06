@@ -481,7 +481,7 @@ function renderPgHdr(): string {
         <img class="pg-hdr-logo-img" src="/Logo_Label_Energie-removebg-preview.png" alt="Label Energie" />
         <div class="pg-hdr-tagline">L'énergie au sens propre</div>
       </div>
-      <div class="pg-hdr-info">Contrat d'Entretien Annuel · 01 81 72 39 59 · sav@labelenergie.fr</div>
+      <div class="pg-hdr-info">Contrat d'Entretien Annuel · 01 84 80 40 00 · sav@labelenergie.fr</div>
     </div>
   `;
 }
@@ -583,7 +583,7 @@ function getPage1Html(data: ContractPdfData): string {
 
     <div class="sub-lbl">Prestataire</div>
     <p class="prest">
-      <strong>LABEL ENERGIE SAS</strong> — SIREN 890 462 625 · 3 allée du 1er Mai, 77183 Croissy-Beaubourg · 01 81 72 39 59 · sav@labelenergie.fr · RGE QualiPAC · QualiSOL · QualiBOIS · QualiPV · Assuré MIC Insurance n°LUN2601434
+      <strong>LABEL ENERGIE SAS</strong> — SIREN 890 462 625 · 3 allée du 1er Mai, 77183 Croissy-Beaubourg · 01 84 80 40 00 · sav@labelenergie.fr · RGE QualiPAC · QualiSOL · QualiBOIS · QualiPV · Assuré MIC Insurance n°LUN2601434
     </p>
 
     <div class="sub-lbl">Client</div>
@@ -655,7 +655,7 @@ function getPage1Html(data: ContractPdfData): string {
       <tbody>
         <tr><td class="feat">Visite préventive annuelle + attestation</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
         <tr><td class="feat">Compte-rendu d'intervention signé</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
-        <tr><td class="feat">Hotline dédiée — 01 81 72 39 59</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
+        <tr><td class="feat">Hotline dédiée — 01 84 80 40 00</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
         <tr><td class="feat">Interventions dépannage incluses / an</td><td>2</td><td>3</td><td>Illimitées*</td></tr>
         <tr><td class="feat">Délai d'intervention prioritaire</td><td>5 j. ouvrés</td><td>4 j. ouvrés</td><td>3 j. ouvrés</td></tr>
         <tr><td class="feat">Réduction pièces de rechange</td><td><span class="dsh">—</span></td><td>10 %</td><td>30 %</td></tr>
