@@ -70,6 +70,14 @@ export default function ConfidentialitePage() {
         (Commission Nationale de l&apos;Informatique et des Libertés).
       </p>
 
+      <h2>Application mobile</h2>
+      <p>
+        LABEL ENERGIE édite également une application mobile, disponible sur les magasins d&apos;applications,
+        qui utilise les mêmes services, comptes et données que le présent site (notamment l&apos;espace client).
+        Les données collectées via l&apos;application sont traitées selon les mêmes finalités et avec les mêmes
+        droits que ceux décrits dans la présente politique.
+      </p>
+
       <h2>Cookies</h2>
       <p>
         Le site utilise des cookies strictement nécessaires à son fonctionnement (par exemple pour
