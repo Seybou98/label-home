@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/site";
 export interface PacAirAirContent {
   breadcrumbLabel: string;
   category: string;
@@ -156,7 +157,7 @@ export const pacAirAirContent: PacAirAirContent = {
     stats: [
       { icon: "ShieldCheck", label: "Entreprise RGE", sublabel: "certifiée" },
       { icon: "Home", label: "+12 000", sublabel: "installations réalisées" },
-      { icon: "Users", label: "+5 000", sublabel: "clients accompagnés" },
+      { icon: "Users", label: `+${siteConfig.stats.clients}`, sublabel: "clients accompagnés" },
       { icon: "Star", label: "4,6/5", sublabel: "sur +800 avis Google" },
       { icon: "Award", label: "Plus de 13 ans", sublabel: "d'expérience" },
       { icon: "Bird", label: "Accompagnement", sublabel: "de A à Z" },

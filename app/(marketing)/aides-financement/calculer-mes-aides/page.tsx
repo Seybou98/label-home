@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { Reveal } from "@/components/animation/Reveal";
-import { AidesSimulator } from "@/components/marketing/AidesSimulator";
+import { SimulationWizard } from "@/components/funnel/SimulationWizard";
 
 export const metadata: Metadata = buildMetadata({
   title: "Calculer mes aides à la rénovation énergétique",
@@ -133,7 +133,7 @@ const benefits: { icon: ReactNode; title: string; text: string }[] = [
   { icon: shield, title: "Fiable et à jour", text: "Nos calculs sont basés sur les dernières réglementations." },
   { icon: person, title: "Accompagnement", text: "Nos experts vous accompagnent à chaque étape de votre projet." },
   { icon: paperwork, title: "Démarches simplifiées", text: "Nous nous occupons de toutes les démarches pour vous." },
-  { icon: piggy, title: "Économies garanties", text: "Réduisez significativement le coût de vos travaux." },
+  { icon: piggy, title: "Économies d'énergie", text: "Réduisez significativement le coût de vos travaux." },
 ];
 
 const breakdown = [
@@ -224,8 +224,12 @@ export default function CalculerMesAidesPage() {
         </div>
       </div>
 
-      {/* Simulateur : étapes + formulaire */}
-      <AidesSimulator />
+      {/* Simulateur : même parcours que /simuler-mon-projet */}
+      <section className="section">
+        <div className="sim-shell">
+          <SimulationWizard />
+        </div>
+      </section>
 
       {/* Exemple de résultat */}
       <Reveal as="section" className="section">

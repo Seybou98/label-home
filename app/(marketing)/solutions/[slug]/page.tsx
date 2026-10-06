@@ -5,6 +5,8 @@ import { solutions, solutionSlugs } from "@/lib/content/solutions";
 import { SolutionPageTemplate } from "@/components/solutions/SolutionPageTemplate";
 import { PacAirAirPageTemplate } from "@/components/solutions/PacAirAirPageTemplate";
 import { pacAirAirContent } from "@/lib/content/pacAirAir";
+import { DstPageTemplate } from "@/components/solutions/DstPageTemplate";
+import { dstContent } from "@/lib/content/dst";
 
 export function generateStaticParams() {
   return solutionSlugs.map((slug) => ({ slug }));
@@ -36,6 +38,9 @@ export default async function SolutionPage({
   if (!solution) notFound();
   if (slug === "pompe-a-chaleur-air-air") {
     return <PacAirAirPageTemplate content={pacAirAirContent} />;
+  }
+  if (slug === "solaire-thermique") {
+    return <DstPageTemplate content={dstContent} />;
   }
   return <SolutionPageTemplate solution={solution} />;
 }

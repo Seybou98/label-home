@@ -50,7 +50,7 @@ const heroStats: { icon: LucideIcon; value: string; label: string }[] = [
   { icon: HardHat, value: "20", label: "équipes techniques partout en France" },
   { icon: BadgeCheck, value: "100%", label: "équipes internes (pas de sous-traitance)" },
   { icon: Home, value: siteConfig.stats.installations, label: "installations réalisées" },
-  { icon: Users, value: "+5 000", label: "clients accompagnés depuis 2016" },
+  { icon: Users, value: `+${siteConfig.stats.clients}`, label: "clients accompagnés depuis 2016" },
 ];
 
 const orgTeams = [

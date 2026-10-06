@@ -17,7 +17,8 @@ export function Counter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
-  const [display, setDisplay] = useState(0);
+  // La valeur finale est déjà dans le HTML rendu côté serveur (SEO, lecteurs d'écran) ; l'animation ne fait que la rejouer.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     const el = ref.current;
@@ -32,6 +33,7 @@ export function Counter({
       return;
     }
 
+    setDisplay(0);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {

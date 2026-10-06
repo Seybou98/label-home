@@ -33,6 +33,14 @@ export default function MentionsLegalesPage() {
       <h2>Directeur de la publication</h2>
       <p>Le directeur de la publication est le représentant légal de la société LABEL ENERGIE.</p>
 
+      <h2>Application mobile</h2>
+      <p>
+        LABEL ENERGIE édite également une application mobile, disponible sur les magasins d&apos;applications,
+        qui utilise les mêmes services, comptes et données que le présent site (notamment l&apos;espace client).
+        Les mêmes conditions de traitement des données, décrites dans notre politique de confidentialité,
+        s&apos;appliquent à l&apos;application.
+      </p>
+
       <h2>Hébergement</h2>
       <p>
         Les informations relatives à l&apos;hébergeur du site (raison sociale, adresse) seront précisées ici

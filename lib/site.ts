@@ -24,5 +24,8 @@ export const siteConfig = {
     installations: "+ 12 000",
     collaborators: "90",
     experienceYears: "13",
+    clients: "5 000",
+    installationsPerMonth: "200",
+    technicalTeams: "20",
   },
 };

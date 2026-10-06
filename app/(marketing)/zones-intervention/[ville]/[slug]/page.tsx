@@ -47,7 +47,7 @@ export default async function VilleServicePage({
       question: `Label Énergie installe-t-elle une ${label.toLowerCase()} à ${ville.name} ?`,
       answer:
         ville.scope === "national"
-          ? `Oui. Avec plus de 20 équipes techniques internes sur tout le territoire, nous intervenons à ${ville.name} (${ville.postalCode}) et dans les environs : ${ville.nearby.join(", ")}. L'étude de votre projet est gratuite.`
+          ? `Oui. Avec plus de ${siteConfig.stats.technicalTeams} équipes techniques internes sur tout le territoire, nous intervenons à ${ville.name} (${ville.postalCode}) et dans les environs : ${ville.nearby.join(", ")}. L'étude de votre projet est gratuite.`
           : `Oui. Nos équipes interviennent à ${ville.name} (${ville.postalCode}) et dans les communes voisines : ${ville.nearby.join(", ")}. L'étude de votre projet est gratuite.`,
     },
     {

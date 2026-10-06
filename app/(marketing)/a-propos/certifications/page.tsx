@@ -260,7 +260,7 @@ export default function CertificationsPage() {
               </div>
               <div>
                 <div className="cert-team-stat-value">
-                  <Home size={34} /> +200
+                  <Home size={34} /> +{siteConfig.stats.installationsPerMonth}
                 </div>
                 <span>installations / mois</span>
               </div>

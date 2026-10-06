@@ -61,7 +61,7 @@ const institutionalPartners = [
 ];
 
 const operationalPartners = [
-  { icon: Users, text: "Réseau d'installateurs qualifiés et formés" },
+  { icon: Users, text: "Nos équipes techniques internes, qualifiées et formées" },
   { icon: Truck, text: "Plateformes logistiques et fournisseurs" },
   { icon: ShieldCheck, text: "Assurances et garanties pour votre tranquillité" },
   { icon: Headphones, text: "Service après-vente réactif et local" },

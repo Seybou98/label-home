@@ -101,7 +101,7 @@ const heroBadges: { icon: ReactNode; lines: ReactNode }[] = [
         <path d="M9 14l2 2 4-4" />
       </>
     ),
-    lines: <>Démarches 100 %<br />prises en charge</>,
+    lines: <>Démarches prises<br />en charge</>,
   },
 ];
 

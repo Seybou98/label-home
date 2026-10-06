@@ -58,7 +58,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
             {ville.scope === "national"
-              ? `Avec plus de 20 équipes techniques internes présentes sur tout le territoire, Label Énergie accompagne aussi les habitants de ${ville.name} (${ville.postalCode}, ${ville.department}) de l'étude à l'installation : pompe à chaleur, panneaux photovoltaïques, chauffe-eau thermodynamique ou solaire, système solaire combiné et poêle à granulés. Nos équipes sont certifiées RGE, ce qui vous ouvre l'accès à MaPrimeRénov' et aux primes CEE.`
+              ? `Avec plus de ${siteConfig.stats.technicalTeams} équipes techniques internes présentes sur tout le territoire, Label Énergie accompagne aussi les habitants de ${ville.name} (${ville.postalCode}, ${ville.department}) de l'étude à l'installation : pompe à chaleur, panneaux photovoltaïques, chauffe-eau thermodynamique ou solaire, système solaire combiné et poêle à granulés. Nos équipes sont certifiées RGE, ce qui vous ouvre l'accès à MaPrimeRénov' et aux primes CEE.`
               : `Label Énergie accompagne les habitants de ${ville.name} (${ville.postalCode}, ${ville.department}) de l'étude à l'installation : pompe à chaleur, panneaux photovoltaïques, chauffe-eau thermodynamique ou solaire, système solaire combiné et poêle à granulés. Nos équipes sont certifiées RGE, ce qui vous ouvre l'accès à MaPrimeRénov' et aux primes CEE.`}
           </p>
           {ville.note && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">{ville.note}</p>}

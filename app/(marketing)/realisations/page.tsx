@@ -64,7 +64,7 @@ export default function RealisationsPage() {
                   <Star size={20} />
                 </span>
                 <span className="solution-tick-label">
-                  Plus de 5 000 clients
+                  Plus de {siteConfig.stats.clients} clients
                   <br />
                   nous font confiance
                 </span>
@@ -120,7 +120,7 @@ export default function RealisationsPage() {
               <Home size={22} />
             </span>
             <div>
-              <p className="real-trust-value">+5 000</p>
+              <p className="real-trust-value">+{siteConfig.stats.clients}</p>
               <p className="real-trust-label">clients satisfaits</p>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function RealisationsPage() {
               <TrendingUp size={22} />
             </span>
             <div>
-              <p className="real-trust-value">+200</p>
+              <p className="real-trust-value">+{siteConfig.stats.installationsPerMonth}</p>
               <p className="real-trust-label">installations / mois</p>
             </div>
           </div>

@@ -231,14 +231,14 @@ export const solutions: Record<string, SolutionContent> = {
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "par rapport à une chaudière au fioul ou au gaz." },
       { icon: "ThermometerSun", title: "Compatible radiateurs", text: "et plancher chauffant existants." },
       { icon: "Leaf", title: "Énergie renouvelable", text: "et respectueuse de l'environnement." },
-      { icon: "BadgePercent", title: "Éligible aux aides", text: "MaPrimeRénov', CEE, TVA à 5,5 %." },
+      { icon: "BadgePercent", title: "Éligible aux aides", text: "MaPrimeRénov' et CEE, sous conditions." },
     ],
     highlights: [
       { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 70 % d'économies par rapport au fioul ou au gaz." },
       { icon: "ThermometerSun", title: "Confort", text: "Chauffe votre logement et votre eau chaude sanitaire." },
       { icon: "Leaf", title: "Écologique", text: "Une énergie renouvelable et respectueuse de l'environnement." },
       { icon: "Wrench", title: "Installation rapide", text: "Remplacement de chaudière en 1 à 2 jours." },
-      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov', CEE, TVA à 5,5 %." },
+      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov' et CEE, sous conditions." },
     ],
     howItWorks: {
       title: "Comment fonctionne une PAC Air/Eau ?",
@@ -255,7 +255,7 @@ export const solutions: Record<string, SolutionContent> = {
     aides: {
       amount: "10 000 €",
       text: "d'aides pour l'installation d'une PAC Air/Eau",
-      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)",],
     },
     ctaTicks: defaultCtaTicks,
     faq: [
@@ -394,7 +394,7 @@ export const solutions: Record<string, SolutionContent> = {
     aides: {
       amount: "10 000 €",
       text: "d'aides pour l'installation d'une PAC géothermique",
-      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)",],
     },
     ctaTicks: defaultCtaTicks,
     faq: [
@@ -450,7 +450,6 @@ export const solutions: Record<string, SolutionContent> = {
       text: "d'aides pour une climatisation réversible éligible",
       items: [
         "Certificats d'économies d'énergie (CEE) sous conditions",
-        "TVA réduite à 5,5 % pose comprise",
         "Aides locales selon votre région",
       ],
     },
@@ -481,7 +480,7 @@ export const solutions: Record<string, SolutionContent> = {
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture d'électricité." },
       { icon: "Leaf", title: "Énergie propre et renouvelable", text: "produite directement sur votre toit." },
       { icon: "Home", title: "Valorisation de votre bien", text: "grâce à une installation durable." },
-      { icon: "Home", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE, etc." },
+      { icon: "Home", title: "Revente du surplus", text: "possible selon votre contrat." },
     ],
     benefitCards: [
       { icon: "PiggyBank", title: "ÉCONOMIES DURABLES", text: "Réduisez jusqu'à 70 % sur votre facture d'électricité." },
@@ -490,7 +489,7 @@ export const solutions: Record<string, SolutionContent> = {
       {
         icon: "Award",
         title: "AIDES & SUBVENTIONS",
-        text: "Profitez des aides de l'État (MaPrimeRénov', CEE, etc.).",
+        text: "Prime à l'autoconsommation et revente du surplus, selon votre configuration.",
       },
     ],
     highlights: [
@@ -516,11 +515,11 @@ export const solutions: Record<string, SolutionContent> = {
       imageAspect: "1635/569",
     },
     aides: {
-      heading: "Des aides pour un projet plus accessible",
-      amount: "5 000 €",
+      heading: "Des dispositifs selon votre installation",
+      amount: "Sur étude",
       amountColor: "var(--teal2)",
-      text: "d'aides pour l'installation de panneaux photovoltaïques",
-      items: ["MaPrimeRénov'", "Prime à l'autoconsommation", "TVA réduite à 10 %", "Revente du surplus possible"],
+      text: "Nous vérifions les dispositifs applicables à votre puissance et à votre configuration",
+      items: ["Prime à l'autoconsommation (selon conditions)", "Revente du surplus (selon votre contrat)", "TVA à 5,5 % jusqu'à 9 kWc, sous conditions techniques"],
     },
     installations: {
       kicker: "NOS RÉALISATIONS",
@@ -625,14 +624,14 @@ export const solutions: Record<string, SolutionContent> = {
       { icon: "PiggyBank", title: "Jusqu'à 60 % d'économies", text: "sur chauffage et eau chaude combinés." },
       { icon: "Sun", title: "Énergie solaire gratuite", text: "captée directement sur votre toiture." },
       { icon: "Leaf", title: "2 besoins couverts", text: "chauffage et eau chaude sanitaire." },
-      { icon: "BadgePercent", title: "Éligible aux aides", text: "MaPrimeRénov', CEE, TVA à 5,5 %." },
+      { icon: "BadgePercent", title: "Éligible aux aides", text: "CEE et aides de l'État, sous conditions." },
     ],
     highlights: [
       { icon: "PiggyBank", title: "Économies d'énergie", text: "Jusqu'à 60 % d'économies sur chauffage et eau chaude." },
       { icon: "Sun", title: "Énergie solaire gratuite", text: "Captée directement sur votre toiture." },
       { icon: "Leaf", title: "2 besoins couverts", text: "Chauffage et eau chaude sanitaire." },
       { icon: "ThermometerSun", title: "Confort toute l'année", text: "Un appoint automatique prend le relais si besoin." },
-      { icon: "BadgePercent", title: "Aides financières", text: "MaPrimeRénov', CEE, TVA à 5,5 %." },
+      { icon: "BadgePercent", title: "Aides financières", text: "CEE et aides de l'État, sous conditions." },
     ],
     howItWorks: {
       title: "Comment fonctionne un système solaire combiné ?",
@@ -647,9 +646,9 @@ export const solutions: Record<string, SolutionContent> = {
       imageAlt: "Schéma de fonctionnement d'un système solaire combiné",
     },
     aides: {
-      amount: "4 000 €",
-      text: "d'aides pour l'installation d'un système solaire combiné",
-      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+      amount: "Sur étude",
+      text: "Des dispositifs peuvent s'appliquer selon votre logement et votre configuration",
+      items: ["Certificats d'économies d'énergie (CEE), voir la page solaire thermique (DST)", "Aides de l'État selon votre configuration (voir la page solaire thermique)"],
     },
     ctaTicks: defaultCtaTicks,
     faq: [
@@ -712,9 +711,7 @@ export const solutions: Record<string, SolutionContent> = {
       amountColor: "var(--teal2)",
       text: "d'aides pour l'installation d'un chauffe-eau thermodynamique",
       items: [
-        "MaPrimeRénov'",
-        "Certificats d'économies d'énergie (CEE)",
-        "TVA réduite à 5,5 %",
+        "Certificats d'économies d'énergie (CEE), voir la page solaire thermique (DST)",
         "Cumulable avec d'autres aides locales",
       ],
     },
@@ -770,7 +767,7 @@ export const solutions: Record<string, SolutionContent> = {
     slug: "chauffe-eau-solaire-individuel",
     seoTitle: "Chauffe-eau solaire individuel (CESI) : eau chaude 100 % solaire",
     metaDescription:
-      "Le CESI utilise l'énergie gratuite du soleil pour produire votre eau chaude sanitaire. Jusqu'à 70 % d'économies, solution durable, aides MaPrimeRénov' et CEE.",
+      "Le CESI utilise l'énergie gratuite du soleil pour produire votre eau chaude sanitaire. Jusqu'à 70 % d'économies, solution durable, aides CEE.",
     breadcrumbLabel: "Chauffe-eau solaire (CESI)",
     category: "CESI – CHAUFFE-EAU SOLAIRE INDIVIDUEL",
     h1: "L'eau chaude sanitaire autrement, <span>naturellement.</span>",
@@ -783,7 +780,7 @@ export const solutions: Record<string, SolutionContent> = {
       { icon: "PiggyBank", title: "Jusqu'à 70 % d'économies", text: "sur votre facture d'eau chaude." },
       { icon: "Sun", title: "Énergie solaire gratuite", text: "captée sur votre toiture." },
       { icon: "Waves", title: "Confort en eau chaude toute l'année", text: "avec appoint électrique." },
-      { icon: "Home", title: "Éligible aux aides de l'État", text: "MaPrimeRénov', CEE." },
+      { icon: "Home", title: "Éligible aux aides de l'État", text: "CEE, sous conditions." },
     ],
     benefitCards: [
       { icon: "PiggyBank", title: "ÉCONOMIQUE", text: "Jusqu'à 70 % d'économies sur votre facture d'eau chaude." },
@@ -792,7 +789,7 @@ export const solutions: Record<string, SolutionContent> = {
       {
         icon: "Award",
         title: "AIDES & SUBVENTIONS",
-        text: "Profitez des aides de l'État (MaPrimeRénov', CEE, etc.) pour réduire votre investissement.",
+        text: "Profitez des aides de l'État (CEE, sous conditions) pour réduire votre investissement.",
       },
     ],
     highlights: [
@@ -829,7 +826,6 @@ export const solutions: Record<string, SolutionContent> = {
       items: [
         "MaPrimeRénov'",
         "Certificats d'économies d'énergie (CEE)",
-        "TVA réduite à 5,5 %",
         "Cumulable avec d'autres aides locales",
       ],
     },
@@ -968,7 +964,7 @@ export const solutions: Record<string, SolutionContent> = {
     aides: {
       amount: "3 000 €",
       text: "d'aides pour l'installation d'un poêle à granulés",
-      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)", "TVA réduite à 5,5 %"],
+      items: ["MaPrimeRénov'", "Certificats d'économies d'énergie (CEE)",],
     },
     ctaIcon: "/images/solutions/projets.png",
     ctaTicks: defaultCtaTicks,
@@ -1032,6 +1028,67 @@ export const solutions: Record<string, SolutionContent> = {
         question: "Qu'est-ce que MaPrimeRénov' Parcours accompagné ?",
         answer:
           "C'est un dispositif de l'État qui finance une partie des travaux de rénovation globale et impose l'accompagnement d'un Accompagnateur Rénov' agréé, que nous pouvons coordonner avec vous.",
+      },
+    ],
+  },
+  "solaire-thermique": {
+    slug: "solaire-thermique",
+    seoTitle: "Dispositif Solaire Thermique (DST) : eau chaude et chauffage solaire",
+    metaDescription:
+      "Le Dispositif Solaire Thermique (DST) utilise l'énergie gratuite du soleil pour votre eau chaude et votre chauffage. Éligible aux CEE (BAR-TH-168), devis gratuit avec Label Énergie.",
+    breadcrumbLabel: "Solaire thermique (DST)",
+    category: "ÉNERGIE SOLAIRE THERMIQUE",
+    h1: "Dispositif Solaire Thermique (DST)",
+    intro:
+      "Le soleil couvre une grande partie de vos besoins en eau chaude sanitaire et peut également contribuer à votre chauffage. Une solution fiable, économique et respectueuse de l'environnement.",
+    heroImage: "/images/dst1.jpg",
+    heroAlt: "Maison avec capteurs solaires thermiques en toiture, éligible aux CEE BAR-TH-168",
+    quickBenefits: [
+      { icon: "Leaf", title: "Une énergie renouvelable", text: "et gratuite." },
+      { icon: "Gauge", title: "Réduction de vos consommations", text: "d'énergie." },
+      { icon: "Home", title: "Un meilleur confort", text: "toute l'année." },
+      { icon: "Sun", title: "Une solution durable", text: "25 ans de durée de vie conventionnelle." },
+    ],
+    highlights: [
+      { icon: "Leaf", title: "Une énergie renouvelable", text: "Utilise une ressource naturelle et inépuisable : le soleil." },
+      { icon: "Gauge", title: "Réduction des consommations", text: "Diminue votre consommation d'énergie pour l'eau chaude et le chauffage." },
+      { icon: "Home", title: "Un meilleur confort", text: "Une eau chaude disponible toute l'année et un chauffage d'appoint performant." },
+      { icon: "Sun", title: "Une solution durable", text: "Durée de vie conventionnelle CEE : 25 ans." },
+    ],
+    howItWorks: {
+      title: "Comment fonctionne un système solaire thermique ?",
+      intro:
+        "Les capteurs solaires thermiques installés sur votre toit captent la chaleur du soleil et la transmettent à un fluide caloporteur. Cette chaleur est transférée à un ballon de stockage qui alimente votre eau chaude sanitaire et, selon la configuration, votre chauffage.",
+      steps: [
+        { n: 1, title: "Capteurs solaires thermiques", text: "captent la chaleur du soleil." },
+        { n: 2, title: "Transfert de chaleur", text: "via un circuit solaire (eau + glycol)." },
+        { n: 3, title: "Ballon de stockage solaire", text: "stocke l'énergie." },
+        { n: 4, title: "Eau chaude sanitaire", text: "et selon configuration, chauffage." },
+      ],
+      image: "/images/dst2.jpg",
+      imageAlt: "Vue en coupe : capteurs, ballon de stockage, circuit solaire",
+    },
+    aides: {
+      heading: "Certificats d'économies d'énergie",
+      amount: "BAR-TH-168",
+      text: "Dispositif solaire thermique, maisons individuelles de plus de 2 ans",
+      items: [
+        "Bonification ×5 pour les ménages modestes (opérations engagées avant le 1er janvier 2027)",
+        "Bonification ×4 pour les autres ménages",
+        "Non cumulable avec les fiches BAR-TH-171 et BAR-TH-172 pour la même opération",
+      ],
+    },
+    ctaTicks: defaultCtaTicks,
+    faq: [
+      {
+        question: "Le Dispositif Solaire Thermique est-il éligible aux aides ?",
+        answer:
+          "Oui, il est éligible aux certificats d'économies d'énergie selon la fiche BAR-TH-168, pour les maisons individuelles existantes de plus de 2 ans en France métropolitaine.",
+      },
+      {
+        question: "Quelle configuration choisir, ECS ou chauffage + ECS ?",
+        answer:
+          "Pour l'eau chaude sanitaire seule, une surface minimale de 2 m² de capteurs suffit. Pour couvrir aussi une partie du chauffage (système solaire combiné), il faut au moins 8 m² de capteurs. Nos experts étudient gratuitement la configuration adaptée à votre logement.",
       },
     ],
   },

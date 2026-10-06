@@ -96,9 +96,139 @@ const faqItems: { category: CategoryKey; q: string; a: string }[] = [
     a: "Toutes vos factures et tous vos documents (devis, contrat, attestations) sont disponibles à tout moment dans votre espace client, rubrique « Documents ».",
   },
   {
+    category: "sol",
+    q: "Qu'est-ce que le Dispositif Solaire Thermique (DST) ?",
+    a: "C'est un système qui utilise la chaleur du soleil, captée par des capteurs sur votre toit, pour produire votre eau chaude sanitaire et, selon la configuration, contribuer à votre chauffage.",
+  },
+  {
+    category: "sol",
+    q: "Quelle différence entre un chauffe-eau solaire et un système solaire combiné ?",
+    a: "Le chauffe-eau solaire individuel couvre uniquement l'eau chaude sanitaire. Le système solaire combiné couvre l'eau chaude et une partie du chauffage, avec un appoint pour les jours moins ensoleillés.",
+  },
+  {
+    category: "aide",
+    q: "Le solaire thermique est-il éligible aux CEE ?",
+    a: "Oui, selon la fiche BAR-TH-168, pour les maisons individuelles existantes de plus de 2 ans en France métropolitaine. Les conditions détaillées sont sur notre page solaire thermique.",
+  },
+  {
+    category: "aide",
+    q: "Quels documents faut-il fournir pour les CEE ?",
+    a: "Selon votre situation : avis d'imposition, pièce d'identité en cours de validité, taxe foncière ou acte notarié simplifié. Les propriétaires bailleurs doivent aussi fournir le bail. Nos conseillers vous indiquent la liste exacte.",
+  },
+  {
+    category: "aide",
+    q: "Les aides sont-elles cumulables ?",
+    a: "Oui, MaPrimeRénov' et les certificats d'économies d'énergie (CEE) peuvent se cumuler. Certaines fiches CEE ne sont en revanche pas cumulables entre elles pour une même opération : nous vérifions cela avec vous.",
+  },
+  {
+    category: "inst",
+    q: "Faut-il prévoir des travaux avant l'installation ?",
+    a: "Parfois. Selon votre logement, des travaux peuvent être nécessaires : élagage, dépose d'éléments gênants, ou mise en conformité de la toiture. Ils sont à votre charge et font l'objet d'un devis séparé.",
+  },
+  {
+    category: "inst",
+    q: "Faut-il augmenter la puissance de mon compteur électrique ?",
+    a: "Certains équipements peuvent nécessiter une augmentation de puissance. Il faut alors contacter votre fournisseur d'électricité, qui vous indiquera la démarche à suivre.",
+  },
+  {
+    category: "sav",
+    q: "Quelle est la durée de garantie de mon installation ?",
+    a: "Vous bénéficiez de la garantie légale de conformité de deux ans, d'une garantie de nos travaux d'installation de deux ans, et de la garantie décennale. La garantie du fabricant s'ajoute selon le matériel installé.",
+  },
+  {
+    category: "sav",
+    q: "Comment déclarer une panne ?",
+    a: "Depuis la page « Déclarer un SAV » de notre site ou depuis votre espace client, vous décrivez le problème et nos équipes vous recontactent.",
+  },
+  {
+    category: "sav",
+    q: "Puis-je annuler ma commande ?",
+    a: "Oui, vous disposez en principe d'un délai de rétractation de 14 jours à compter de la signature, sauf si vous demandez expressément une exécution de la prestation avant ce délai. Les conditions précises figurent dans nos CGV.",
+  },
+  {
+    category: "compte",
+    q: "Comment accéder à mon espace client ?",
+    a: "Depuis la page de connexion, saisissez votre adresse email : un code à six chiffres vous est envoyé pour vous connecter. Ce code est valable 15 minutes.",
+  },
+  {
+    category: "sol",
+    q: "Que proposez-vous pour la climatisation ?",
+    a: "Une pompe à chaleur air/air réversible : elle chauffe en hiver et rafraîchit en été, avec des unités intérieures installées dans les pièces à climatiser.",
+  },
+  {
+    category: "sol",
+    q: "Proposez-vous la géothermie ?",
+    a: "Oui, la pompe à chaleur géothermique puise l'énergie du sol pour un chauffage stable toute l'année. Notre étude gratuite permet de vérifier si votre terrain est adapté.",
+  },
+  {
+    category: "sol",
+    q: "Un poêle à granulés peut-il remplacer ma chaudière ?",
+    a: "Un poêle à granulés chauffe bien une pièce ou un logement, mais son usage pour remplacer une chaudière dépend de votre installation. Notre étude détermine la solution la plus adaptée.",
+  },
+  {
+    category: "aide",
+    q: "Quels montants de MaPrimeRénov' pour une pompe à chaleur air/eau ?",
+    a: "Les montants sont indicatifs et dépendent de votre profil de revenus : jusqu'à 5 000 € pour le profil bleu, 4 000 € pour le jaune, 3 000 € pour le violet. Le profil rose n'est pas éligible à MaPrimeRénov'. Notre simulateur donne une estimation personnalisée.",
+  },
+  {
+    category: "aide",
+    q: "Combien rapportent les CEE ?",
+    a: "Le montant varie selon vos revenus et le type de chauffage remplacé. Les fourchettes indicatives vont de 800 € à 5 500 € selon ces critères. Un devis personnalisé confirme le montant exact.",
+  },
+  {
+    category: "aide",
+    q: "Comment fonctionne le parrainage ?",
+    a: "Recommandez Label Énergie à vos proches : vous recevez 300 € lorsque leur installation est terminée.",
+  },
+  {
+    category: "inst",
+    q: "Combien de temps dure l'étude de mon projet ?",
+    a: "L'étude est gratuite et personnalisée. Un conseiller vous recontacte après votre demande pour organiser une visite et établir votre devis.",
+  },
+  {
+    category: "sav",
+    q: "Quelles formules d'entretien proposez-vous ?",
+    a: "Trois formules : Standard, Premium et VIP. Toutes incluent une visite annuelle préventive ; les formules Premium et VIP ajoutent des prestations supplémentaires, détaillées sur notre page entretien.",
+  },
+  {
+    category: "compte",
+    q: "Où retrouver mes contrats, factures et rendez-vous ?",
+    a: "Dans votre espace client, chaque rubrique (contrats, factures, documents, rendez-vous) regroupe les éléments de votre dossier.",
+  },
+  {
+    category: "compte",
+    q: "Puis-je demander un rendez-vous depuis mon espace client ?",
+    a: "Oui, la rubrique rendez-vous de votre espace client vous permet de consulter vos rendez-vous et d'échanger avec nos équipes.",
+  },
+  {
+    category: "gen",
+    q: "Combien de temps faut-il pour obtenir une réponse à ma demande ?",
+    a: "Nos conseillers s'efforcent de vous répondre dans les 24 heures ouvrées. Vous pouvez aussi nous appeler directement du lundi au vendredi, de 8h à 18h.",
+  },
+  {
+    category: "gen",
+    q: "Comment simuler mes aides ?",
+    a: "Notre simulateur gratuit vous pose quelques questions sur votre logement et votre situation, puis estime vos aides en quelques minutes.",
+  },
+  {
+    category: "gen",
+    q: "Comment sont protégées mes données personnelles ?",
+    a: "Elles sont traitées conformément au RGPD. Vous pouvez à tout moment accéder à vos données, les corriger ou demander leur suppression. Tous les détails sont dans notre politique de confidentialité.",
+  },
+  {
+    category: "gen",
+    q: "Que faire en cas de litige ?",
+    a: "Adressez d'abord une réclamation écrite à notre service juridique. Vous pouvez aussi recourir gratuitement au médiateur de la consommation, l'association Médiation en Seine, dont les coordonnées figurent dans nos CGV.",
+  },
+  {
+    category: "gen",
+    q: "Où se trouve votre siège ?",
+    a: "Notre siège est situé au 3 allée du 1er Mai, 77183 Croissy-Beaubourg, en Seine-et-Marne.",
+  },
+  {
     category: "gen",
     q: "Intervenez-vous partout en France ?",
-    a: "Oui. Avec plus de 20 équipes techniques internes, nous intervenons sur tout le territoire métropolitain, avec une intervention rapide en Île-de-France, où se trouve notre siège.",
+    a: `Oui. Avec plus de ${siteConfig.stats.technicalTeams} équipes techniques internes, nous intervenons sur tout le territoire métropolitain, avec une intervention rapide en Île-de-France, où se trouve notre siège.`,
   },
 ];
 
@@ -206,7 +336,7 @@ export function FaqExperience() {
               { icon: Clock, title: "Réponses rapides", text: "à vos questions" },
               { icon: Headphones, title: "Experts à votre écoute", text: "conseils personnalisés" },
               { icon: CheckCircle2, title: "Accompagnement", text: "de A à Z" },
-              { icon: Sparkles, title: "Satisfaction garantie", text: "+ 5 000 clients accompagnés" },
+              { icon: Sparkles, title: "Satisfaction garantie", text: `+ ${siteConfig.stats.clients} clients accompagnés` },
             ].map((item) => (
               <div key={item.title} className="flex items-start gap-3.5">
                 <item.icon size={22} className="mt-0.5 shrink-0 text-[#0b5c42]" strokeWidth={1.4} />

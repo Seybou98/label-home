@@ -434,14 +434,14 @@ export function ContactExperience() {
             <div>
               <p className="text-[15px] font-semibold text-navy">Une équipe proche de vous</p>
               <p className="mt-2 text-[13px] leading-relaxed text-navy">
-                Plus de {siteConfig.stats.collaborators} collaborateurs et plus de 20 équipes techniques à votre
+                Plus de {siteConfig.stats.collaborators} collaborateurs et plus de {siteConfig.stats.technicalTeams} équipes techniques à votre
                 service partout en France.
               </p>
             </div>
             {[
               { icon: Users, value: "+20", label: "Équipes techniques sur toute la France" },
-              { icon: User, value: "+5 000", label: "Clients accompagnés depuis 2016" },
-              { icon: Home, value: "+200", label: "Installations réalisées chaque mois" },
+              { icon: User, value: `+${siteConfig.stats.clients}`, label: "Clients accompagnés depuis 2016" },
+              { icon: Home, value: `+${siteConfig.stats.installationsPerMonth}`, label: "Installations réalisées chaque mois" },
             ].map((s) => (
               <div key={s.label} className="flex gap-3.5">
                 <s.icon size={26} className="shrink-0 text-teal2" strokeWidth={1.3} />

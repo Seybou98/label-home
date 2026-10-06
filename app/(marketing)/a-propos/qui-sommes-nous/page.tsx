@@ -42,7 +42,7 @@ const heroStats: {
   suffix?: string;
   label: React.ReactNode;
 }[] = [
-  { icon: Home, value: 5000, prefix: "+ ", label: "clients satisfaits" },
+  { icon: Home, value: Number(siteConfig.stats.clients.replace(/s/g, "")), prefix: "+ ", label: "clients satisfaits" },
   { icon: Users, value: 90, prefix: "+ ", label: "collaborateurs" },
   { icon: HardHat, value: 20, prefix: "+ ", label: "équipes de pose" },
   {
@@ -86,7 +86,7 @@ const values = [
 const whyUs = [
   {
     icon: Users,
-    title: "100 % interne",
+    title: "Équipes internes",
     text: "Pas de sous-traitance : nos propres équipes assurent la pose et le suivi.",
   },
   {
@@ -224,7 +224,7 @@ export default function QuiSommesNousPage() {
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
               Label Énergie est spécialiste des solutions de rénovation énergétique pour les
               particuliers. Nous vous accompagnons de A à Z avec des installations performantes,
-              des équipes expertes et un service 100 % interne.
+              des équipes expertes et un service assuré par nos équipes internes.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

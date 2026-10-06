@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
+import { siteConfig } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { villes } from "@/lib/content/villes";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
@@ -8,7 +9,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 export const metadata: Metadata = buildMetadata({
   title: "Zones d'intervention : installateur RGE en France",
   description:
-    "Label Énergie intervient en Île-de-France et, avec plus de 20 équipes techniques internes, partout en France pour l'installation de pompes à chaleur, panneaux solaires, chauffe-eau et poêles à granulés. Trouvez votre ville.",
+    `Label Énergie intervient en Île-de-France et, avec plus de ${siteConfig.stats.technicalTeams} équipes techniques internes, partout en France pour l'installation de pompes à chaleur, panneaux solaires, chauffe-eau et poêles à granulés. Trouvez votre ville.`,
   path: "/zones-intervention",
 });
 
@@ -29,7 +30,7 @@ export default function ZonesInterventionPage() {
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
             Label Énergie, entreprise RGE dont le siège est en Seine-et-Marne, installe et entretient
             pompes à chaleur, panneaux solaires, chauffe-eau et poêles à granulés en Île-de-France. Avec
-            plus de 20 équipes techniques internes, nous intervenons aussi dans les grandes villes de
+            plus de {siteConfig.stats.technicalTeams} équipes techniques internes, nous intervenons aussi dans les grandes villes de
             France. Choisissez votre ville pour découvrir nos solutions et les aides disponibles.
           </p>
         </div>
